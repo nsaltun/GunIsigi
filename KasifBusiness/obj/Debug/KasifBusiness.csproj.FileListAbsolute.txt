@@ -3,3 +3,8 @@ c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.dll
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.pdb
+C:\Users\Enes\Desktop\GunIsigi\KasifBusiness\bin\Debug\KasifBusiness.dll
+C:\Users\Enes\Desktop\GunIsigi\KasifBusiness\bin\Debug\KasifBusiness.pdb
+C:\Users\Enes\Desktop\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache
+C:\Users\Enes\Desktop\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.dll
+C:\Users\Enes\Desktop\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.pdb
