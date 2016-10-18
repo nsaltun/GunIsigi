@@ -4,3 +4,9 @@ c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalAp
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalApp\obj\Debug\KasifPortalApp.csprojResolveAssemblyReference.cache
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalApp\obj\Debug\KasifPortalApp.dll
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalApp\obj\Debug\KasifPortalApp.pdb
+C:\Users\Enes\Desktop\GunIsigi\KasifPortalApp\bin\KasifPortalApp.dll.config
+C:\Users\Enes\Desktop\GunIsigi\KasifPortalApp\bin\KasifPortalApp.dll
+C:\Users\Enes\Desktop\GunIsigi\KasifPortalApp\bin\KasifPortalApp.pdb
+C:\Users\Enes\Desktop\GunIsigi\KasifPortalApp\obj\Debug\KasifPortalApp.csprojResolveAssemblyReference.cache
+C:\Users\Enes\Desktop\GunIsigi\KasifPortalApp\obj\Debug\KasifPortalApp.dll
+C:\Users\Enes\Desktop\GunIsigi\KasifPortalApp\obj\Debug\KasifPortalApp.pdb
