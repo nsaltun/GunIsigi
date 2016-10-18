@@ -41,6 +41,13 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\KasifHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\" />
+    <Folder Include="DB Operations\DBObjects\" />
+    <Folder Include="DB Operations\DBOperations\" />
+    <Folder Include="DB Operations\EntityObject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
