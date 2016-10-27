@@ -7,3 +7,4 @@ C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.xml
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache
