@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GN_KASIFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MENU_TILES">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MENU_TREE">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LASTUPDATED" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
+    <Property Name="PARENT_NODE_GUID" Type="bigint" />
+    <Property Name="NODE_TYPE" Type="char" MaxLength="1" />
+    <Property Name="NODE_DISPLAY_NAME" Type="char" MaxLength="250" />
+    <Property Name="NODE_POSITION" Type="smallint" />
+    <Property Name="CLASS_NAME" Type="char" MaxLength="200" />
+    <Property Name="FILE_NAME" Type="char" MaxLength="250" />
+    <Property Name="RESOURCE_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="OGR_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="OGR_ID" Type="int" />
+    <Property Name="OGR_NO" Type="int" />
+    <Property Name="NAME" Type="nchar" MaxLength="100" />
+    <Property Name="SURNAME" Type="nchar" MaxLength="100" />
+    <Property Name="CLASS" Type="smallint" />
+    <Property Name="SUBCLASS" Type="nvarchar" MaxLength="10" />
+    <Property Name="SCHOOL_NAME" Type="nvarchar" MaxLength="150" />
+    <Property Name="DISTRICT" Type="nchar" MaxLength="100" />
+    <Property Name="PARENT_NAME" Type="nchar" MaxLength="100" />
+    <Property Name="DATE_OF_BIRTH" Type="nchar" MaxLength="16" />
+    <Property Name="BIRT_PLACE" Type="nvarchar" MaxLength="100" />
+    <Property Name="PHONE" Type="nchar" MaxLength="15" />
+    <Property Name="PARENT_PHONE" Type="nchar" MaxLength="15" />
+    <Property Name="OGR_EMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="PARENT_EMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="OGR_IMG" Type="binary" MaxLength="250" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USER_ROLE">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LAST_UPDATED" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LAST_UPDATED" Type="bigint" Nullable="false" />
+    <Property Name="ROLE_NAME" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_MENU' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USER_ROLE_MENU">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LASTUPDATED" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
+    <Property Name="ROLE_GUID" Type="bigint" />
+    <Property Name="NODE_GUID" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_OWNERSHIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USER_ROLE_OWNERSHIP">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LAST_UPDATED" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LAST_UPDATED" Type="bigint" Nullable="false" />
+    <Property Name="ROLE_GUID" Type="bigint" />
+    <Property Name="USER_ID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.USER_SESSION_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USER_SESSION_INFO">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="LOGIN_DATETIME" />
+      <PropertyRef Name="SESSION_GUID" />
+    </Key>
+    <Property Name="USER_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOGIN_DATETIME" Type="bigint" Nullable="false" />
+    <Property Name="SUCCESS" Type="int" />
+    <Property Name="FAILURE_REASON" Type="nvarchar" MaxLength="250" />
+    <Property Name="INCORRECT_PWD_COUNT" Type="int" />
+    <Property Name="SESSION_GUID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USER_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USER_USER">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="EMAIL" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
+    <Property Name="USER_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NAME" Type="nchar" MaxLength="100" />
+    <Property Name="SURNAME" Type="nchar" MaxLength="100" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IS_ADMIN" Type="smallint" />
+    <Property Name="INSERT_USER" Type="bigint" />
+    <Property Name="INSERT_DATETIME" Type="bigint" />
+    <Property Name="LAST_LOGIN_DATE" Type="bigint" />
+    <Property Name="LAST_PWD_CHANGE_DATE" Type="bigint" />
+    <Property Name="USER_STATUS" Type="smallint" />
+    <Property Name="PASSWORD" Type="binary" MaxLength="256" />
+  </EntityType>
+  <EntityContainer Name="GN_KASIFModelStoreContainer">
+    <EntitySet Name="MENU_TILES" EntityType="Self.MENU_TILES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGR_BILGI" EntityType="Self.OGR_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU_TREE" EntityType="Self.MENU_TREE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MENU_TREE].[GUID] AS [GUID], 
+    [MENU_TREE].[STATUS] AS [STATUS], 
+    [MENU_TREE].[LASTUPDATED] AS [LASTUPDATED], 
+    [MENU_TREE].[PARENT_NODE_GUID] AS [PARENT_NODE_GUID], 
+    [MENU_TREE].[NODE_TYPE] AS [NODE_TYPE], 
+    [MENU_TREE].[NODE_DISPLAY_NAME] AS [NODE_DISPLAY_NAME], 
+    [MENU_TREE].[NODE_POSITION] AS [NODE_POSITION], 
+    [MENU_TREE].[CLASS_NAME] AS [CLASS_NAME], 
+    [MENU_TREE].[FILE_NAME] AS [FILE_NAME], 
+    [MENU_TREE].[RESOURCE_ID] AS [RESOURCE_ID]
+    FROM [dbo].[MENU_TREE] AS [MENU_TREE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USER_ROLE].[GUID] AS [GUID], 
+    [USER_ROLE].[STATUS] AS [STATUS], 
+    [USER_ROLE].[LAST_UPDATED] AS [LAST_UPDATED], 
+    [USER_ROLE].[ROLE_NAME] AS [ROLE_NAME]
+    FROM [dbo].[USER_ROLE] AS [USER_ROLE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USER_ROLE_MENU" EntityType="Self.USER_ROLE_MENU" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USER_ROLE_MENU].[GUID] AS [GUID], 
+    [USER_ROLE_MENU].[STATUS] AS [STATUS], 
+    [USER_ROLE_MENU].[LASTUPDATED] AS [LASTUPDATED], 
+    [USER_ROLE_MENU].[ROLE_GUID] AS [ROLE_GUID], 
+    [USER_ROLE_MENU].[NODE_GUID] AS [NODE_GUID]
+    FROM [dbo].[USER_ROLE_MENU] AS [USER_ROLE_MENU]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USER_ROLE_OWNERSHIP" EntityType="Self.USER_ROLE_OWNERSHIP" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USER_ROLE_OWNERSHIP].[GUID] AS [GUID], 
+    [USER_ROLE_OWNERSHIP].[STATUS] AS [STATUS], 
+    [USER_ROLE_OWNERSHIP].[LAST_UPDATED] AS [LAST_UPDATED], 
+    [USER_ROLE_OWNERSHIP].[ROLE_GUID] AS [ROLE_GUID], 
+    [USER_ROLE_OWNERSHIP].[USER_ID] AS [USER_ID]
+    FROM [dbo].[USER_ROLE_OWNERSHIP] AS [USER_ROLE_OWNERSHIP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USER_SESSION_INFO" EntityType="Self.USER_SESSION_INFO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USER_SESSION_INFO].[USER_ID] AS [USER_ID], 
+    [USER_SESSION_INFO].[LOGIN_DATETIME] AS [LOGIN_DATETIME], 
+    [USER_SESSION_INFO].[SUCCESS] AS [SUCCESS], 
+    [USER_SESSION_INFO].[FAILURE_REASON] AS [FAILURE_REASON], 
+    [USER_SESSION_INFO].[INCORRECT_PWD_COUNT] AS [INCORRECT_PWD_COUNT], 
+    [USER_SESSION_INFO].[SESSION_GUID] AS [SESSION_GUID]
+    FROM [dbo].[USER_SESSION_INFO] AS [USER_SESSION_INFO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USER_STATUS" EntityType="Self.USER_STATUS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USER_STATUS].[ID] AS [ID], 
+    [USER_STATUS].[DESCRIPTION] AS [DESCRIPTION]
+    FROM [dbo].[USER_STATUS] AS [USER_STATUS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USER_USER" EntityType="Self.USER_USER" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USER_USER].[GUID] AS [GUID], 
+    [USER_USER].[STATUS] AS [STATUS], 
+    [USER_USER].[LASTUPDATED] AS [LASTUPDATED], 
+    [USER_USER].[USER_ID] AS [USER_ID], 
+    [USER_USER].[NAME] AS [NAME], 
+    [USER_USER].[SURNAME] AS [SURNAME], 
+    [USER_USER].[EMAIL] AS [EMAIL], 
+    [USER_USER].[IS_ADMIN] AS [IS_ADMIN], 
+    [USER_USER].[INSERT_USER] AS [INSERT_USER], 
+    [USER_USER].[INSERT_DATETIME] AS [INSERT_DATETIME], 
+    [USER_USER].[LAST_LOGIN_DATE] AS [LAST_LOGIN_DATE], 
+    [USER_USER].[LAST_PWD_CHANGE_DATE] AS [LAST_PWD_CHANGE_DATE], 
+    [USER_USER].[USER_STATUS] AS [USER_STATUS], 
+    [USER_USER].[PASSWORD] AS [PASSWORD]
+    FROM [dbo].[USER_USER] AS [USER_USER]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

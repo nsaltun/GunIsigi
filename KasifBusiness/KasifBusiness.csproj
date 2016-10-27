@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,15 +50,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Business\Login\OLogin.cs" />
+    <Compile Include="DB Operations\DBObjects\ConstDbCommands.cs" />
+    <Compile Include="DB Operations\DBOperations\DbOperations.cs" />
+    <Compile Include="DB Operations\DBOperations\OOgrBilgi.cs" />
+    <Compile Include="DB Operations\EntityObject\GN_KASIF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GN_KASIF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\GN_KASIF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\GN_KASIF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GN_KASIF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\MENU_TILES.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\MENU_TREE.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\OGR_BILGI.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\USER_ROLE.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\USER_ROLE_MENU.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\USER_ROLE_OWNERSHIP.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\USER_SESSION_INFO.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\USER_STATUS.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB Operations\EntityObject\USER_USER.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\MenuTreeItemObject.cs" />
+    <Compile Include="Objects\SessionObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\KasifHelper.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="DB Operations\DBObjects\" />
-    <Folder Include="DB Operations\DBOperations\" />
-    <Folder Include="DB Operations\EntityObject\" />
+    <EntityDeploy Include="DB Operations\EntityObject\GN_KASIF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GN_KASIF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DB Operations\EntityObject\GN_KASIF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GN_KASIF.edmx</DependentUpon>
+      <LastGenOutput>GN_KASIF.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DB Operations\EntityObject\GN_KASIF.edmx.diagram">
+      <DependentUpon>GN_KASIF.edmx</DependentUpon>
+    </None>
+    <None Include="DB Operations\EntityObject\GN_KASIF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GN_KASIF.edmx</DependentUpon>
+      <LastGenOutput>GN_KASIF.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

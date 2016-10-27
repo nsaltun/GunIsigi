@@ -4,3 +4,7 @@ c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalAp
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalApp\obj\Debug\KasifPortalApp.csprojResolveAssemblyReference.cache
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalApp\obj\Debug\KasifPortalApp.dll
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifPortalApp\obj\Debug\KasifPortalApp.pdb
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\KasifBusiness.dll
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\EntityFramework.dll
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\KasifBusiness.pdb
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\EntityFramework.xml

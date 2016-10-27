@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GN_KASIFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="USER_USER">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="EMAIL" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IS_ADMIN" Type="Int16" />
+    <Property Name="INSERT_USER" Type="Int64" />
+    <Property Name="INSERT_DATETIME" Type="Int64" />
+    <Property Name="LAST_LOGIN_DATE" Type="Int64" />
+    <Property Name="LAST_PWD_CHANGE_DATE" Type="Int64" />
+    <Property Name="USER_STATUS" Type="Int16" />
+    <Property Name="PASSWORD" Type="Binary" MaxLength="256" FixedLength="true" />
+  </EntityType>
+  <EntityContainer Name="GN_KASIFEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="USER_USER" EntityType="Self.USER_USER" />
+    <EntitySet Name="MENU_TREE" EntityType="GN_KASIFModel.MENU_TREE" />
+    <EntitySet Name="USER_ROLE" EntityType="GN_KASIFModel.USER_ROLE" />
+    <EntitySet Name="USER_ROLE_MENU" EntityType="GN_KASIFModel.USER_ROLE_MENU" />
+    <EntitySet Name="USER_ROLE_OWNERSHIP" EntityType="GN_KASIFModel.USER_ROLE_OWNERSHIP" />
+    <EntitySet Name="USER_SESSION_INFO" EntityType="GN_KASIFModel.USER_SESSION_INFO" />
+    <EntitySet Name="USER_STATUS" EntityType="GN_KASIFModel.USER_STATUS" />
+    <EntitySet Name="OGR_BILGI" EntityType="GN_KASIFModel.OGR_BILGI" />
+    <EntitySet Name="MENU_TILES" EntityType="GN_KASIFModel.MENU_TILES" />
+  </EntityContainer>
+  <EntityType Name="MENU_TREE">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LASTUPDATED" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
+    <Property Name="PARENT_NODE_GUID" Type="Int64" />
+    <Property Name="NODE_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="NODE_DISPLAY_NAME" Type="String" MaxLength="250" FixedLength="true" Unicode="false" />
+    <Property Name="NODE_POSITION" Type="Int16" />
+    <Property Name="CLASS_NAME" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+    <Property Name="FILE_NAME" Type="String" MaxLength="250" FixedLength="true" Unicode="false" />
+    <Property Name="RESOURCE_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="USER_ROLE">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LAST_UPDATED" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LAST_UPDATED" Type="Int64" Nullable="false" />
+    <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="USER_ROLE_MENU">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LASTUPDATED" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
+    <Property Name="ROLE_GUID" Type="Int64" />
+    <Property Name="NODE_GUID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="USER_ROLE_OWNERSHIP">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="LAST_UPDATED" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LAST_UPDATED" Type="Int64" Nullable="false" />
+    <Property Name="ROLE_GUID" Type="Int64" />
+    <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="USER_SESSION_INFO">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="LOGIN_DATETIME" />
+      <PropertyRef Name="SESSION_GUID" />
+    </Key>
+    <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LOGIN_DATETIME" Type="Int64" Nullable="false" />
+    <Property Name="SUCCESS" Type="Int32" />
+    <Property Name="FAILURE_REASON" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="INCORRECT_PWD_COUNT" Type="Int32" />
+    <Property Name="SESSION_GUID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OGR_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="OGR_ID" Type="Int32" />
+    <Property Name="OGR_NO" Type="Int32" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="CLASS" Type="Int16" />
+    <Property Name="SUBCLASS" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SCHOOL_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DISTRICT" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="PARENT_NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="DATE_OF_BIRTH" Type="String" MaxLength="16" Unicode="true" FixedLength="true" />
+    <Property Name="BIRT_PLACE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="PARENT_PHONE" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="OGR_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PARENT_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OGR_IMG" Type="Binary" MaxLength="250" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="MENU_TILES">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+  </EntityType>
+</Schema>

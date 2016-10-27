@@ -1,5 +1,9 @@
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\KasifBusiness.dll
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\KasifBusiness.pdb
-c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.dll
 c:\users\enes\documents\visual studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.pdb
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\KasifBusiness.dll.config
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.dll
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.xml
+C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.SqlServer.xml

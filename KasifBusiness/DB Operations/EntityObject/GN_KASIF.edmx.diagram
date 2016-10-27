@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc9baa25fc1648f29a7b11bd8fc8dcd4" Name="Diagram1">
+        <EntityTypeShape EntityType="GN_KASIFModel.USER_USER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GN_KASIFModel.MENU_TREE" Width="1.5" PointX="3.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GN_KASIFModel.USER_ROLE" Width="1.5" PointX="3.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.USER_ROLE_MENU" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.USER_ROLE_OWNERSHIP" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.USER_SESSION_INFO" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.USER_STATUS" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.OGR_BILGI" Width="1.5" PointX="8.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GN_KASIFModel.MENU_TILES" Width="1.5" PointX="0.75" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,20 +1,301 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMaster.master.cs" Inherits="KasifPortalApp.MainMaster" %>
 
+<%@ Register Src="~/Controls/TopMenu.ascx" TagPrefix="uc1" TagName="TopMenu" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Apple devices fullscreen -->
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>KÂŞİF</title>
+    <!-- Bootstrap -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/bootstrap.min.css") %>" rel="stylesheet" />
+    <!-- Bootstrap responsive -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/bootstrap-responsive.min.css") %>" rel="stylesheet" />
+    <!-- jQuery UI -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/jquery-ui/smoothness/jquery-ui.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css") %>" rel="stylesheet" />
+    <!-- dataTables -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/datatable/TableTools.css") %>" rel="stylesheet">
+    <!-- chosen -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/chosen/chosen.css") %>" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/style.css") %>" rel="stylesheet" />
+    <!-- Color CSS -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/themes.css") %>" rel="stylesheet" />
+    <!-- Modal -->
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/gritter/jquery.gritter.css") %>" rel="stylesheet" />
+
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/fullcalendar/fullcalendar.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/fullcalendar/fullcalendar.print.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/tagsinput/jquery.tagsinput.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/multiselect/multi-select.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/timepicker/bootstrap-timepicker.min.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/datepicker/datepicker.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/icheck/all.css") %>" rel="stylesheet" />
+
+
+
+    <!-- jQuery -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/jquery.min.js") %>"></script>
+    <!-- Nice Scroll -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/nicescroll/jquery.nicescroll.min.js") %>"></script>
+    <!-- jQuery UI -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/jquery-ui/jquery.ui.core.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/jquery-ui/jquery.ui.widget.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/jquery-ui/jquery.ui.mouse.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/jquery-ui/jquery.ui.resizable.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/jquery-ui/jquery.ui.sortable.min.js") %>"></script>
+    <!-- slimScroll -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/slimscroll/jquery.slimscroll.min.js") %>"></script>
+    <!-- Bootstrap -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/bootstrap.min.js") %>"></script>
+    <!-- Form -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/form/jquery.form.min.js")%>"></script>
+
+    <!-- Theme framework -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/eakroko.min.js")%>"></script>
+    <!-- Theme scripts -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/application.min.js")%>"></script>
+    <!-- Just for demonstration -->
+    <%--<script src="<%= ResolveClientUrl("~/Common/Template/js/demonstration.min.js")%>"></script>--%>
+    <!-- imagesLoaded -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/imagesLoaded/jquery.imagesloaded.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/jquery-ui/jquery.ui.datepicker.min.js")%>"></script>
+    <!-- Bootbox -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/bootbox/jquery.bootbox.js")%>"></script>
+    <!-- dataTables -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datatable/jquery.dataTables.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datatable/TableTools.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datatable/ColReorderWithResize.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datatable/ColVis.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datatable/jquery.dataTables.columnFilter.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datatable/jquery.dataTables.grouping.js")%>"></script>
+    <!-- Chosen -->
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/chosen/chosen.jquery.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/gritter/jquery.gritter.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/maskedinput/jquery.maskedinput.min.js")%>"></script>
+
+
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/tagsinput/jquery.tagsinput.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/datepicker/bootstrap-datepicker.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/daterangepicker/moment.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/timepicker/bootstrap-timepicker.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/multiselect/jquery.multi-select.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/plupload/plupload.full.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/plupload/jquery.plupload.queue.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/fileupload/bootstrap-fileupload.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/icheck/jquery.icheck.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/complexify/jquery.complexify-banlist.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/complexify/jquery.complexify.min.js")%>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/mockjax/jquery.mockjax.js")%>"></script>
+
+
+
+    <!--[if lte IE 9]>
+		<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+	<![endif]-->
+
+    <%--"<%= ResolveClientUrl("~/Common/Template/img/logo.png") %>"--%>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<%= ResolveClientUrl("~/Common/Template/img/favicon.ico") %>">
+    <!-- Apple devices Homescreen icon -->
+    <link rel="apple-touch-icon-precomposed" href="<%= ResolveClientUrl("~/Common/Template/img/apple-touch-icon-precomposed.png") %>">
+
+
+    <script>
+        function showSuccessModal(header, msg, href) {
+            $('#successModal > .modal-header > h3 > span#lblSuccessModalHeader').html(header);
+            $('#successModal > .modal-body').html(msg);
+            $('#successModal').modal({
+                backdrop: true,
+                keyboard: false
+            });
+            $('#successModal').off('hidden');
+            $('#successModal').on('hidden', function () {
+                window.location = href;
+            });
+
+        }
+        function showErrorModal(header, msg) {
+            $('#errorModal > .modal-header > h3 > span#lblErrorModalHeader').html(header);
+            $('#errorModal > .modal-body').html(msg);
+            $('#errorModal').modal({
+                backdrop: true,
+                keyboard: false
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        function showModal(title, text, time) {
+            $.gritter.add({
+                title: (typeof title !== 'undefined') ? title : 'Message - Head',
+                text: (typeof message !== 'undefined') ? message : 'Body',
+                image: (typeof image !== 'undefined') ? image : null,
+                sticky: (typeof sticky !== 'undefined') ? sticky : false,
+                time: (typeof time !== 'undefined') ? time : 3000
+            });
+        }
+
+
+    </script>
+
+
+
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
+<body data-layout="fixed" data-layout-topbar="fixed">
+
+    <div id="navigation">
+        <div class="container-fluid">
+            <a href="<%=brandUrl %>" id="brand">KÂŞİF PORTAL</a>
+
+            <uc1:TopMenu runat="server" ID="TopMenu" />
+
+            <div class="user">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">John Doe
+                        <img src="<%= ResolveClientUrl("~/Common/Template/img/logo.png") %>" alt="" /></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="more-userprofile.html">Edit profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Account settings</a>
+                        </li>
+                        <li>
+                            <a href="more-login.html">Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    </form>
+
+    <div class="container-fluid" id="content" style="min-height: auto;">
+
+        <div id="main" style="margin-left: 0px;">
+            <div class="container-fluid">
+                <div class="page-header" >
+                    <div class="pull-left">
+                        <asp:ContentPlaceHolder ID="cphTitle" runat="server">
+                            <%--<h3>Başlık</h3>--%>
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="pull-right">
+                        <ul class="stats">
+                            <li class='lightred'>
+                                <i class="icon-calendar"></i>
+                                <div class="details">
+                                    <span class="big">February 22, 2013</span>
+                                    <span>Wednesday, 13:56</span>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a href="more-login.html">Home</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="forms-basic.html">Forms</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="forms-extended.html">Extended forms</a>
+                        </li>
+                    </ul>
+                    <div class="close-bread">
+                        <a href="#"><i class="icon-remove"></i></a>
+                    </div>
+                </div>
+                
+                <div class="row-fluid">
+                    <asp:ContentPlaceHolder ID="cphContent" runat="server">
+                        <%--Page Content--%>
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%--<div id="footer">
+        <p>
+            FLAT - Responsive Admin Template 
+            <span class="font-grey-4">|
+            </span>
+
+            <a href="#">Contact
+            </a>
+
+            <span class="font-grey-4">|
+            </span>
+
+            <a href="#">Imprint
+            </a>
+
+        </p>
+        <a href="#" class="gototop">
+            <i class="icon-arrow-up"></i>
+        </a>
+    </div>--%>
+
+
+
+    <div id="successModal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3><span id="lblSuccessModalHeader" style="color: teal;"></span>
+            </h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" onclick="$('#successModal').modal('hide');"><%=btnOk %></button>
+        </div>
+    </div>
+
+    <div id="errorModal" class="modal hide fade">
+        <div class="modal-header">
+            <h3><span id="lblErrorModalHeader" style="color: red;"></span>
+            </h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" onclick="$('#errorModal').modal('hide');"><%=btnOk %></button>
+        </div>
+        <div class="modal-footer-strip">
+        </div>
+    </div>
+
 </body>
 </html>

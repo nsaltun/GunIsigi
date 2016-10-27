@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
@@ -12,9 +13,39 @@ namespace KasifPortalApp
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            RegisterRoutes(RouteTable.Routes);
+        }
+        protected void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute(
+            "login-page",
+            "login",
+            "~/Authentication/LoginPage.aspx");
 
+            routes.MapPageRoute(
+            "home-page",
+            "home",
+            "~/Home.aspx");
+
+            routes.MapPageRoute(
+            "OgrBilgi-page",
+            "OgrBilgi",
+            "~/KasifPages/Tables/OgrenciBilgisi.aspx");
+            routes.MapPageRoute(
+            "OgrBilgi-page-add",
+            "OgrBilgi/add",
+            "~/KasifPages/Forms/OgrenciBilgisiEkle.aspx");
+            routes.MapPageRoute(
+            "OgrBilgi-page-edit",
+            "OgrBilgi/edit/{param}",
+            "~/KasifPages/Forms/OgrenciBilgisiGuncelle.aspx");
         }
 
+
+
+
+
+        #region Unused Global.asax Methods
         protected void Session_Start(object sender, EventArgs e)
         {
 
@@ -44,5 +75,6 @@ namespace KasifPortalApp
         {
 
         }
+        #endregion
     }
 }

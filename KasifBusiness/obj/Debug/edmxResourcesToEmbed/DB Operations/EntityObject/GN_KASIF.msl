@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GN_KASIFModelStoreContainer" CdmEntityContainer="GN_KASIFEntities">
+    <EntitySetMapping Name="USER_USER">
+      <EntityTypeMapping TypeName="GN_KASIFModel.USER_USER">
+        <MappingFragment StoreEntitySet="USER_USER">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="IS_ADMIN" ColumnName="IS_ADMIN" />
+          <ScalarProperty Name="INSERT_USER" ColumnName="INSERT_USER" />
+          <ScalarProperty Name="INSERT_DATETIME" ColumnName="INSERT_DATETIME" />
+          <ScalarProperty Name="LAST_LOGIN_DATE" ColumnName="LAST_LOGIN_DATE" />
+          <ScalarProperty Name="LAST_PWD_CHANGE_DATE" ColumnName="LAST_PWD_CHANGE_DATE" />
+          <ScalarProperty Name="USER_STATUS" ColumnName="USER_STATUS" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_TREE">
+      <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TREE">
+        <MappingFragment StoreEntitySet="MENU_TREE">
+          <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
+          <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+          <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
+          <ScalarProperty Name="NODE_POSITION" ColumnName="NODE_POSITION" />
+          <ScalarProperty Name="NODE_DISPLAY_NAME" ColumnName="NODE_DISPLAY_NAME" />
+          <ScalarProperty Name="NODE_TYPE" ColumnName="NODE_TYPE" />
+          <ScalarProperty Name="PARENT_NODE_GUID" ColumnName="PARENT_NODE_GUID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_ROLE">
+      <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE">
+        <MappingFragment StoreEntitySet="USER_ROLE">
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_ROLE_MENU">
+      <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_MENU">
+        <MappingFragment StoreEntitySet="USER_ROLE_MENU">
+          <ScalarProperty Name="NODE_GUID" ColumnName="NODE_GUID" />
+          <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_ROLE_OWNERSHIP">
+      <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_OWNERSHIP">
+        <MappingFragment StoreEntitySet="USER_ROLE_OWNERSHIP">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
+          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_SESSION_INFO">
+      <EntityTypeMapping TypeName="GN_KASIFModel.USER_SESSION_INFO">
+        <MappingFragment StoreEntitySet="USER_SESSION_INFO">
+          <ScalarProperty Name="SESSION_GUID" ColumnName="SESSION_GUID" />
+          <ScalarProperty Name="INCORRECT_PWD_COUNT" ColumnName="INCORRECT_PWD_COUNT" />
+          <ScalarProperty Name="FAILURE_REASON" ColumnName="FAILURE_REASON" />
+          <ScalarProperty Name="SUCCESS" ColumnName="SUCCESS" />
+          <ScalarProperty Name="LOGIN_DATETIME" ColumnName="LOGIN_DATETIME" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_STATUS">
+      <EntityTypeMapping TypeName="GN_KASIFModel.USER_STATUS">
+        <MappingFragment StoreEntitySet="USER_STATUS">
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OGR_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.OGR_BILGI">
+        <MappingFragment StoreEntitySet="OGR_BILGI">
+          <ScalarProperty Name="OGR_IMG" ColumnName="OGR_IMG" />
+          <ScalarProperty Name="PARENT_EMAIL" ColumnName="PARENT_EMAIL" />
+          <ScalarProperty Name="OGR_EMAIL" ColumnName="OGR_EMAIL" />
+          <ScalarProperty Name="PARENT_PHONE" ColumnName="PARENT_PHONE" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="BIRT_PLACE" ColumnName="BIRT_PLACE" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="PARENT_NAME" ColumnName="PARENT_NAME" />
+          <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+          <ScalarProperty Name="SCHOOL_NAME" ColumnName="SCHOOL_NAME" />
+          <ScalarProperty Name="SUBCLASS" ColumnName="SUBCLASS" />
+          <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="OGR_NO" ColumnName="OGR_NO" />
+          <ScalarProperty Name="OGR_ID" ColumnName="OGR_ID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_TILES">
+      <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TILES">
+        <MappingFragment StoreEntitySet="MENU_TILES">
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
