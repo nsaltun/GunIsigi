@@ -165,7 +165,10 @@ $(document).ready(function() {
 
 	// datepicker
 	if($('.datepick').length > 0){
-		$('.datepick').datepicker();
+	    $('.datepick').datepicker();
+	    $.datepicker.setDefaults({
+	        dateFormat: "dd/mm/yy"
+	    });
 	}
 
 	// daterangepicker

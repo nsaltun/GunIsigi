@@ -44,7 +44,7 @@ namespace KasifBusiness.Business.Login
             List<USER_USER> lstUser = new List<USER_USER>();
             string[] prmNames = new string[] { "P_EMAIL", "P_PASSWORD" };
             object[] prmValues = new object[] { userId, this.pwd };
-            DbOperations.RunQuery<USER_USER>(ref lstUser, DbCommands.GET_USER_BY_EMAIL, prmNames, prmValues);
+            DbOperations.RunDbQuery<USER_USER>(ref lstUser, DbCommands.GET_USER_BY_EMAIL, prmNames, prmValues);
             if (lstUser != null && lstUser.Count > 0)
             {
                 return lstUser[0];

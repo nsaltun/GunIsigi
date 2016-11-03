@@ -15,6 +15,6 @@ C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.dll
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.SqlServer.dll
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.xml
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.SqlServer.xml
-C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.dll
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.pdb
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache

@@ -2,65 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
-        //$(window).load(function () {
-        //    $('#thankyouModal').modal('show');
-        //});
+        $(document).ready(function () {
 
-
-
-        //$(document).ready(function () {
-
-        //});
-
-
-
-        <%--function func2() {
-            var url = "<%= ResolveClientUrl("~/KasifPages/Forms/OgrenciBilgisiEkle.aspx") %>";
-            var data = "basicString";
-            $.post(url, data).done(function () {
-                showModal(null, null, null);
-
-            });
-        }
-
-
-        function AjaxOnSubmit() {
-
-            
-
-
-            $.ajax({
-                type: "GET",
-                url: "<%= ResolveClientUrl("~/KasifPages/Forms/OgrenciBilgisiEkle.aspx/ExecuteOnSubmit") %>",
-
-                data: '{form1: "' + document.getElementById('form1') + '"}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "JSON",
-                success: function (result) {
-
-                },
-                failure: function (response) {
-                    showModal(null, 'Beklenmeyen bir hata oluştu.', null);
-                },
-                error: function (response) {
-                    showModal(null, 'Beklenmeyen bir hata oluştu.', null);
-                }
-            });
-        }
-        function PrepareDataForAjax()
-        {
-            var aoData;
-            aoData.push({ "name": "IsCheckedReqBody", "value": IsCheckedReqBody });
-            aoData.push({ "name": "IsChecked", "value": IsChecked });
-            aoData.push({ "name": "hour1", "value": hour1 });
-            aoData.push({ "name": "hour2", "value": hour2 });
-            aoData.push({ "name": "minute1", "value": minute1 });
-            aoData.push({ "name": "minute2", "value": minute2 });
-            return aoData;
-        }--%>
-
-
-
+        });
 
     </script>
 
@@ -103,18 +47,24 @@
                             </div>
                         </div>
                         <div class="control-group">
+                            <label for="select" class="control-label ">Hocası</label>
+                            <div class="controls">
+                                <select name="select" id="slcHocaBilgi" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Mahalle</label>
+                            <div class="controls">
+                                <select name="select" id="slcMahalle" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                        <div class="control-group">
                             <label for="textfield" class="control-label ">Okul</label>
                             <div class="controls">
                                 <input type="text" name="textfield" id="txtOkul" class="input-xlarge" runat="server" />
                             </div>
                         </div>
-                        <!-- Combobox  -->
-                        <div class="control-group">
-                            <label for="textfield" class="control-label ">Mahalle</label>
-                            <div class="controls">
-                                <input type="text" name="textfield" id="txtMahalle" class="input-xlarge" runat="server">
-                            </div>
-                        </div>
+
                         <div class="control-group">
                             <label for="textfield" class="control-label ">Öğrenci Email</label>
                             <div class="controls">
@@ -125,6 +75,12 @@
                             <label for="textfield" class="control-label ">Veli Email</label>
                             <div class="controls">
                                 <input type="text" name="textfield" id="txtVeliEmail" class="input-xlarge" runat="server">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="textfield" class="control-label ">Öğrencinin Telefonu</label>
+                            <div class="controls">
+                                <input type="text" name="textfield" id="txtOgrTel" class="input-xlarge mask_phone" runat="server">
                             </div>
                         </div>
                     </div>
@@ -146,12 +102,6 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label for="textfield" class="control-label ">Öğrencinin Telefonu</label>
-                            <div class="controls">
-                                <input type="text" name="textfield" id="txtOgrTel"  class="input-xlarge mask_phone" runat="server">
-                            </div>
-                        </div>
-                        <div class="control-group">
                             <label for="textfield" class="control-label ">Veli Adı</label>
                             <div class="controls">
                                 <input type="text" name="textfield" id="txtVeliAdi" class="input-xlarge" runat="server">
@@ -167,6 +117,12 @@
                             <label for="textfield" class="control-label ">Okul Numarası</label>
                             <div class="controls">
                                 <input type="text" name="textfield" id="txtOkulNo" class="input-xlarge" runat="server">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="textarea" class="control-label ">Diğer Bilgiler</label>
+                            <div class="controls">
+                                <textarea name="textarea" id="txtDiger" rows="6" class="input-block-level" runat="server"></textarea>
                             </div>
                         </div>
                     </div>

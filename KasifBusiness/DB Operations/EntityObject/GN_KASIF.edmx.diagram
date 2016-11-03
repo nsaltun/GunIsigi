@@ -12,8 +12,18 @@
         <EntityTypeShape EntityType="GN_KASIFModel.USER_ROLE_OWNERSHIP" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="GN_KASIFModel.USER_SESSION_INFO" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="GN_KASIFModel.USER_STATUS" Width="1.5" PointX="5.75" PointY="6.75" />
-        <EntityTypeShape EntityType="GN_KASIFModel.OGR_BILGI" Width="1.5" PointX="8.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GN_KASIFModel.OGR_BILGI" Width="1.5" PointX="7.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GN_KASIFModel.MENU_TILES" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.BOLGE_INFO" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.HOCA_BILGI" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.QUERY_TABLE" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="GN_KASIFModel.DERS_KONU_BILGI" Width="1.5" PointX="7.5" PointY="9.5" />
+        <EntityTypeShape EntityType="GN_KASIFModel.DEVAMSIZLIK_BILGI" Width="1.5" PointX="9.5" PointY="9.5" />
+        <EntityTypeShape EntityType="GN_KASIFModel.HAFTA_BILGI" Width="1.5" PointX="10.5" PointY="0.5" />
+        <EntityTypeShape EntityType="GN_KASIFModel.MUFREDAT_TAKIP" Width="1.5" PointX="9.75" PointY="2.375" />
+        <EntityTypeShape EntityType="GN_KASIFModel.OGR_TEST_REL" Width="1.5" PointX="0.5" PointY="11.5" />
+        <EntityTypeShape EntityType="GN_KASIFModel.TEST_BILGI" Width="1.5" PointX="11.5" PointY="7.5" />
+        <EntityTypeShape EntityType="GN_KASIFModel.DERS_BILGI" Width="1.5" PointX="12.375" PointY="2.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

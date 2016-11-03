@@ -49,6 +49,24 @@ namespace KasifPortalApp.KasifPages.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlSelect slcSinif;
         
         /// <summary>
+        /// slcHocaBilgi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcHocaBilgi;
+        
+        /// <summary>
+        /// slcMahalle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcMahalle;
+        
+        /// <summary>
         /// txtOkul control.
         /// </summary>
         /// <remarks>
@@ -56,15 +74,6 @@ namespace KasifPortalApp.KasifPages.Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtOkul;
-        
-        /// <summary>
-        /// txtMahalle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMahalle;
         
         /// <summary>
         /// txtEmail control.
@@ -85,6 +94,15 @@ namespace KasifPortalApp.KasifPages.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtVeliEmail;
         
         /// <summary>
+        /// txtOgrTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOgrTel;
+        
+        /// <summary>
         /// txtDogumTarihi control.
         /// </summary>
         /// <remarks>
@@ -101,15 +119,6 @@ namespace KasifPortalApp.KasifPages.Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtDogumYeri;
-        
-        /// <summary>
-        /// txtOgrTel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOgrTel;
         
         /// <summary>
         /// txtVeliAdi control.
@@ -137,5 +146,14 @@ namespace KasifPortalApp.KasifPages.Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtOkulNo;
+        
+        /// <summary>
+        /// txtDiger control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDiger;
     }
 }

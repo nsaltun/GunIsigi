@@ -1,5 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GN_KASIFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BOLGE_INFO">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="BOLGE_ADI" Type="nvarchar" MaxLength="100" />
+    <Property Name="BOLGE_ILCE" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DERS_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="DERS_ADI" Type="nvarchar" MaxLength="100" />
+    <Property Name="SINIF" Type="smallint" />
+  </EntityType>
+  <EntityType Name="DERS_KONU_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="DERS_ID" Type="bigint" />
+    <Property Name="KONU" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="DEVAMSIZLIK_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="HAFTA_ID" Type="int" />
+    <Property Name="KISI_ID" Type="bigint" />
+    <Property Name="TIP" Type="smallint" />
+    <Property Name="DURUM" Type="smallint" />
+    <Property Name="SEBEP" Type="nvarchar" MaxLength="350" />
+  </EntityType>
+  <EntityType Name="HAFTA_BILGI">
+    <Key>
+      <PropertyRef Name="HAFTA_ID" />
+    </Key>
+    <Property Name="HAFTA_ID" Type="int" Nullable="false" />
+    <Property Name="HAFTA_ADI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HOCA_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="SINIF" Type="smallint" />
+    <Property Name="HOCA_ID" Type="int" />
+    <Property Name="HOCA_ADI" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOCA_SOYADI" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOCA_DOGUM_TARIHI" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOCA_TEL" Type="nvarchar" MaxLength="50" />
+    <Property Name="HOCA_EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOCA_BOLGE_ID" Type="bigint" />
+    <Property Name="DIGER" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
   <EntityType Name="MENU_TILES">
     <Key>
       <PropertyRef Name="GUID" />
@@ -20,12 +87,25 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="STATUS" Type="smallint" Nullable="false" />
     <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
     <Property Name="PARENT_NODE_GUID" Type="bigint" />
-    <Property Name="NODE_TYPE" Type="char" MaxLength="1" />
-    <Property Name="NODE_DISPLAY_NAME" Type="char" MaxLength="250" />
+    <Property Name="NODE_TYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="NODE_DISPLAY_NAME" Type="nvarchar" MaxLength="250" />
     <Property Name="NODE_POSITION" Type="smallint" />
-    <Property Name="CLASS_NAME" Type="char" MaxLength="200" />
-    <Property Name="FILE_NAME" Type="char" MaxLength="250" />
+    <Property Name="CLASS_NAME" Type="nvarchar" MaxLength="200" />
+    <Property Name="FILE_NAME" Type="nvarchar" MaxLength="250" />
     <Property Name="RESOURCE_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="MUFREDAT_TAKIP">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="HAFTA_ID" Type="int" />
+    <Property Name="DERS_ID" Type="bigint" />
+    <Property Name="SINIF" Type="smallint" />
+    <Property Name="DERS_KONU_ID" Type="bigint" />
+    <Property Name="TAKIP_DURUMU" Type="smallint" />
   </EntityType>
   <EntityType Name="OGR_BILGI">
     <Key>
@@ -36,20 +116,57 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="LASTUPDATED" Type="bigint" />
     <Property Name="OGR_ID" Type="int" />
     <Property Name="OGR_NO" Type="int" />
-    <Property Name="NAME" Type="nchar" MaxLength="100" />
-    <Property Name="SURNAME" Type="nchar" MaxLength="100" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="SURNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOCA_GUID" Type="bigint" />
     <Property Name="CLASS" Type="smallint" />
+    <Property Name="BOLGE_ID" Type="bigint" />
     <Property Name="SUBCLASS" Type="nvarchar" MaxLength="10" />
     <Property Name="SCHOOL_NAME" Type="nvarchar" MaxLength="150" />
-    <Property Name="DISTRICT" Type="nchar" MaxLength="100" />
-    <Property Name="PARENT_NAME" Type="nchar" MaxLength="100" />
-    <Property Name="DATE_OF_BIRTH" Type="nchar" MaxLength="16" />
+    <Property Name="PARENT_NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="DATE_OF_BIRTH" Type="nvarchar" MaxLength="50" />
     <Property Name="BIRT_PLACE" Type="nvarchar" MaxLength="100" />
-    <Property Name="PHONE" Type="nchar" MaxLength="15" />
-    <Property Name="PARENT_PHONE" Type="nchar" MaxLength="15" />
+    <Property Name="PHONE" Type="nvarchar" MaxLength="100" />
+    <Property Name="PARENT_PHONE" Type="nvarchar" MaxLength="100" />
     <Property Name="OGR_EMAIL" Type="nvarchar" MaxLength="150" />
     <Property Name="PARENT_EMAIL" Type="nvarchar" MaxLength="150" />
     <Property Name="OGR_IMG" Type="binary" MaxLength="250" />
+    <Property Name="DIGER" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="OGR_TEST_REL">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="TEST_ID" Type="bigint" />
+    <Property Name="OGR_ID" Type="bigint" />
+    <Property Name="DURUM" Type="smallint" />
+    <Property Name="DOGRU_SAYISI" Type="int" />
+    <Property Name="YANLIS_SAYISI" Type="int" />
+  </EntityType>
+  <EntityType Name="QUERY_TABLE">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="QUERY_NAME" Type="nvarchar" MaxLength="300" />
+    <Property Name="QUERY_TEXT" Type="nvarchar" MaxLength="3500" />
+    <Property Name="INSERT_DATE" Type="bigint" />
+  </EntityType>
+  <EntityType Name="TEST_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="bigint" Nullable="false" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="TEST_NO" Type="int" />
+    <Property Name="DERS_ID" Type="bigint" />
+    <Property Name="DERS_KONU_ID" Type="bigint" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -128,8 +245,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     <Property Name="STATUS" Type="smallint" Nullable="false" />
     <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
     <Property Name="USER_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NAME" Type="nchar" MaxLength="100" />
-    <Property Name="SURNAME" Type="nchar" MaxLength="100" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="SURNAME" Type="nvarchar" MaxLength="100" />
     <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IS_ADMIN" Type="smallint" />
     <Property Name="INSERT_USER" Type="bigint" />
@@ -140,8 +257,18 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     <Property Name="PASSWORD" Type="binary" MaxLength="256" />
   </EntityType>
   <EntityContainer Name="GN_KASIFModelStoreContainer">
+    <EntitySet Name="BOLGE_INFO" EntityType="Self.BOLGE_INFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DERS_BILGI" EntityType="Self.DERS_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DERS_KONU_BILGI" EntityType="Self.DERS_KONU_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEVAMSIZLIK_BILGI" EntityType="Self.DEVAMSIZLIK_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HAFTA_BILGI" EntityType="Self.HAFTA_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOCA_BILGI" EntityType="Self.HOCA_BILGI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MENU_TILES" EntityType="Self.MENU_TILES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MUFREDAT_TAKIP" EntityType="Self.MUFREDAT_TAKIP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OGR_BILGI" EntityType="Self.OGR_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGR_TEST_REL" EntityType="Self.OGR_TEST_REL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUERY_TABLE" EntityType="Self.QUERY_TABLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TEST_BILGI" EntityType="Self.TEST_BILGI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MENU_TREE" EntityType="Self.MENU_TREE" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [MENU_TREE].[GUID] AS [GUID], 

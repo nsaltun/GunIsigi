@@ -10,8 +10,8 @@
     <Property Name="STATUS" Type="Int16" Nullable="false" />
     <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
     <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IS_ADMIN" Type="Int16" />
     <Property Name="INSERT_USER" Type="Int64" />
@@ -31,6 +31,16 @@
     <EntitySet Name="USER_STATUS" EntityType="GN_KASIFModel.USER_STATUS" />
     <EntitySet Name="OGR_BILGI" EntityType="GN_KASIFModel.OGR_BILGI" />
     <EntitySet Name="MENU_TILES" EntityType="GN_KASIFModel.MENU_TILES" />
+    <EntitySet Name="BOLGE_INFO" EntityType="GN_KASIFModel.BOLGE_INFO" />
+    <EntitySet Name="HOCA_BILGI" EntityType="GN_KASIFModel.HOCA_BILGI" />
+    <EntitySet Name="QUERY_TABLE" EntityType="GN_KASIFModel.QUERY_TABLE" />
+    <EntitySet Name="DERS_KONU_BILGI" EntityType="GN_KASIFModel.DERS_KONU_BILGI" />
+    <EntitySet Name="DEVAMSIZLIK_BILGI" EntityType="GN_KASIFModel.DEVAMSIZLIK_BILGI" />
+    <EntitySet Name="HAFTA_BILGI" EntityType="GN_KASIFModel.HAFTA_BILGI" />
+    <EntitySet Name="MUFREDAT_TAKIP" EntityType="GN_KASIFModel.MUFREDAT_TAKIP" />
+    <EntitySet Name="OGR_TEST_REL" EntityType="GN_KASIFModel.OGR_TEST_REL" />
+    <EntitySet Name="TEST_BILGI" EntityType="GN_KASIFModel.TEST_BILGI" />
+    <EntitySet Name="DERS_BILGI" EntityType="GN_KASIFModel.DERS_BILGI" />
   </EntityContainer>
   <EntityType Name="MENU_TREE">
     <Key>
@@ -42,11 +52,11 @@
     <Property Name="STATUS" Type="Int16" Nullable="false" />
     <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
     <Property Name="PARENT_NODE_GUID" Type="Int64" />
-    <Property Name="NODE_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="NODE_DISPLAY_NAME" Type="String" MaxLength="250" FixedLength="true" Unicode="false" />
+    <Property Name="NODE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NODE_DISPLAY_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="NODE_POSITION" Type="Int16" />
-    <Property Name="CLASS_NAME" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
-    <Property Name="FILE_NAME" Type="String" MaxLength="250" FixedLength="true" Unicode="false" />
+    <Property Name="CLASS_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FILE_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="RESOURCE_ID" Type="Int32" />
   </EntityType>
   <EntityType Name="USER_ROLE">
@@ -113,20 +123,22 @@
     <Property Name="LASTUPDATED" Type="Int64" />
     <Property Name="OGR_ID" Type="Int32" />
     <Property Name="OGR_NO" Type="Int32" />
-    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CLASS" Type="Int16" />
     <Property Name="SUBCLASS" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="SCHOOL_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="DISTRICT" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="PARENT_NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="DATE_OF_BIRTH" Type="String" MaxLength="16" Unicode="true" FixedLength="true" />
+    <Property Name="PARENT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DATE_OF_BIRTH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="BIRT_PLACE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-    <Property Name="PARENT_PHONE" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PARENT_PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="OGR_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="PARENT_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="OGR_IMG" Type="Binary" MaxLength="250" FixedLength="true" />
+    <Property Name="HOCA_GUID" Type="Int64" />
+    <Property Name="BOLGE_ID" Type="Int64" />
+    <Property Name="DIGER" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="MENU_TILES">
     <Key>
@@ -135,5 +147,120 @@
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" Nullable="false" />
     <Property Name="LASTUPDATED" Type="Int64" />
+  </EntityType>
+  <EntityType Name="BOLGE_INFO">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="BOLGE_ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BOLGE_ILCE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HOCA_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="HOCA_ID" Type="Int32" />
+    <Property Name="HOCA_ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HOCA_SOYADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HOCA_DOGUM_TARIHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HOCA_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HOCA_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HOCA_BOLGE_ID" Type="Int64" />
+    <Property Name="SINIF" Type="Int16" />
+    <Property Name="DIGER" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QUERY_TABLE">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="QUERY_NAME" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="QUERY_TEXT" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
+    <Property Name="INSERT_DATE" Type="Int64" />
+  </EntityType>
+  <EntityType Name="DERS_KONU_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="DERS_ID" Type="Int64" />
+    <Property Name="KONU" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DEVAMSIZLIK_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="HAFTA_ID" Type="Int32" />
+    <Property Name="KISI_ID" Type="Int64" />
+    <Property Name="TIP" Type="Int16" />
+    <Property Name="DURUM" Type="Int16" />
+    <Property Name="SEBEP" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HAFTA_BILGI">
+    <Key>
+      <PropertyRef Name="HAFTA_ID" />
+    </Key>
+    <Property Name="HAFTA_ID" Type="Int32" Nullable="false" />
+    <Property Name="HAFTA_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MUFREDAT_TAKIP">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="HAFTA_ID" Type="Int32" />
+    <Property Name="DERS_ID" Type="Int64" />
+    <Property Name="SINIF" Type="Int16" />
+    <Property Name="DERS_KONU_ID" Type="Int64" />
+    <Property Name="TAKIP_DURUMU" Type="Int16" />
+  </EntityType>
+  <EntityType Name="OGR_TEST_REL">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="TEST_ID" Type="Int64" />
+    <Property Name="OGR_ID" Type="Int64" />
+    <Property Name="DURUM" Type="Int16" />
+    <Property Name="DOGRU_SAYISI" Type="Int32" />
+    <Property Name="YANLIS_SAYISI" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TEST_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="TEST_NO" Type="Int32" />
+    <Property Name="DERS_ID" Type="Int64" />
+    <Property Name="DERS_KONU_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="DERS_BILGI">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="Int64" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="LASTUPDATED" Type="Int64" />
+    <Property Name="DERS_ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SINIF" Type="Int16" />
   </EntityType>
 </Schema>

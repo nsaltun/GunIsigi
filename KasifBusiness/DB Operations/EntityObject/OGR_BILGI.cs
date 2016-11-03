@@ -24,7 +24,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public Nullable<short> CLASS { get; set; }
         public string SUBCLASS { get; set; }
         public string SCHOOL_NAME { get; set; }
-        public string DISTRICT { get; set; }
         public string PARENT_NAME { get; set; }
         public string DATE_OF_BIRTH { get; set; }
         public string BIRT_PLACE { get; set; }
@@ -33,5 +32,8 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public string OGR_EMAIL { get; set; }
         public string PARENT_EMAIL { get; set; }
         public byte[] OGR_IMG { get; set; }
+        public Nullable<long> HOCA_GUID { get; set; }
+        public Nullable<long> BOLGE_ID { get; set; }
+        public string DIGER { get; set; }
     }
 }

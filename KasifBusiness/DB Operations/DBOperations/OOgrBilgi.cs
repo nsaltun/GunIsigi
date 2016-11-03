@@ -17,7 +17,7 @@ namespace KasifBusiness.DB_Operations.DBOperations
 
         public void DoJob()
         {
-            DbOperations.Insert(this.ogrBilgiObj);
+            DbOperations.Insert(ogrBilgiObj);
         }
 
     }

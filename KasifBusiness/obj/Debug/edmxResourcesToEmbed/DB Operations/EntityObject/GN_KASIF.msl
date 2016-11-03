@@ -92,6 +92,9 @@
     <EntitySetMapping Name="OGR_BILGI">
       <EntityTypeMapping TypeName="GN_KASIFModel.OGR_BILGI">
         <MappingFragment StoreEntitySet="OGR_BILGI">
+          <ScalarProperty Name="DIGER" ColumnName="DIGER" />
+          <ScalarProperty Name="BOLGE_ID" ColumnName="BOLGE_ID" />
+          <ScalarProperty Name="HOCA_GUID" ColumnName="HOCA_GUID" />
           <ScalarProperty Name="OGR_IMG" ColumnName="OGR_IMG" />
           <ScalarProperty Name="PARENT_EMAIL" ColumnName="PARENT_EMAIL" />
           <ScalarProperty Name="OGR_EMAIL" ColumnName="OGR_EMAIL" />
@@ -100,7 +103,6 @@
           <ScalarProperty Name="BIRT_PLACE" ColumnName="BIRT_PLACE" />
           <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
           <ScalarProperty Name="PARENT_NAME" ColumnName="PARENT_NAME" />
-          <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
           <ScalarProperty Name="SCHOOL_NAME" ColumnName="SCHOOL_NAME" />
           <ScalarProperty Name="SUBCLASS" ColumnName="SUBCLASS" />
           <ScalarProperty Name="CLASS" ColumnName="CLASS" />
@@ -117,6 +119,131 @@
     <EntitySetMapping Name="MENU_TILES">
       <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TILES">
         <MappingFragment StoreEntitySet="MENU_TILES">
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOLGE_INFO">
+      <EntityTypeMapping TypeName="GN_KASIFModel.BOLGE_INFO">
+        <MappingFragment StoreEntitySet="BOLGE_INFO">
+          <ScalarProperty Name="BOLGE_ILCE" ColumnName="BOLGE_ILCE" />
+          <ScalarProperty Name="BOLGE_ADI" ColumnName="BOLGE_ADI" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOCA_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.HOCA_BILGI">
+        <MappingFragment StoreEntitySet="HOCA_BILGI">
+          <ScalarProperty Name="DIGER" ColumnName="DIGER" />
+          <ScalarProperty Name="SINIF" ColumnName="SINIF" />
+          <ScalarProperty Name="HOCA_BOLGE_ID" ColumnName="HOCA_BOLGE_ID" />
+          <ScalarProperty Name="HOCA_EMAIL" ColumnName="HOCA_EMAIL" />
+          <ScalarProperty Name="HOCA_TEL" ColumnName="HOCA_TEL" />
+          <ScalarProperty Name="HOCA_DOGUM_TARIHI" ColumnName="HOCA_DOGUM_TARIHI" />
+          <ScalarProperty Name="HOCA_SOYADI" ColumnName="HOCA_SOYADI" />
+          <ScalarProperty Name="HOCA_ADI" ColumnName="HOCA_ADI" />
+          <ScalarProperty Name="HOCA_ID" ColumnName="HOCA_ID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUERY_TABLE">
+      <EntityTypeMapping TypeName="GN_KASIFModel.QUERY_TABLE">
+        <MappingFragment StoreEntitySet="QUERY_TABLE">
+          <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
+          <ScalarProperty Name="QUERY_TEXT" ColumnName="QUERY_TEXT" />
+          <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DERS_KONU_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.DERS_KONU_BILGI">
+        <MappingFragment StoreEntitySet="DERS_KONU_BILGI">
+          <ScalarProperty Name="KONU" ColumnName="KONU" />
+          <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVAMSIZLIK_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.DEVAMSIZLIK_BILGI">
+        <MappingFragment StoreEntitySet="DEVAMSIZLIK_BILGI">
+          <ScalarProperty Name="SEBEP" ColumnName="SEBEP" />
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="TIP" ColumnName="TIP" />
+          <ScalarProperty Name="KISI_ID" ColumnName="KISI_ID" />
+          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAFTA_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.HAFTA_BILGI">
+        <MappingFragment StoreEntitySet="HAFTA_BILGI">
+          <ScalarProperty Name="HAFTA_ADI" ColumnName="HAFTA_ADI" />
+          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MUFREDAT_TAKIP">
+      <EntityTypeMapping TypeName="GN_KASIFModel.MUFREDAT_TAKIP">
+        <MappingFragment StoreEntitySet="MUFREDAT_TAKIP">
+          <ScalarProperty Name="TAKIP_DURUMU" ColumnName="TAKIP_DURUMU" />
+          <ScalarProperty Name="DERS_KONU_ID" ColumnName="DERS_KONU_ID" />
+          <ScalarProperty Name="SINIF" ColumnName="SINIF" />
+          <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
+          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OGR_TEST_REL">
+      <EntityTypeMapping TypeName="GN_KASIFModel.OGR_TEST_REL">
+        <MappingFragment StoreEntitySet="OGR_TEST_REL">
+          <ScalarProperty Name="YANLIS_SAYISI" ColumnName="YANLIS_SAYISI" />
+          <ScalarProperty Name="DOGRU_SAYISI" ColumnName="DOGRU_SAYISI" />
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="OGR_ID" ColumnName="OGR_ID" />
+          <ScalarProperty Name="TEST_ID" ColumnName="TEST_ID" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.TEST_BILGI">
+        <MappingFragment StoreEntitySet="TEST_BILGI">
+          <ScalarProperty Name="DERS_KONU_ID" ColumnName="DERS_KONU_ID" />
+          <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
+          <ScalarProperty Name="TEST_NO" ColumnName="TEST_NO" />
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DERS_BILGI">
+      <EntityTypeMapping TypeName="GN_KASIFModel.DERS_BILGI">
+        <MappingFragment StoreEntitySet="DERS_BILGI">
+          <ScalarProperty Name="SINIF" ColumnName="SINIF" />
+          <ScalarProperty Name="DERS_ADI" ColumnName="DERS_ADI" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />

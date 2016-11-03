@@ -34,5 +34,15 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public virtual DbSet<USER_STATUS> USER_STATUS { get; set; }
         public virtual DbSet<OGR_BILGI> OGR_BILGI { get; set; }
         public virtual DbSet<MENU_TILES> MENU_TILES { get; set; }
+        public virtual DbSet<BOLGE_INFO> BOLGE_INFO { get; set; }
+        public virtual DbSet<HOCA_BILGI> HOCA_BILGI { get; set; }
+        public virtual DbSet<QUERY_TABLE> QUERY_TABLE { get; set; }
+        public virtual DbSet<DERS_KONU_BILGI> DERS_KONU_BILGI { get; set; }
+        public virtual DbSet<DEVAMSIZLIK_BILGI> DEVAMSIZLIK_BILGI { get; set; }
+        public virtual DbSet<HAFTA_BILGI> HAFTA_BILGI { get; set; }
+        public virtual DbSet<MUFREDAT_TAKIP> MUFREDAT_TAKIP { get; set; }
+        public virtual DbSet<OGR_TEST_REL> OGR_TEST_REL { get; set; }
+        public virtual DbSet<TEST_BILGI> TEST_BILGI { get; set; }
+        public virtual DbSet<DERS_BILGI> DERS_BILGI { get; set; }
     }
 }

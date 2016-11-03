@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -191,339 +192,6 @@
     <Content Include="Common\Template\img\._sorting.png" />
     <Content Include="Common\Template\img\apple-touch-icon-precomposed.png" />
     <Content Include="Common\Template\img\collapsed-group.jpg" />
-    <Content Include="Common\Template\img\demo\._10_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._1_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._2_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._3_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._4_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._5_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._6_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._7_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._8_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._9_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\._locked.jpg" />
-    <Content Include="Common\Template\img\demo\._user-1.jpg" />
-    <Content Include="Common\Template\img\demo\._user-2.jpg" />
-    <Content Include="Common\Template\img\demo\._user-3.jpg" />
-    <Content Include="Common\Template\img\demo\._user-4.jpg" />
-    <Content Include="Common\Template\img\demo\._user-5.jpg" />
-    <Content Include="Common\Template\img\demo\._user-6.jpg" />
-    <Content Include="Common\Template\img\demo\._user-avatar.jpg" />
-    <Content Include="Common\Template\img\demo\1.jpg" />
-    <Content Include="Common\Template\img\demo\10.jpg" />
-    <Content Include="Common\Template\img\demo\10_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\11.jpg" />
-    <Content Include="Common\Template\img\demo\12.jpg" />
-    <Content Include="Common\Template\img\demo\13.jpg" />
-    <Content Include="Common\Template\img\demo\14.jpg" />
-    <Content Include="Common\Template\img\demo\15.jpg" />
-    <Content Include="Common\Template\img\demo\1_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\2.jpg" />
-    <Content Include="Common\Template\img\demo\2_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\3.jpg" />
-    <Content Include="Common\Template\img\demo\3_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\4.jpg" />
-    <Content Include="Common\Template\img\demo\4_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\5.jpg" />
-    <Content Include="Common\Template\img\demo\5_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\6.jpg" />
-    <Content Include="Common\Template\img\demo\6_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\7.jpg" />
-    <Content Include="Common\Template\img\demo\7_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\8.jpg" />
-    <Content Include="Common\Template\img\demo\8_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\9.jpg" />
-    <Content Include="Common\Template\img\demo\9_dyn.jpg" />
-    <Content Include="Common\Template\img\demo\big\._blog-1.jpg" />
-    <Content Include="Common\Template\img\demo\big\._blog-2.jpg" />
-    <Content Include="Common\Template\img\demo\big\._blog-3.jpg" />
-    <Content Include="Common\Template\img\demo\big\._blog-4.jpg" />
-    <Content Include="Common\Template\img\demo\big\1.jpg" />
-    <Content Include="Common\Template\img\demo\big\10.jpg" />
-    <Content Include="Common\Template\img\demo\big\11.jpg" />
-    <Content Include="Common\Template\img\demo\big\12.jpg" />
-    <Content Include="Common\Template\img\demo\big\13.jpg" />
-    <Content Include="Common\Template\img\demo\big\14.jpg" />
-    <Content Include="Common\Template\img\demo\big\15.jpg" />
-    <Content Include="Common\Template\img\demo\big\2.jpg" />
-    <Content Include="Common\Template\img\demo\big\3.jpg" />
-    <Content Include="Common\Template\img\demo\big\4.jpg" />
-    <Content Include="Common\Template\img\demo\big\5.jpg" />
-    <Content Include="Common\Template\img\demo\big\6.jpg" />
-    <Content Include="Common\Template\img\demo\big\7.jpg" />
-    <Content Include="Common\Template\img\demo\big\8.jpg" />
-    <Content Include="Common\Template\img\demo\big\9.jpg" />
-    <Content Include="Common\Template\img\demo\big\blog-1.jpg" />
-    <Content Include="Common\Template\img\demo\big\blog-2.jpg" />
-    <Content Include="Common\Template\img\demo\big\blog-3.jpg" />
-    <Content Include="Common\Template\img\demo\big\blog-4.jpg" />
-    <Content Include="Common\Template\img\demo\directd.png" />
-    <Content Include="Common\Template\img\demo\flags\._ao.gif" />
-    <Content Include="Common\Template\img\demo\flags\._catalonia.gif" />
-    <Content Include="Common\Template\img\demo\flags\._cd.gif" />
-    <Content Include="Common\Template\img\demo\flags\._europeanunion.gif" />
-    <Content Include="Common\Template\img\demo\flags\._gb.gif" />
-    <Content Include="Common\Template\img\demo\flags\._lc.gif" />
-    <Content Include="Common\Template\img\demo\flags\._me.gif" />
-    <Content Include="Common\Template\img\demo\flags\._rs.gif" />
-    <Content Include="Common\Template\img\demo\flags\ad.gif" />
-    <Content Include="Common\Template\img\demo\flags\ae.gif" />
-    <Content Include="Common\Template\img\demo\flags\af.gif" />
-    <Content Include="Common\Template\img\demo\flags\ag.gif" />
-    <Content Include="Common\Template\img\demo\flags\ai.gif" />
-    <Content Include="Common\Template\img\demo\flags\al.gif" />
-    <Content Include="Common\Template\img\demo\flags\am.gif" />
-    <Content Include="Common\Template\img\demo\flags\an.gif" />
-    <Content Include="Common\Template\img\demo\flags\ao.gif" />
-    <Content Include="Common\Template\img\demo\flags\ar.gif" />
-    <Content Include="Common\Template\img\demo\flags\as.gif" />
-    <Content Include="Common\Template\img\demo\flags\at.gif" />
-    <Content Include="Common\Template\img\demo\flags\au.gif" />
-    <Content Include="Common\Template\img\demo\flags\aw.gif" />
-    <Content Include="Common\Template\img\demo\flags\ax.gif" />
-    <Content Include="Common\Template\img\demo\flags\az.gif" />
-    <Content Include="Common\Template\img\demo\flags\ba.gif" />
-    <Content Include="Common\Template\img\demo\flags\bb.gif" />
-    <Content Include="Common\Template\img\demo\flags\bd.gif" />
-    <Content Include="Common\Template\img\demo\flags\be.gif" />
-    <Content Include="Common\Template\img\demo\flags\bf.gif" />
-    <Content Include="Common\Template\img\demo\flags\bg.gif" />
-    <Content Include="Common\Template\img\demo\flags\bh.gif" />
-    <Content Include="Common\Template\img\demo\flags\bi.gif" />
-    <Content Include="Common\Template\img\demo\flags\bj.gif" />
-    <Content Include="Common\Template\img\demo\flags\bm.gif" />
-    <Content Include="Common\Template\img\demo\flags\bn.gif" />
-    <Content Include="Common\Template\img\demo\flags\bo.gif" />
-    <Content Include="Common\Template\img\demo\flags\br.gif" />
-    <Content Include="Common\Template\img\demo\flags\bs.gif" />
-    <Content Include="Common\Template\img\demo\flags\bt.gif" />
-    <Content Include="Common\Template\img\demo\flags\bv.gif" />
-    <Content Include="Common\Template\img\demo\flags\bw.gif" />
-    <Content Include="Common\Template\img\demo\flags\by.gif" />
-    <Content Include="Common\Template\img\demo\flags\bz.gif" />
-    <Content Include="Common\Template\img\demo\flags\ca.gif" />
-    <Content Include="Common\Template\img\demo\flags\catalonia.gif" />
-    <Content Include="Common\Template\img\demo\flags\cc.gif" />
-    <Content Include="Common\Template\img\demo\flags\cd.gif" />
-    <Content Include="Common\Template\img\demo\flags\cf.gif" />
-    <Content Include="Common\Template\img\demo\flags\cg.gif" />
-    <Content Include="Common\Template\img\demo\flags\ch.gif" />
-    <Content Include="Common\Template\img\demo\flags\ci.gif" />
-    <Content Include="Common\Template\img\demo\flags\ck.gif" />
-    <Content Include="Common\Template\img\demo\flags\cl.gif" />
-    <Content Include="Common\Template\img\demo\flags\cm.gif" />
-    <Content Include="Common\Template\img\demo\flags\cn.gif" />
-    <Content Include="Common\Template\img\demo\flags\co.gif" />
-    <Content Include="Common\Template\img\demo\flags\cr.gif" />
-    <Content Include="Common\Template\img\demo\flags\cs.gif" />
-    <Content Include="Common\Template\img\demo\flags\cu.gif" />
-    <Content Include="Common\Template\img\demo\flags\cv.gif" />
-    <Content Include="Common\Template\img\demo\flags\cx.gif" />
-    <Content Include="Common\Template\img\demo\flags\cy.gif" />
-    <Content Include="Common\Template\img\demo\flags\cz.gif" />
-    <Content Include="Common\Template\img\demo\flags\de.gif" />
-    <Content Include="Common\Template\img\demo\flags\dj.gif" />
-    <Content Include="Common\Template\img\demo\flags\dk.gif" />
-    <Content Include="Common\Template\img\demo\flags\dm.gif" />
-    <Content Include="Common\Template\img\demo\flags\do.gif" />
-    <Content Include="Common\Template\img\demo\flags\dz.gif" />
-    <Content Include="Common\Template\img\demo\flags\ec.gif" />
-    <Content Include="Common\Template\img\demo\flags\ee.gif" />
-    <Content Include="Common\Template\img\demo\flags\eg.gif" />
-    <Content Include="Common\Template\img\demo\flags\eh.gif" />
-    <Content Include="Common\Template\img\demo\flags\england.gif" />
-    <Content Include="Common\Template\img\demo\flags\er.gif" />
-    <Content Include="Common\Template\img\demo\flags\es.gif" />
-    <Content Include="Common\Template\img\demo\flags\et.gif" />
-    <Content Include="Common\Template\img\demo\flags\europeanunion.gif" />
-    <Content Include="Common\Template\img\demo\flags\fam.gif" />
-    <Content Include="Common\Template\img\demo\flags\fi.gif" />
-    <Content Include="Common\Template\img\demo\flags\fj.gif" />
-    <Content Include="Common\Template\img\demo\flags\fk.gif" />
-    <Content Include="Common\Template\img\demo\flags\fm.gif" />
-    <Content Include="Common\Template\img\demo\flags\fo.gif" />
-    <Content Include="Common\Template\img\demo\flags\fr.gif" />
-    <Content Include="Common\Template\img\demo\flags\ga.gif" />
-    <Content Include="Common\Template\img\demo\flags\gb.gif" />
-    <Content Include="Common\Template\img\demo\flags\gd.gif" />
-    <Content Include="Common\Template\img\demo\flags\ge.gif" />
-    <Content Include="Common\Template\img\demo\flags\gf.gif" />
-    <Content Include="Common\Template\img\demo\flags\gh.gif" />
-    <Content Include="Common\Template\img\demo\flags\gi.gif" />
-    <Content Include="Common\Template\img\demo\flags\gl.gif" />
-    <Content Include="Common\Template\img\demo\flags\gm.gif" />
-    <Content Include="Common\Template\img\demo\flags\gn.gif" />
-    <Content Include="Common\Template\img\demo\flags\gp.gif" />
-    <Content Include="Common\Template\img\demo\flags\gq.gif" />
-    <Content Include="Common\Template\img\demo\flags\gr.gif" />
-    <Content Include="Common\Template\img\demo\flags\gs.gif" />
-    <Content Include="Common\Template\img\demo\flags\gt.gif" />
-    <Content Include="Common\Template\img\demo\flags\gu.gif" />
-    <Content Include="Common\Template\img\demo\flags\gw.gif" />
-    <Content Include="Common\Template\img\demo\flags\gy.gif" />
-    <Content Include="Common\Template\img\demo\flags\hk.gif" />
-    <Content Include="Common\Template\img\demo\flags\hm.gif" />
-    <Content Include="Common\Template\img\demo\flags\hn.gif" />
-    <Content Include="Common\Template\img\demo\flags\hr.gif" />
-    <Content Include="Common\Template\img\demo\flags\ht.gif" />
-    <Content Include="Common\Template\img\demo\flags\hu.gif" />
-    <Content Include="Common\Template\img\demo\flags\id.gif" />
-    <Content Include="Common\Template\img\demo\flags\ie.gif" />
-    <Content Include="Common\Template\img\demo\flags\il.gif" />
-    <Content Include="Common\Template\img\demo\flags\in.gif" />
-    <Content Include="Common\Template\img\demo\flags\io.gif" />
-    <Content Include="Common\Template\img\demo\flags\iq.gif" />
-    <Content Include="Common\Template\img\demo\flags\ir.gif" />
-    <Content Include="Common\Template\img\demo\flags\is.gif" />
-    <Content Include="Common\Template\img\demo\flags\it.gif" />
-    <Content Include="Common\Template\img\demo\flags\jm.gif" />
-    <Content Include="Common\Template\img\demo\flags\jo.gif" />
-    <Content Include="Common\Template\img\demo\flags\jp.gif" />
-    <Content Include="Common\Template\img\demo\flags\ke.gif" />
-    <Content Include="Common\Template\img\demo\flags\kg.gif" />
-    <Content Include="Common\Template\img\demo\flags\kh.gif" />
-    <Content Include="Common\Template\img\demo\flags\ki.gif" />
-    <Content Include="Common\Template\img\demo\flags\km.gif" />
-    <Content Include="Common\Template\img\demo\flags\kn.gif" />
-    <Content Include="Common\Template\img\demo\flags\kp.gif" />
-    <Content Include="Common\Template\img\demo\flags\kr.gif" />
-    <Content Include="Common\Template\img\demo\flags\kw.gif" />
-    <Content Include="Common\Template\img\demo\flags\ky.gif" />
-    <Content Include="Common\Template\img\demo\flags\kz.gif" />
-    <Content Include="Common\Template\img\demo\flags\la.gif" />
-    <Content Include="Common\Template\img\demo\flags\lb.gif" />
-    <Content Include="Common\Template\img\demo\flags\lc.gif" />
-    <Content Include="Common\Template\img\demo\flags\li.gif" />
-    <Content Include="Common\Template\img\demo\flags\lk.gif" />
-    <Content Include="Common\Template\img\demo\flags\lr.gif" />
-    <Content Include="Common\Template\img\demo\flags\ls.gif" />
-    <Content Include="Common\Template\img\demo\flags\lt.gif" />
-    <Content Include="Common\Template\img\demo\flags\lu.gif" />
-    <Content Include="Common\Template\img\demo\flags\lv.gif" />
-    <Content Include="Common\Template\img\demo\flags\ly.gif" />
-    <Content Include="Common\Template\img\demo\flags\ma.gif" />
-    <Content Include="Common\Template\img\demo\flags\mc.gif" />
-    <Content Include="Common\Template\img\demo\flags\md.gif" />
-    <Content Include="Common\Template\img\demo\flags\me.gif" />
-    <Content Include="Common\Template\img\demo\flags\mg.gif" />
-    <Content Include="Common\Template\img\demo\flags\mh.gif" />
-    <Content Include="Common\Template\img\demo\flags\mk.gif" />
-    <Content Include="Common\Template\img\demo\flags\ml.gif" />
-    <Content Include="Common\Template\img\demo\flags\mm.gif" />
-    <Content Include="Common\Template\img\demo\flags\mn.gif" />
-    <Content Include="Common\Template\img\demo\flags\mo.gif" />
-    <Content Include="Common\Template\img\demo\flags\mp.gif" />
-    <Content Include="Common\Template\img\demo\flags\mq.gif" />
-    <Content Include="Common\Template\img\demo\flags\mr.gif" />
-    <Content Include="Common\Template\img\demo\flags\ms.gif" />
-    <Content Include="Common\Template\img\demo\flags\mt.gif" />
-    <Content Include="Common\Template\img\demo\flags\mu.gif" />
-    <Content Include="Common\Template\img\demo\flags\mv.gif" />
-    <Content Include="Common\Template\img\demo\flags\mw.gif" />
-    <Content Include="Common\Template\img\demo\flags\mx.gif" />
-    <Content Include="Common\Template\img\demo\flags\my.gif" />
-    <Content Include="Common\Template\img\demo\flags\mz.gif" />
-    <Content Include="Common\Template\img\demo\flags\na.gif" />
-    <Content Include="Common\Template\img\demo\flags\nc.gif" />
-    <Content Include="Common\Template\img\demo\flags\ne.gif" />
-    <Content Include="Common\Template\img\demo\flags\nf.gif" />
-    <Content Include="Common\Template\img\demo\flags\ng.gif" />
-    <Content Include="Common\Template\img\demo\flags\ni.gif" />
-    <Content Include="Common\Template\img\demo\flags\nl.gif" />
-    <Content Include="Common\Template\img\demo\flags\no.gif" />
-    <Content Include="Common\Template\img\demo\flags\np.gif" />
-    <Content Include="Common\Template\img\demo\flags\nr.gif" />
-    <Content Include="Common\Template\img\demo\flags\nu.gif" />
-    <Content Include="Common\Template\img\demo\flags\nz.gif" />
-    <Content Include="Common\Template\img\demo\flags\om.gif" />
-    <Content Include="Common\Template\img\demo\flags\pa.gif" />
-    <Content Include="Common\Template\img\demo\flags\pe.gif" />
-    <Content Include="Common\Template\img\demo\flags\pf.gif" />
-    <Content Include="Common\Template\img\demo\flags\pg.gif" />
-    <Content Include="Common\Template\img\demo\flags\ph.gif" />
-    <Content Include="Common\Template\img\demo\flags\pk.gif" />
-    <Content Include="Common\Template\img\demo\flags\pl.gif" />
-    <Content Include="Common\Template\img\demo\flags\pm.gif" />
-    <Content Include="Common\Template\img\demo\flags\pn.gif" />
-    <Content Include="Common\Template\img\demo\flags\pr.gif" />
-    <Content Include="Common\Template\img\demo\flags\ps.gif" />
-    <Content Include="Common\Template\img\demo\flags\pt.gif" />
-    <Content Include="Common\Template\img\demo\flags\pw.gif" />
-    <Content Include="Common\Template\img\demo\flags\py.gif" />
-    <Content Include="Common\Template\img\demo\flags\qa.gif" />
-    <Content Include="Common\Template\img\demo\flags\re.gif" />
-    <Content Include="Common\Template\img\demo\flags\ro.gif" />
-    <Content Include="Common\Template\img\demo\flags\rs.gif" />
-    <Content Include="Common\Template\img\demo\flags\ru.gif" />
-    <Content Include="Common\Template\img\demo\flags\rw.gif" />
-    <Content Include="Common\Template\img\demo\flags\sa.gif" />
-    <Content Include="Common\Template\img\demo\flags\sb.gif" />
-    <Content Include="Common\Template\img\demo\flags\sc.gif" />
-    <Content Include="Common\Template\img\demo\flags\scotland.gif" />
-    <Content Include="Common\Template\img\demo\flags\sd.gif" />
-    <Content Include="Common\Template\img\demo\flags\se.gif" />
-    <Content Include="Common\Template\img\demo\flags\sg.gif" />
-    <Content Include="Common\Template\img\demo\flags\sh.gif" />
-    <Content Include="Common\Template\img\demo\flags\si.gif" />
-    <Content Include="Common\Template\img\demo\flags\sj.gif" />
-    <Content Include="Common\Template\img\demo\flags\sk.gif" />
-    <Content Include="Common\Template\img\demo\flags\sl.gif" />
-    <Content Include="Common\Template\img\demo\flags\sm.gif" />
-    <Content Include="Common\Template\img\demo\flags\sn.gif" />
-    <Content Include="Common\Template\img\demo\flags\so.gif" />
-    <Content Include="Common\Template\img\demo\flags\sr.gif" />
-    <Content Include="Common\Template\img\demo\flags\st.gif" />
-    <Content Include="Common\Template\img\demo\flags\sv.gif" />
-    <Content Include="Common\Template\img\demo\flags\sy.gif" />
-    <Content Include="Common\Template\img\demo\flags\sz.gif" />
-    <Content Include="Common\Template\img\demo\flags\tc.gif" />
-    <Content Include="Common\Template\img\demo\flags\td.gif" />
-    <Content Include="Common\Template\img\demo\flags\tf.gif" />
-    <Content Include="Common\Template\img\demo\flags\tg.gif" />
-    <Content Include="Common\Template\img\demo\flags\th.gif" />
-    <Content Include="Common\Template\img\demo\flags\tj.gif" />
-    <Content Include="Common\Template\img\demo\flags\tk.gif" />
-    <Content Include="Common\Template\img\demo\flags\tl.gif" />
-    <Content Include="Common\Template\img\demo\flags\tm.gif" />
-    <Content Include="Common\Template\img\demo\flags\tn.gif" />
-    <Content Include="Common\Template\img\demo\flags\to.gif" />
-    <Content Include="Common\Template\img\demo\flags\tr.gif" />
-    <Content Include="Common\Template\img\demo\flags\tt.gif" />
-    <Content Include="Common\Template\img\demo\flags\tv.gif" />
-    <Content Include="Common\Template\img\demo\flags\tw.gif" />
-    <Content Include="Common\Template\img\demo\flags\tz.gif" />
-    <Content Include="Common\Template\img\demo\flags\ua.gif" />
-    <Content Include="Common\Template\img\demo\flags\ug.gif" />
-    <Content Include="Common\Template\img\demo\flags\um.gif" />
-    <Content Include="Common\Template\img\demo\flags\us.gif" />
-    <Content Include="Common\Template\img\demo\flags\uy.gif" />
-    <Content Include="Common\Template\img\demo\flags\uz.gif" />
-    <Content Include="Common\Template\img\demo\flags\va.gif" />
-    <Content Include="Common\Template\img\demo\flags\vc.gif" />
-    <Content Include="Common\Template\img\demo\flags\ve.gif" />
-    <Content Include="Common\Template\img\demo\flags\vg.gif" />
-    <Content Include="Common\Template\img\demo\flags\vi.gif" />
-    <Content Include="Common\Template\img\demo\flags\vn.gif" />
-    <Content Include="Common\Template\img\demo\flags\vu.gif" />
-    <Content Include="Common\Template\img\demo\flags\wales.gif" />
-    <Content Include="Common\Template\img\demo\flags\wf.gif" />
-    <Content Include="Common\Template\img\demo\flags\ws.gif" />
-    <Content Include="Common\Template\img\demo\flags\ye.gif" />
-    <Content Include="Common\Template\img\demo\flags\yt.gif" />
-    <Content Include="Common\Template\img\demo\flags\za.gif" />
-    <Content Include="Common\Template\img\demo\flags\zm.gif" />
-    <Content Include="Common\Template\img\demo\flags\zw.gif" />
-    <Content Include="Common\Template\img\demo\locked.jpg" />
-    <Content Include="Common\Template\img\demo\mastercard.png" />
-    <Content Include="Common\Template\img\demo\paypal.png" />
-    <Content Include="Common\Template\img\demo\user-1.jpg" />
-    <Content Include="Common\Template\img\demo\user-2.jpg" />
-    <Content Include="Common\Template\img\demo\user-3.jpg" />
-    <Content Include="Common\Template\img\demo\user-4.jpg" />
-    <Content Include="Common\Template\img\demo\user-5.jpg" />
-    <Content Include="Common\Template\img\demo\user-6.jpg" />
-    <Content Include="Common\Template\img\demo\user-avatar.jpg" />
-    <Content Include="Common\Template\img\demo\visa.png" />
     <Content Include="Common\Template\img\email-login.jpg" />
     <Content Include="Common\Template\img\email-logo.jpg" />
     <Content Include="Common\Template\img\expanded-group.jpg" />
@@ -911,7 +579,6 @@
     <Content Include="Common\Template\js\plugins\datatable\ColVis.js" />
     <Content Include="Common\Template\js\plugins\datatable\ColVis.min.js" />
     <Content Include="Common\Template\js\plugins\datatable\dataTables.scroller.min.js" />
-    <Content Include="Common\Template\js\plugins\datatable\demo.txt" />
     <Content Include="Common\Template\js\plugins\datatable\FixedColumns.min.js" />
     <Content Include="Common\Template\js\plugins\datatable\FixedColumns.min.min.js" />
     <Content Include="Common\Template\js\plugins\datatable\jquery.dataTables.columnFilter.js" />
@@ -1082,7 +749,14 @@
     <Content Include="Controls\TopMenu.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="KasifPages\Forms\DersBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\DersKonuBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\HocaBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\OgrenciBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Tables\MufredatBilgisi.aspx" />
+    <Content Include="KasifPages\Tables\DersBilgisi.aspx" />
+    <Content Include="KasifPages\Tables\DersKonuBilgisi.aspx" />
+    <Content Include="KasifPages\Tables\HocaBilgisi.aspx" />
     <Content Include="KasifPages\Tables\OgrenciBilgisi.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1133,12 +807,61 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="KasifPages\Forms\DersBilgisiEkle.aspx.cs">
+      <DependentUpon>DersBilgisiEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\DersBilgisiEkle.aspx.designer.cs">
+      <DependentUpon>DersBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\DersKonuBilgisiEkle.aspx.cs">
+      <DependentUpon>DersKonuBilgisiEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\DersKonuBilgisiEkle.aspx.designer.cs">
+      <DependentUpon>DersKonuBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\HocaBilgisiEkle.aspx.cs">
+      <DependentUpon>HocaBilgisiEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\HocaBilgisiEkle.aspx.designer.cs">
+      <DependentUpon>HocaBilgisiEkle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KasifPages\Forms\OgrenciBilgisiEkle.aspx.cs">
       <DependentUpon>OgrenciBilgisiEkle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="KasifPages\Forms\OgrenciBilgisiEkle.aspx.designer.cs">
       <DependentUpon>OgrenciBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\MufredatBilgisi.aspx.cs">
+      <DependentUpon>MufredatBilgisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\MufredatBilgisi.aspx.designer.cs">
+      <DependentUpon>MufredatBilgisi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\DersBilgisi.aspx.cs">
+      <DependentUpon>DersBilgisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\DersBilgisi.aspx.designer.cs">
+      <DependentUpon>DersBilgisi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\DersKonuBilgisi.aspx.cs">
+      <DependentUpon>DersKonuBilgisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\DersKonuBilgisi.aspx.designer.cs">
+      <DependentUpon>DersKonuBilgisi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\HocaBilgisi.aspx.cs">
+      <DependentUpon>HocaBilgisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\HocaBilgisi.aspx.designer.cs">
+      <DependentUpon>HocaBilgisi.aspx</DependentUpon>
     </Compile>
     <Compile Include="KasifPages\Tables\OgrenciBilgisi.aspx.cs">
       <DependentUpon>OgrenciBilgisi.aspx</DependentUpon>
@@ -1155,6 +878,7 @@
       <DependentUpon>MainMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\UtilityScreenFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainMaster.Master" />
@@ -1170,8 +894,6 @@
     <Content Include="Common\Template\font\glyphicons-regular.woff" />
     <Content Include="Common\Template\img\.DS_Store" />
     <Content Include="Common\Template\img\._.DS_Store" />
-    <Content Include="Common\Template\img\demo\flags\.DS_Store" />
-    <Content Include="Common\Template\img\demo\flags\._.DS_Store" />
     <Content Include="Common\Template\img\plugins\.DS_Store" />
     <Content Include="Common\Template\img\plugins\._.DS_Store" />
     <Content Include="Common\Template\js\.DS_Store" />
@@ -1199,74 +921,6 @@
     <Content Include="Common\Template\js\plugins\elfinder\php\elFinderVolumeLocalFileSystem.class.php" />
     <Content Include="Common\Template\js\plugins\elfinder\php\elFinderVolumeMySQL.class.php" />
     <Content Include="Common\Template\js\plugins\elfinder\php\mime.types" />
-    <Content Include="Common\Template\sass\bootstrap-override.scss" />
-    <Content Include="Common\Template\sass\colors.scss" />
-    <Content Include="Common\Template\sass\font-awesome\font-awesome.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_bootstrap.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_core.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_extras.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_icons.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_mixins.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_path.scss" />
-    <Content Include="Common\Template\sass\font-awesome\_variables.scss" />
-    <Content Include="Common\Template\sass\glyphicons.scss" />
-    <Content Include="Common\Template\sass\media-queries.scss" />
-    <Content Include="Common\Template\sass\page-elements\accordion.scss" />
-    <Content Include="Common\Template\sass\page-elements\address-book.scss" />
-    <Content Include="Common\Template\sass\page-elements\blog.scss" />
-    <Content Include="Common\Template\sass\page-elements\box.scss" />
-    <Content Include="Common\Template\sass\page-elements\custom-checkbox.scss" />
-    <Content Include="Common\Template\sass\page-elements\forms.scss" />
-    <Content Include="Common\Template\sass\page-elements\gallery.scss" />
-    <Content Include="Common\Template\sass\page-elements\messages.scss" />
-    <Content Include="Common\Template\sass\page-elements\pagestats.scss" />
-    <Content Include="Common\Template\sass\page-elements\pricing-tables.scss" />
-    <Content Include="Common\Template\sass\page-elements\sidebar-widgets.scss" />
-    <Content Include="Common\Template\sass\page-elements\tables.scss" />
-    <Content Include="Common\Template\sass\page-elements\tabs.scss" />
-    <Content Include="Common\Template\sass\page-elements\tasks.scss" />
-    <Content Include="Common\Template\sass\page-elements\tiles.scss" />
-    <Content Include="Common\Template\sass\page-elements\timeline.scss" />
-    <Content Include="Common\Template\sass\pages\error.scss" />
-    <Content Include="Common\Template\sass\pages\grids.scss" />
-    <Content Include="Common\Template\sass\pages\invoice.scss" />
-    <Content Include="Common\Template\sass\pages\locked.scss" />
-    <Content Include="Common\Template\sass\pages\login.scss" />
-    <Content Include="Common\Template\sass\pages\search-results.scss" />
-    <Content Include="Common\Template\sass\pages\shop.scss" />
-    <Content Include="Common\Template\sass\plugins\calendar.scss" />
-    <Content Include="Common\Template\sass\plugins\charts.scss" />
-    <Content Include="Common\Template\sass\plugins\chosen.scss" />
-    <Content Include="Common\Template\sass\plugins\ckeditor.scss" />
-    <Content Include="Common\Template\sass\plugins\datatables.scss" />
-    <Content Include="Common\Template\sass\plugins\datepicker.scss" />
-    <Content Include="Common\Template\sass\plugins\daterangepicker.scss" />
-    <Content Include="Common\Template\sass\plugins\elfinder.scss" />
-    <Content Include="Common\Template\sass\plugins\filetree.scss" />
-    <Content Include="Common\Template\sass\plugins\fileupload.scss" />
-    <Content Include="Common\Template\sass\plugins\form-wizard.scss" />
-    <Content Include="Common\Template\sass\plugins\gritter.scss" />
-    <Content Include="Common\Template\sass\plugins\maps.scss" />
-    <Content Include="Common\Template\sass\plugins\multiselect.scss" />
-    <Content Include="Common\Template\sass\plugins\plupload.scss" />
-    <Content Include="Common\Template\sass\plugins\resize.scss" />
-    <Content Include="Common\Template\sass\plugins\scroll.scss" />
-    <Content Include="Common\Template\sass\plugins\select2.scss" />
-    <Content Include="Common\Template\sass\plugins\slider.scss" />
-    <Content Include="Common\Template\sass\plugins\spinner.scss" />
-    <Content Include="Common\Template\sass\plugins\tagsinput.scss" />
-    <Content Include="Common\Template\sass\plugins\timepicker.scss" />
-    <Content Include="Common\Template\sass\plugins\xeditable.scss" />
-    <Content Include="Common\Template\sass\structure\content.scss" />
-    <Content Include="Common\Template\sass\structure\footer.scss" />
-    <Content Include="Common\Template\sass\structure\sidebar.scss" />
-    <Content Include="Common\Template\sass\structure\topbar.scss" />
-    <Content Include="Common\Template\sass\style.scss" />
-    <Content Include="Common\Template\sass\themes.scss" />
-    <Content Include="Common\Template\sass\_elements.scss" />
-    <Content Include="Common\Template\sass\_pages.scss" />
-    <Content Include="Common\Template\sass\_plugins.scss" />
-    <Content Include="Common\Template\sass\_structure.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1278,7 +932,6 @@
     <Folder Include="Common\Template\js\plugins\elfinder\files\.quarantine\" />
     <Folder Include="KasifPages\Processes\" />
     <Folder Include="Reports\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KasifBusiness\KasifBusiness.csproj">

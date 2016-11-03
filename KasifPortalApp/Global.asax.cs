@@ -39,6 +39,48 @@ namespace KasifPortalApp
             "OgrBilgi-page-edit",
             "OgrBilgi/edit/{param}",
             "~/KasifPages/Forms/OgrenciBilgisiGuncelle.aspx");
+
+            routes.MapPageRoute(
+           "HocaBilgi-page",
+           "HocaBilgi",
+           "~/KasifPages/Tables/HocaBilgisi.aspx");
+            routes.MapPageRoute(
+            "HocaBilgi-page-add",
+            "HocaBilgi/add",
+            "~/KasifPages/Forms/HocaBilgisiEkle.aspx");
+            routes.MapPageRoute(
+            "HocaBilgi-page-edit",
+            "HocaBilgi/edit/{param}",
+            "~/KasifPages/Forms/HocaBilgisiGuncelle.aspx");
+
+            routes.MapPageRoute(
+            "DersBilgi-page",
+            "DersBilgi",
+            "~/KasifPages/Tables/DersBilgisi.aspx");
+            routes.MapPageRoute(
+            "DersBilgi-page-add",
+            "DersBilgi/add",
+            "~/KasifPages/Forms/DersBilgisiEkle.aspx");
+            routes.MapPageRoute(
+            "DersBilgi-page-edit",
+            "DersBilgi/edit/{param}",
+            "~/KasifPages/Forms/DersBilgisiGuncelle.aspx");
+
+            routes.MapPageRoute(
+            "DersKonuBilgi-page",
+            "DersKonuBilgi",
+            "~/KasifPages/Tables/DersKonuBilgisi.aspx");
+            routes.MapPageRoute(
+            "DersKonuBilgi-page-add",
+            "DersKonuBilgi/add",
+            "~/KasifPages/Forms/DersKonuBilgisiEkle.aspx");
+            routes.MapPageRoute(
+            "DersKonuBilgi-page-edit",
+            "DersKonuBilgi/edit/{param}",
+            "~/KasifPages/Forms/DersKonuBilgisiGuncelle.aspx");
+
+           
+
         }
 
 

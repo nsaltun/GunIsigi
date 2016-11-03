@@ -14,9 +14,10 @@ namespace KasifBusiness.DB_Operations.DBOperations
 {
     public class DbOperations
     {
-        private static void DbAction(Action<EntityObject.GN_KASIFEntities> action)
+
+        private static void DbAction(Action<GN_KASIFEntities> action)
         {
-            using (var context = new EntityObject.GN_KASIFEntities())
+            using (var context = new GN_KASIFEntities())
             {
                 action(context);
             }
@@ -102,43 +103,75 @@ namespace KasifBusiness.DB_Operations.DBOperations
             });
         }
 
-        public static bool RunQuery<T>(ref List<T> entityObj, ConstDbCommands.DbCommandList queryName, string[] parameterNames, object[] parameterValues)
+        private static bool RunQueryForQueryContent(string queryName, ref string queryText)
         {
-            string queryContent = GetQuery(queryName);
-            PrepareAndExecuteQuery(ref entityObj, queryContent, parameterNames, parameterValues);
-
-            return true;
+            List<QUERY_TABLE> lstQueryTable = new List<QUERY_TABLE>();
+            PrepareAndExecuteQuery(ref lstQueryTable, ConstDbCommands.GET_QUERY_CONTENT, new string[] { "P_QUERY_NAME" }, new object[] { queryName });
+            if (lstQueryTable != null && lstQueryTable.Count > 0)
+            {
+                queryText = lstQueryTable[0].QUERY_TEXT;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+        public static bool RunDbQuery<T>(ref List<T> entityObj, ConstDbCommands.DbCommandList queryName, string[] parameterNames, object[] parameterValues)
+        {
+            string queryText = "";
+            if (RunQueryForQueryContent(queryName.ToString(), ref queryText))
+            {
+                PrepareAndExecuteQuery(ref entityObj, queryText, parameterNames, parameterValues);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private static void PrepareAndExecuteQuery<T>(ref List<T> entityObj, string queryContent, string[] parameterNames, object[] parameterValues)
         {
-            GN_KASIFEntities EntityObj = new GN_KASIFEntities();
-            SqlParameter[] SqlParameters = new SqlParameter[parameterNames.Length];
-
-            for (int i = 0; i < parameterNames.Length; i++)
+            try
             {
-                SqlParameters[i] = new SqlParameter(parameterNames[i], parameterValues[i]);
+                GN_KASIFEntities EntityObj = new GN_KASIFEntities();
+
+                if (parameterNames != null && parameterValues != null)
+                {
+                    SqlParameter[] SqlParameters = new SqlParameter[parameterNames.Length];
+                    for (int i = 0; i < parameterNames.Length; i++)
+                    {
+                        SqlParameters[i] = new SqlParameter(parameterNames[i], parameterValues[i]);
+                    }
+                    entityObj = EntityObj.Database.SqlQuery<T>(queryContent, SqlParameters).ToList<T>();
+                }
+                else
+                {
+                    entityObj = EntityObj.Database.SqlQuery<T>(queryContent).ToList<T>();
+                }
             }
-
-            entityObj = EntityObj.Database.SqlQuery<T>(queryContent, SqlParameters).ToList<T>();
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
+
+        #region commented - not used
         private static string GetQuery(ConstDbCommands.DbCommandList queryName)
         {
             switch (queryName)
             {
-                case ConstDbCommands.DbCommandList.GET_USER_BY_EMAIL: return ConstDbCommands.GET_USER_BY_EMAIL;
-                case ConstDbCommands.DbCommandList.cmd2:
-                    break;
-                case ConstDbCommands.DbCommandList.cmd3:
-                    break;
+                case ConstDbCommands.DbCommandList.GET_USER_BY_EMAIL: return ConstDbCommands.GET_QUERY_CONTENT;
                 default:
                     break;
             }
 
             return "";
         }
-
+        #endregion
 
     }
 }
