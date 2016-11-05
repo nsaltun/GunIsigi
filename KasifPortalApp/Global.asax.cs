@@ -79,7 +79,32 @@ namespace KasifPortalApp
             "DersKonuBilgi/edit/{param}",
             "~/KasifPages/Forms/DersKonuBilgisiGuncelle.aspx");
 
-           
+            routes.MapPageRoute(
+            "MufredatTakip-page",
+            "MufredatTakip",
+            "~/KasifPages/Tables/MufredatBilgisi.aspx");
+            routes.MapPageRoute(
+            "MufredatTakip-page-add",
+            "MufredatTakip/add",
+            "~/KasifPages/Forms/MufredatTakipEkle.aspx");
+            routes.MapPageRoute(
+            "MufredatTakip-page-edit",
+            "MufredatTakip/edit/{param}",
+            "~/KasifPages/Forms/MufredatTakipGuncelle.aspx");
+
+            routes.MapPageRoute(
+           "DevamsizlikBilgi-page",
+           "DevamsizlikBilgi",
+           "~/KasifPages/Tables/DevamsizlikBilgisi.aspx");
+            routes.MapPageRoute(
+            "DevamsizlikBilgi-page-add",
+            "DevamsizlikBilgi/add",
+            "~/KasifPages/Forms/DevamsizlikBilgisiEkle.aspx");
+            routes.MapPageRoute(
+            "DevamsizlikBilgi-page-edit",
+            "DevamsizlikBilgi/edit/{param}",
+            "~/KasifPages/Forms/DevamsizlikBilgisiGuncelle.aspx");
+
 
         }
 

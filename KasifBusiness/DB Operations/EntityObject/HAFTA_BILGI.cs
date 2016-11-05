@@ -16,5 +16,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
     {
         public int HAFTA_ID { get; set; }
         public string HAFTA_ADI { get; set; }
+        public string TARIH { get; set; }
     }
 }

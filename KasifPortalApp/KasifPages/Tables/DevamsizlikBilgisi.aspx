@@ -1,10 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="DersBilgisi.aspx.cs" Inherits="KasifPortalApp.KasifPages.Tables.DersBilgisi" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="DevamsizlikBilgisi.aspx.cs" Inherits="KasifPortalApp.KasifPages.Tables.DevamsizlikBilgisi" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
 
         $(document).ready(function () {
             DtInit();
+
             function DtInit() {
                 var oTable = $('#dtTable').dataTable();
 
@@ -26,8 +27,22 @@
                         {
                             type: "select",
                             bCaseSensitive: true,
+                            values: ['Öğrenci','Hoca']
+                        },
+                        {
+                            type: "text",
+                        },
+                        {
+                            type: "select",
+                            bCaseSensitive: true,
                             values: ['5', '6', '7', '8']
-                        }
+                        },
+                        {
+                            type: "text",
+                        },
+                        {
+                            type: "text"
+                        },
                     ]
                 });
                 $("#dtTable").css("width", '100%');
@@ -40,7 +55,7 @@
                 };
                 $.ajax({
                     type: "POST",
-                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/DersBilgisi.aspx/DeleteCurrentRow") %>",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/DevamsizlikBilgisi.aspx/DeleteCurrentRow") %>",
                     data: JSON.stringify(postData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "JSON",
@@ -63,7 +78,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphTitle" runat="server">
-    <h3>Ders Bilgisi</h3>
+    <h3>Devamsızlık Bilgisi</h3>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
 
@@ -83,13 +98,21 @@
                             <thead>
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>
-                                    <th>Ders Adı</th>
+                                    <th>Hafta No</th>
+                                    <th>Tip</th>
+                                    <th>Ad Soyad</th>
                                     <th>Sınıf</th>
+                                    <th>Devam Durumu</th>
+                                    <th>Devamsızlık Sebebi</th>
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
-                                    <th>Ders Adı</th>
+                                    <th>Hafta No</th>
+                                    <th>Tip</th>
+                                    <th>Ad Soyad</th>
                                     <th>Sınıf</th>
+                                    <th>Devam Durumu</th>
+                                    <th>Devamsızlık Sebebi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,10 +122,14 @@
                             <td>
                                 <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"GUID").ToString()%>"><i class="icon-remove"></i></a>
+                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"DEVAMSIZLIK_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                             </td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TIP").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"AD_SOYAD").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"DEVAM_DURUMU").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"SEBEP").ToString() %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>

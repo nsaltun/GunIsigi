@@ -32,7 +32,11 @@ namespace KasifBusiness.DB_Operations.DBObjects
             GET_BOLGE_INFO,
             GET_DERS_BILGI,
             GET_DERS_KONU_BILGI,
-            GET_MUFREDAT_BILGI
+            GET_MUFREDAT_BILGI,
+            GET_HAFTA_BILGI,
+            PRM_TAKIP_DURUMU,
+            PRM_HOCA,
+            GET_DEVAMSIZLIK_BILGI
         }
 
 

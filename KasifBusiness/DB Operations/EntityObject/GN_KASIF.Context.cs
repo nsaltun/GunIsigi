@@ -44,5 +44,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public virtual DbSet<OGR_TEST_REL> OGR_TEST_REL { get; set; }
         public virtual DbSet<TEST_BILGI> TEST_BILGI { get; set; }
         public virtual DbSet<DERS_BILGI> DERS_BILGI { get; set; }
+        public virtual DbSet<PRM_TAKIP_DURUMU> PRM_TAKIP_DURUMU { get; set; }
     }
 }

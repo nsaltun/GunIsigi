@@ -750,9 +750,11 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="KasifPages\Forms\DersBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\MufredatTakipEkle.aspx" />
     <Content Include="KasifPages\Forms\DersKonuBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\HocaBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\OgrenciBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Tables\DevamsizlikBilgisi.aspx" />
     <Content Include="KasifPages\Tables\MufredatBilgisi.aspx" />
     <Content Include="KasifPages\Tables\DersBilgisi.aspx" />
     <Content Include="KasifPages\Tables\DersKonuBilgisi.aspx" />
@@ -814,6 +816,13 @@
     <Compile Include="KasifPages\Forms\DersBilgisiEkle.aspx.designer.cs">
       <DependentUpon>DersBilgisiEkle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="KasifPages\Forms\MufredatTakipEkle.aspx.cs">
+      <DependentUpon>MufredatTakipEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\MufredatTakipEkle.aspx.designer.cs">
+      <DependentUpon>MufredatTakipEkle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KasifPages\Forms\DersKonuBilgisiEkle.aspx.cs">
       <DependentUpon>DersKonuBilgisiEkle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -834,6 +843,13 @@
     </Compile>
     <Compile Include="KasifPages\Forms\OgrenciBilgisiEkle.aspx.designer.cs">
       <DependentUpon>OgrenciBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\DevamsizlikBilgisi.aspx.cs">
+      <DependentUpon>DevamsizlikBilgisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\DevamsizlikBilgisi.aspx.designer.cs">
+      <DependentUpon>DevamsizlikBilgisi.aspx</DependentUpon>
     </Compile>
     <Compile Include="KasifPages\Tables\MufredatBilgisi.aspx.cs">
       <DependentUpon>MufredatBilgisi.aspx</DependentUpon>

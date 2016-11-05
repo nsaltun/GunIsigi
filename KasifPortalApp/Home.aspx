@@ -27,7 +27,6 @@
                     <li class="blue">
                         <a href="#"><span><i class="icon-phone"></i></span><span class="name">Hoca Devamsızlık</span></a>
                     </li>
-
                     <li class="lime long">
                         <a href="<%=hocaBilgiUrl %>"><span><i class="icon-comment"></i></span><span class="name">Hoca Bilgisi</span></a>
                     </li>
@@ -35,7 +34,7 @@
                         <a href="<%=dersBilgisiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Ders Bilgisi</span></a>
                     </li>
                     <li class="green long">
-                        <a href="#"><span><i class="icon-globe"></i></span><span class="name">Müfredat Bilgisi</span></a>
+                        <a href="<%=MufredatTakipUrl %>"><span><i class="icon-globe"></i></span><span class="name">Müfredat Bilgisi</span></a>
                     </li>
                     <li class="teal long">
                         <a href="#"><span><i class="icon-cloud-upload"></i></span><span class="name">Etkinlikler</span></a>

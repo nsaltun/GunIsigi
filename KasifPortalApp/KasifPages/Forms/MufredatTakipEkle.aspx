@@ -1,10 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="DersKonuBilgisiEkle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.DersKonuBilgisiEkle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="MufredatTakipEkle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.MufredatTakipEkle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         $(document).ready(function () {
-            var slcSinif = document.getElementById("<%=slcSinif.ClientID%>");
             var btnSubmit = document.getElementById("<%=btnSubmit.ClientID%>");
+            var slcSinif = document.getElementById("<%=slcSinif.ClientID%>");
+            var slcDers = document.getElementById("<%=slcDersAdi.ClientID%>");
           
             $(btnSubmit).click(function (event) {
                 event.preventDefault();
@@ -14,7 +15,8 @@
           
             $(slcSinif).change(function () {
                 var lstDers = <%=JsSerialize(lstDersBilgi) %>;
-                var slcDers = document.getElementById('<%=slcDersAdi.ClientID%>');
+                var lstKonu = <%=JsSerialize(lstKonuBilgi) %>;
+                var slcKonu = document.getElementById('<%=slcKonuAdi.ClientID%>');
                 slcDers.options.length=0;
                 for(var i=0;i<lstDers.length;i++)
                 {
@@ -26,23 +28,47 @@
                         slcDers.appendChild(opt);
                     }
                 }
+                slcKonu.options.length=0;
+                for(var i=0;i<lstKonu.length;i++)
+                {
+                    if(lstKonu[i].DERS_GUID==slcDers.value)
+                    {
+                        var opt = document.createElement('option');
+                        opt.text = lstKonu[i].KONU;
+                        opt.value = lstKonu[i].DERS_KONU_GUID;
+                        slcKonu.appendChild(opt);
+                    }
+                }
+
+
+            });
+            $(slcDers).change(function () {
+                var lstDers = <%=JsSerialize(lstDersBilgi) %>;
+                var lstKonu = <%=JsSerialize(lstKonuBilgi) %>;
+                var slcKonu = document.getElementById('<%=slcKonuAdi.ClientID%>');
+                slcKonu.options.length=0;
+                for(var i=0;i<lstKonu.length;i++)
+                {
+                    if(lstKonu[i].DERS_GUID==slcDers.value)
+                    {
+                        var opt = document.createElement('option');
+                        opt.text = lstKonu[i].KONU;
+                        opt.value = lstKonu[i].DERS_KONU_GUID;
+                        slcKonu.appendChild(opt);
+                    }
+                }
             });
 
             function SetParameters()
             {
-                //var postData=[];
-                var konuAdi = document.getElementById('<%=txtAd.ClientID%>').value;
-                var dersId = document.getElementById('<%=slcDersAdi.ClientID%>').value;
-                //postData.push( { "name": "konuAdi", "value": konuAdi });
-                //postData.push( { "name": "dersId", "value": dersId });
-                
-
                 var postData = {
-                    "KonuAdi": konuAdi,
-                    "DersId": dersId
+                    "Hoca":document.getElementById('<%=slcHoca.ClientID%>').value,
+                    "Hafta":document.getElementById('<%=slcHafta.ClientID%>').value,
+                    "Sinif":document.getElementById('<%=slcSinif.ClientID%>').value,
+                    "DersId": document.getElementById('<%=slcDersAdi.ClientID%>').value,
+                    "KonuAdi": document.getElementById('<%=slcKonuAdi.ClientID%>').value,
+                    "TakipDurumu": document.getElementById('<%=slcTakipDurumu.ClientID%>').value
                 };
-
-
                 return postData;
             }
 
@@ -50,7 +76,7 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: "<%= ResolveClientUrl("~/KasifPages/Forms/DersKonuBilgisiEkle.aspx/ProcessOperation") %>",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Forms/MufredatTakipEkle.aspx/ProcessOperation") %>",
                     data: JSON.stringify(postData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "JSON",
@@ -70,9 +96,7 @@
                         e.preventDefault();
                     }
                 });
-                }
-
-
+            }
         });
 
             
@@ -83,22 +107,32 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphTitle" runat="server">
-    <h3>Ders Konu Bilgisi Ekle</h3>
+    <h3>Müfredat Takibi Bilgisi Ekle</h3>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
     <div class="span12">
         <div class="box box-color box-bordered">
             <div class="box-title">
-                <h3><i class="icon-list"></i>Ders Konusu Ekle</h3>
+                <h3><i class="icon-list"></i>Müfredat Takibi Bilgisi Ekle</h3>
             </div>
             <div class="box-content nopadding">
                 <form id="form1" action="#" method="POST" class='form-horizontal form-column form-bordered' runat="server">
                     <input type="hidden" id="hiddenDersId" runat="server" />
                     <input type="hidden" id="hiddenKonuAdi" runat="server" />
-                    
-                    <div class="span6">
 
-                        <!-- Combobox  -->
+                    <div class="span6">
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Hoca Adı</label>
+                            <div class="controls">
+                                <select name="select" id="slcHoca" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Hafta</label>
+                            <div class="controls">
+                                <select name="select" id="slcHafta" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <label for="select" class="control-label ">Sınıf</label>
                             <div class="controls">
@@ -110,19 +144,27 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label for="textfield" class="control-label">Konu Adı</label>
-                            <div class="controls">
-                                <input type="text" name="textfield" id="txtAd" class="input-xlarge" runat="server" />
-                            </div>
-                        </div>
+
+
                     </div>
                     <div class="span6">
-                        <!-- Combobox  -->
                         <div class="control-group">
                             <label for="select" class="control-label ">Ders Adı</label>
                             <div class="controls">
                                 <select name="select" id="slcDersAdi" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Konu Adı</label>
+                            <div class="controls">
+                                <select name="select" id="slcKonuAdi" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                        <!-- Combobox  -->
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Takip Durumu</label>
+                            <div class="controls">
+                                <select name="select" id="slcTakipDurumu" class="input-large" runat="server"></select>
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,12 @@
 
         $(document).ready(function () {
             DtInit();
+
+
+
+
+
+
             function DtInit() {
                 var oTable = $('#dtTable').dataTable();
 
@@ -55,6 +61,30 @@
                 $("#dtTable").css("width", '100%');
             }
 
+            $('.delete').click(function (event) {
+                event.preventDefault();
+                var postData = {
+                    "RowGuid":this.getAttribute('dataId')
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/OgrenciBilgisi.aspx/DeleteCurrentRow") %>",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "JSON",
+                    success: function (result) {
+                        alert(result.d);
+                        window.location="<%=Page.GetRouteUrl(pageName,null)%>"
+                    },
+                    failure: function (result) {
+                        alert('error');
+                    },
+                    error: function (result) {
+                        alert('error');
+                    }
+                });
+
+            });
         });
 
     </script>
@@ -70,7 +100,7 @@
             <div class="box-title">
                 <h3 class="pull-left"><i class="icon-table"></i><%=pageTitle %></h3>
                 <div class="action pull-right">
-                    <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding:10px; margin-right:10px;"><i class=" icon-plus" style="margin-right:10px;"></i>Yeni Ekle</a>
+                    <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding: 10px; margin-right: 10px;"><i class=" icon-plus" style="margin-right: 10px;"></i>Yeni Ekle</a>
                 </div>
 
             </div>
@@ -111,9 +141,9 @@
                             <td>
                                 <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn" rel="tooltip" title="Delete"><i class="icon-remove"></i></a>
+                                <a class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                             </td>
-                            <td><%#DataBinder.Eval(Container.DataItem, "NAME").ToString().Trim()%> <%# DataBinder.Eval(Container.DataItem,"SURNAME") %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"NAME").ToString().Trim()%> <%# DataBinder.Eval(Container.DataItem,"SURNAME") %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"CLASS").ToString().Trim() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HOCA_AD_SOYAD").ToString().Trim() %> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"BOLGE_ADI").ToString().Trim() %></td>

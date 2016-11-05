@@ -14,18 +14,18 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
-    public partial class DersBilgisi : System.Web.UI.Page
+    public partial class DevamsizlikBilgisi : System.Web.UI.Page
     {
-        public string pageTitle = "Ders Bilgisi";
+        public string pageTitle = "Devamsızlık Bilgisi";
         public string standardErr = "İşlem Başarılı";
-        public string pageName = "DersBilgi-page";
+        public string pageName = "DevamsizlikBilgi-page";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 PageOperations PageOps = new PageOperations();
-                List<DERS_BILGI> lstScreenInfoObj = PageOps.RunQueryForPage<DERS_BILGI>(DbCommandList.GET_DERS_BILGI, null, null);
+                List<DevamsizlikBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_DEVAMSIZLIK_BILGI, null, null);
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
@@ -63,9 +63,9 @@ namespace KasifPortalApp.KasifPages.Tables
         {
             try
             {
-                DERS_BILGI dersBilgiObj = new DERS_BILGI();
-                dersBilgiObj.GUID = Convert.ToInt64(RowGuid);
-                DbOperations.Delete(dersBilgiObj);
+                MUFREDAT_TAKIP mufBilgiObj = new MUFREDAT_TAKIP();
+                mufBilgiObj.GUID = Convert.ToInt64(RowGuid);
+                DbOperations.Delete(mufBilgiObj);
                 return "success";
             }
             catch (Exception ex)

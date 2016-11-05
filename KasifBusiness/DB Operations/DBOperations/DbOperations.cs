@@ -88,7 +88,7 @@ namespace KasifBusiness.DB_Operations.DBOperations
             {
                 if (prop.Name == "STATUS")
                 {
-                    prop.SetValue(model, 0);
+                    prop.SetValue(model, Convert.ToInt16(0));
                 }
                 else if (prop.Name == "LASTUPDATED")
                 {

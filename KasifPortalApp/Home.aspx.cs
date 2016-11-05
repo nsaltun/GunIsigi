@@ -13,7 +13,7 @@ namespace KasifPortalApp
         public string ogrDevamsizlikUrl = "";
         public string hocaDevamsizlikUrl = "";
         public string hocaBilgiUrl = "";
-        public string MufredatBilgisiUrl= "";
+        public string MufredatTakipUrl= "";
         public string etkinlikUrl = "";
         public string dersBilgisiUrl = "";
         public string dersKonuBilgisiUrl= "";
@@ -27,7 +27,7 @@ namespace KasifPortalApp
             hocaBilgiUrl = Page.GetRouteUrl("HocaBilgi-page", null);
             ogrDevamsizlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
             hocaDevamsizlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
-            MufredatBilgisiUrl = Page.GetRouteUrl("OgrBilgi-page", null);
+            MufredatTakipUrl = Page.GetRouteUrl("MufredatTakip-page", null);
             etkinlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
             dersBilgisiUrl = Page.GetRouteUrl("DersBilgi-page", null);
             dersKonuBilgisiUrl = Page.GetRouteUrl("DersKonuBilgi-page", null);

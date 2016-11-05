@@ -194,6 +194,7 @@
     <EntitySetMapping Name="HAFTA_BILGI">
       <EntityTypeMapping TypeName="GN_KASIFModel.HAFTA_BILGI">
         <MappingFragment StoreEntitySet="HAFTA_BILGI">
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
           <ScalarProperty Name="HAFTA_ADI" ColumnName="HAFTA_ADI" />
           <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
         </MappingFragment>
@@ -202,6 +203,7 @@
     <EntitySetMapping Name="MUFREDAT_TAKIP">
       <EntityTypeMapping TypeName="GN_KASIFModel.MUFREDAT_TAKIP">
         <MappingFragment StoreEntitySet="MUFREDAT_TAKIP">
+          <ScalarProperty Name="HOCA_ID" ColumnName="HOCA_ID" />
           <ScalarProperty Name="TAKIP_DURUMU" ColumnName="TAKIP_DURUMU" />
           <ScalarProperty Name="DERS_KONU_ID" ColumnName="DERS_KONU_ID" />
           <ScalarProperty Name="SINIF" ColumnName="SINIF" />
@@ -247,6 +249,14 @@
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRM_TAKIP_DURUMU">
+      <EntityTypeMapping TypeName="GN_KASIFModel.PRM_TAKIP_DURUMU">
+        <MappingFragment StoreEntitySet="PRM_TAKIP_DURUMU">
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

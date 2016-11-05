@@ -49,6 +49,7 @@
     </Key>
     <Property Name="HAFTA_ID" Type="int" Nullable="false" />
     <Property Name="HAFTA_ADI" Type="nvarchar" MaxLength="50" />
+    <Property Name="TARIH" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="HOCA_BILGI">
     <Key>
@@ -101,6 +102,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" />
     <Property Name="LASTUPDATED" Type="bigint" />
+    <Property Name="HOCA_ID" Type="bigint" />
     <Property Name="HAFTA_ID" Type="int" />
     <Property Name="DERS_ID" Type="bigint" />
     <Property Name="SINIF" Type="smallint" />
@@ -145,6 +147,13 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="DURUM" Type="smallint" />
     <Property Name="DOGRU_SAYISI" Type="int" />
     <Property Name="YANLIS_SAYISI" Type="int" />
+  </EntityType>
+  <EntityType Name="PRM_TAKIP_DURUMU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="QUERY_TABLE">
     <Key>
@@ -267,6 +276,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     <EntitySet Name="MUFREDAT_TAKIP" EntityType="Self.MUFREDAT_TAKIP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OGR_BILGI" EntityType="Self.OGR_BILGI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OGR_TEST_REL" EntityType="Self.OGR_TEST_REL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRM_TAKIP_DURUMU" EntityType="Self.PRM_TAKIP_DURUMU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QUERY_TABLE" EntityType="Self.QUERY_TABLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TEST_BILGI" EntityType="Self.TEST_BILGI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MENU_TREE" EntityType="Self.MENU_TREE" store:Type="Tables" store:Schema="dbo">

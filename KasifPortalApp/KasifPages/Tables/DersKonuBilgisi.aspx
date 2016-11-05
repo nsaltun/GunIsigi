@@ -37,6 +37,30 @@
                 $("#dtTable").css("width", '100%');
             }
 
+            $('.delete').click(function (event) {
+                event.preventDefault();
+                var postData = {
+                    "RowGuid":this.getAttribute('dataId')
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/DersKonuBilgisi.aspx/DeleteCurrentRow") %>",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "JSON",
+                    success: function (result) {
+                        alert(result.d);
+                        window.location="<%=Page.GetRouteUrl(pageName,null)%>"
+                    },
+                    failure: function (result) {
+                        alert('error');
+                    },
+                    error: function (result) {
+                        alert('error');
+                    }
+                });
+            });
+
         });
 
     </script>
@@ -80,7 +104,7 @@
                             <td>
                                 <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn" rel="tooltip" title="Delete"><i class="icon-remove"></i></a>
+                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"DERS_KONU_GUID").ToString()%>"><i class="icon-remove"></i></a>
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"KONU").ToString() %> </td>

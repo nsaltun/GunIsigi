@@ -103,6 +103,9 @@
     <Compile Include="DB Operations\EntityObject\OGR_TEST_REL.cs">
       <DependentUpon>GN_KASIF.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB Operations\EntityObject\PRM_TAKIP_DURUMU.cs">
+      <DependentUpon>GN_KASIF.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB Operations\EntityObject\QUERY_TABLE.cs">
       <DependentUpon>GN_KASIF.tt</DependentUpon>
     </Compile>
@@ -128,6 +131,8 @@
       <DependentUpon>GN_KASIF.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\MenuTreeItemObject.cs" />
+    <Compile Include="Objects\ScreenObjects\DevamsizlikBilgiObj.cs" />
+    <Compile Include="Objects\ScreenObjects\MufredatTakipObj.cs" />
     <Compile Include="Objects\ScreenObjects\DersKonuBilgiObj.cs" />
     <Compile Include="Objects\ScreenObjects\HocaBilgiObj.cs" />
     <Compile Include="Objects\ScreenObjects\PageOgrBilgiObj.cs" />

@@ -1,10 +1,12 @@
 ﻿using KasifBusiness.Business.KasifPageOperations;
+using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
@@ -16,14 +18,14 @@ namespace KasifPortalApp.KasifPages.Tables
     {
         public string pageTitle = "Müfredat Takibi";
         public string standardErr = "İşlem Başarılı";
-        string pageName = "MufredatBilgi-page";
+        public string pageName = "MufredatTakip-page";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 PageOperations PageOps = new PageOperations();
-                List<MUFREDAT_TAKIP> lstScreenInfoObj = PageOps.RunQueryForPage<MUFREDAT_TAKIP>(DbCommandList.GET_DERS_BILGI, null, null);
+                List<MufredatTakipObj> lstScreenInfoObj = PageOps.RunQueryForPage<MufredatTakipObj>(DbCommandList.GET_MUFREDAT_BILGI, null, null);
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
@@ -54,6 +56,23 @@ namespace KasifPortalApp.KasifPages.Tables
         public string GenerateAddUrl()
         {
             return Page.GetRouteUrl(pageName + "-add", null);
+        }
+
+        [WebMethod()]
+        public static string DeleteCurrentRow(string RowGuid)
+        {
+            try
+            {
+                MUFREDAT_TAKIP mufBilgiObj = new MUFREDAT_TAKIP();
+                mufBilgiObj.GUID = Convert.ToInt64(RowGuid);
+                DbOperations.Delete(mufBilgiObj);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
         }
     }
 }

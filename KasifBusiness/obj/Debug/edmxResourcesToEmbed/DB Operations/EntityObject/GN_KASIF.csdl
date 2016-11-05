@@ -41,6 +41,7 @@
     <EntitySet Name="OGR_TEST_REL" EntityType="GN_KASIFModel.OGR_TEST_REL" />
     <EntitySet Name="TEST_BILGI" EntityType="GN_KASIFModel.TEST_BILGI" />
     <EntitySet Name="DERS_BILGI" EntityType="GN_KASIFModel.DERS_BILGI" />
+    <EntitySet Name="PRM_TAKIP_DURUMU" EntityType="GN_KASIFModel.PRM_TAKIP_DURUMU" />
   </EntityContainer>
   <EntityType Name="MENU_TREE">
     <Key>
@@ -215,6 +216,7 @@
     </Key>
     <Property Name="HAFTA_ID" Type="Int32" Nullable="false" />
     <Property Name="HAFTA_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TARIH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="MUFREDAT_TAKIP">
     <Key>
@@ -228,6 +230,7 @@
     <Property Name="SINIF" Type="Int16" />
     <Property Name="DERS_KONU_ID" Type="Int64" />
     <Property Name="TAKIP_DURUMU" Type="Int16" />
+    <Property Name="HOCA_ID" Type="Int64" />
   </EntityType>
   <EntityType Name="OGR_TEST_REL">
     <Key>
@@ -262,5 +265,12 @@
     <Property Name="LASTUPDATED" Type="Int64" />
     <Property Name="DERS_ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SINIF" Type="Int16" />
+  </EntityType>
+  <EntityType Name="PRM_TAKIP_DURUMU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

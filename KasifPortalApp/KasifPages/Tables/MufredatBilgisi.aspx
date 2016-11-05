@@ -5,6 +5,7 @@
 
         $(document).ready(function () {
             DtInit();
+
             function DtInit() {
                 var oTable = $('#dtTable').dataTable();
 
@@ -24,14 +25,53 @@
                             type: "text",
                         },
                         {
+                            type: "text",
+                        },
+                        {
                             type: "select",
                             bCaseSensitive: true,
                             values: ['5', '6', '7', '8']
-                        }
+                        },
+                        {
+                            type: "text",
+                        },
+                        {
+                            type: "text",
+                        },
+                        {
+                            type: "select",
+                            bCaseSensitive: true,
+                            values: ['Başlamadı','Devam Ediyor','Bitti']
+                        },
                     ]
                 });
                 $("#dtTable").css("width", '100%');
             }
+
+            $('.delete').click(function (event) {
+                event.preventDefault();
+                var postData = {
+                    "RowGuid":this.getAttribute('dataId')
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/MufredatBilgisi.aspx/DeleteCurrentRow") %>",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "JSON",
+                    success: function (result) {
+                        alert(result.d);
+                        window.location="<%=Page.GetRouteUrl(pageName,null)%>"
+                    },
+                    failure: function (result) {
+                        alert('error');
+                    },
+                    error: function (result) {
+                        alert('error');
+                    }
+                });
+
+            });
         });
 
     </script>
@@ -58,13 +98,21 @@
                             <thead>
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>
-                                    <th>Ders Adı</th>
+                                    <th>Hoca</th>
+                                    <th>Hafta No</th>
                                     <th>Sınıf</th>
+                                    <th>Ders Adı</th>
+                                    <th>Konu Adı</th>
+                                    <th>Takip Durumu</th>
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
-                                    <th>Ders Adı</th>
+                                    <th>Hoca</th>
+                                    <th>Hafta No</th>
                                     <th>Sınıf</th>
+                                    <th>Ders Adı</th>
+                                    <th>Konu Adı</th>
+                                    <th>Takip Durumu</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,10 +122,14 @@
                             <td>
                                 <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn" rel="tooltip" title="Delete"><i class="icon-remove"></i></a>
+                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"MUFREDAT_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                             </td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"HOCA_AD_SOYAD").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"KONU").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TAKIP_DURUMU").ToString() %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>

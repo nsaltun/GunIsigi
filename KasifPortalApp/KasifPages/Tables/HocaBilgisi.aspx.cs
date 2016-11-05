@@ -1,9 +1,12 @@
 ﻿using KasifBusiness.Business.KasifPageOperations;
+using KasifBusiness.DB_Operations.DBOperations;
+using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
@@ -15,7 +18,7 @@ namespace KasifPortalApp.KasifPages.Tables
     {
         public string pageTitle = "Hoca Bilgisi";
         public string standardErr = "İşlem Başarılı";
-        string pageName = "HocaBilgi-page";
+        public string pageName = "HocaBilgi-page";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,5 +57,23 @@ namespace KasifPortalApp.KasifPages.Tables
         {
             return Page.GetRouteUrl(pageName + "-add", null);
         }
+
+        [WebMethod()]
+        public static string DeleteCurrentRow(string RowGuid)
+        {
+            try
+            {
+                HOCA_BILGI hocaBilgiObj = new HOCA_BILGI();
+                hocaBilgiObj.GUID = Convert.ToInt64(RowGuid);
+                DbOperations.Delete(hocaBilgiObj);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
+
     }
 }
