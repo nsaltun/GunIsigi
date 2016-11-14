@@ -29,6 +29,17 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="GN_KASIFEntities-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=DESKTOP-CTULLHV%3bInitial Catalog=GN_KASIF%3bIntegrated Security=True%3bMultipleActiveResultSets=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\GN_KASIFEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +48,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="GN_KASIFEntities-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=DESKTOP-CTULLHV%3bInitial Catalog=GN_KASIF%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\GN_KASIFEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -747,14 +770,20 @@
     <Content Include="Controls\BreadCrumb.ascx" />
     <Content Include="Controls\MobileMenu.ascx" />
     <Content Include="Controls\TopMenu.ascx" />
+    <Content Include="DefaultWebForm.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="KasifPages\Forms\DersBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx" />
+    <Content Include="KasifPages\Forms\TestBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\MufredatTakipEkle.aspx" />
     <Content Include="KasifPages\Forms\DersKonuBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\HocaBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\OgrenciBilgisiEkle.aspx" />
     <Content Include="KasifPages\Tables\DevamsizlikBilgisi.aspx" />
+    <Content Include="KasifPages\Tables\TestCozmeDurumu.aspx" />
+    <Content Include="KasifPages\Tables\TestBilgisi.aspx" />
     <Content Include="KasifPages\Tables\MufredatBilgisi.aspx" />
     <Content Include="KasifPages\Tables\DersBilgisi.aspx" />
     <Content Include="KasifPages\Tables\DersKonuBilgisi.aspx" />
@@ -799,6 +828,13 @@
     <Compile Include="Controls\TopMenu.ascx.designer.cs">
       <DependentUpon>TopMenu.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DefaultWebForm.aspx.cs">
+      <DependentUpon>DefaultWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultWebForm.aspx.designer.cs">
+      <DependentUpon>DefaultWebForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -815,6 +851,27 @@
     </Compile>
     <Compile Include="KasifPages\Forms\DersBilgisiEkle.aspx.designer.cs">
       <DependentUpon>DersBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx.cs">
+      <DependentUpon>DevamsizlikBilgisiEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx.designer.cs">
+      <DependentUpon>DevamsizlikBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx.cs">
+      <DependentUpon>TestCozmeDurumuEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx.designer.cs">
+      <DependentUpon>TestCozmeDurumuEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestBilgisiEkle.aspx.cs">
+      <DependentUpon>TestBilgisiEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestBilgisiEkle.aspx.designer.cs">
+      <DependentUpon>TestBilgisiEkle.aspx</DependentUpon>
     </Compile>
     <Compile Include="KasifPages\Forms\MufredatTakipEkle.aspx.cs">
       <DependentUpon>MufredatTakipEkle.aspx</DependentUpon>
@@ -850,6 +907,20 @@
     </Compile>
     <Compile Include="KasifPages\Tables\DevamsizlikBilgisi.aspx.designer.cs">
       <DependentUpon>DevamsizlikBilgisi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\TestCozmeDurumu.aspx.cs">
+      <DependentUpon>TestCozmeDurumu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\TestCozmeDurumu.aspx.designer.cs">
+      <DependentUpon>TestCozmeDurumu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Tables\TestBilgisi.aspx.cs">
+      <DependentUpon>TestBilgisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Tables\TestBilgisi.aspx.designer.cs">
+      <DependentUpon>TestBilgisi.aspx</DependentUpon>
     </Compile>
     <Compile Include="KasifPages\Tables\MufredatBilgisi.aspx.cs">
       <DependentUpon>MufredatBilgisi.aspx</DependentUpon>
@@ -937,6 +1008,8 @@
     <Content Include="Common\Template\js\plugins\elfinder\php\elFinderVolumeLocalFileSystem.class.php" />
     <Content Include="Common\Template\js\plugins\elfinder\php\elFinderVolumeMySQL.class.php" />
     <Content Include="Common\Template\js\plugins\elfinder\php\mime.types" />
+    <None Include="Properties\PublishProfiles\kasifPortalPublished.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

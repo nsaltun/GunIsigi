@@ -27,7 +27,7 @@
                         {
                             type: "select",
                             bCaseSensitive: true,
-                            values: ['Öğrenci','Hoca']
+                            values: ['Ögrenci','Hoca']
                         },
                         {
                             type: "text",
@@ -39,6 +39,9 @@
                         },
                         {
                             type: "text",
+                        },
+                        {
+                            type: "text"
                         },
                         {
                             type: "text"
@@ -102,6 +105,7 @@
                                     <th>Tip</th>
                                     <th>Ad Soyad</th>
                                     <th>Sınıf</th>
+                                    <th>Mahalle</th>
                                     <th>Devam Durumu</th>
                                     <th>Devamsızlık Sebebi</th>
                                 </tr>
@@ -111,6 +115,7 @@
                                     <th>Tip</th>
                                     <th>Ad Soyad</th>
                                     <th>Sınıf</th>
+                                    <th>Mahalle</th>
                                     <th>Devam Durumu</th>
                                     <th>Devamsızlık Sebebi</th>
                                 </tr>
@@ -126,8 +131,9 @@
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TIP").ToString()%> </td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"AD_SOYAD").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"KISI_AD_SOYAD").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"BOLGE_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"DEVAM_DURUMU").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SEBEP").ToString() %></td>
                         </tr>

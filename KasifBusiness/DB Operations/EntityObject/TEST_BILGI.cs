@@ -20,5 +20,7 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public Nullable<int> TEST_NO { get; set; }
         public Nullable<long> DERS_ID { get; set; }
         public Nullable<long> DERS_KONU_ID { get; set; }
+        public string TEST_ADI { get; set; }
+        public Nullable<long> HAFTA_ID { get; set; }
     }
 }

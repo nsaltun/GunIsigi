@@ -63,9 +63,9 @@ namespace KasifPortalApp.KasifPages.Tables
         {
             try
             {
-                MUFREDAT_TAKIP mufBilgiObj = new MUFREDAT_TAKIP();
-                mufBilgiObj.GUID = Convert.ToInt64(RowGuid);
-                DbOperations.Delete(mufBilgiObj);
+                DEVAMSIZLIK_BILGI devamsizlikBilgiObj = new DEVAMSIZLIK_BILGI();
+                devamsizlikBilgiObj.GUID = Convert.ToInt64(RowGuid);
+                DbOperations.Delete(devamsizlikBilgiObj);
                 return "success";
             }
             catch (Exception ex)

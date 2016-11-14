@@ -1,0 +1,176 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="TestCozmeDurumuEkle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.TestCozmeDurumuEkle" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        $(document).ready(function () {
+            var btnSubmit = document.getElementById("<%=btnSubmit.ClientID%>");
+            var slcSinif = document.getElementById("<%=slcSinif.ClientID%>");
+            var slcDers = document.getElementById("<%=slcDersAdi.ClientID%>");
+          
+            $(btnSubmit).click(function (event) {
+                event.preventDefault();
+                var postData = SetParameters();
+                CallAjaxOnSubmit(postData);
+            });
+          
+            $(slcSinif).change(function () {
+                var lstDers = <%=JsSerialize(lstDersBilgi) %>;
+                var lstKonu = <%=JsSerialize(lstKonuBilgi) %>;
+                var slcKonu = document.getElementById('<%=slcKonuAdi.ClientID%>');
+                slcDers.options.length=0;
+                for(var i=0;i<lstDers.length;i++)
+                {
+                    if(lstDers[i].SINIF==slcSinif.value)
+                    {
+                        var opt = document.createElement('option');
+                        opt.text = lstDers[i].DERS_ADI;
+                        opt.value = lstDers[i].GUID;
+                        slcDers.appendChild(opt);
+                    }
+                }
+                slcKonu.options.length=0;
+                for(var i=0;i<lstKonu.length;i++)
+                {
+                    if(lstKonu[i].DERS_GUID==slcDers.value)
+                    {
+                        var opt = document.createElement('option');
+                        opt.text = lstKonu[i].KONU;
+                        opt.value = lstKonu[i].DERS_KONU_GUID;
+                        slcKonu.appendChild(opt);
+                    }
+                }
+
+
+            });
+            $(slcDers).change(function () {
+                var lstDers = <%=JsSerialize(lstDersBilgi) %>;
+                var lstKonu = <%=JsSerialize(lstKonuBilgi) %>;
+                var slcKonu = document.getElementById('<%=slcKonuAdi.ClientID%>');
+                slcKonu.options.length=0;
+                for(var i=0;i<lstKonu.length;i++)
+                {
+                    if(lstKonu[i].DERS_GUID==slcDers.value)
+                    {
+                        var opt = document.createElement('option');
+                        opt.text = lstKonu[i].KONU;
+                        opt.value = lstKonu[i].DERS_KONU_GUID;
+                        slcKonu.appendChild(opt);
+                    }
+                }
+            });
+
+            function SetParameters()
+            {
+                var postData = {
+                    "TestAdi":document.getElementById('<%=txtTestAdi.ClientID%>').value,
+                    "TestNo":document.getElementById('<%=txtTestNo.ClientID%>').value,
+                    "DersId":document.getElementById('<%=slcDersAdi.ClientID%>').value,
+                    "KonuId": document.getElementById('<%=slcKonuAdi.ClientID%>').value,
+                    "HaftaId": document.getElementById('<%=slcHafta.ClientID%>').value,
+                };
+                return postData;
+            }
+
+            function CallAjaxOnSubmit(postData)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Forms/TestCozmeDurumuEkle.aspx/ProcessOperation") %>",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "JSON",
+                    success: function (result) {
+                        if(result.d[0] == 'success')
+                            showSuccessModal( '<%=pageTitle%>',result.d[1], '<%= Page.GetRouteUrl(pageName, null) %>');
+                        else
+                            showErrorModal('<%=pageTitle%> - Hata',result.d[1]);
+                        e.preventDefault();
+                    },
+                    failure: function (response) {
+                        showErrorModal('<%=pageTitle%> - Hata','Beklenmeyen bir hata oluştu');
+                        e.preventDefault();
+                    },
+                    error: function (response) {
+                        showErrorModal('<%=pageTitle%> - Hata','Beklenmeyen bir hata oluştu');
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+
+            
+
+
+    </script>
+
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphTitle" runat="server">
+    <h3>Test Çözme Durumu Ekle</h3>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
+    <div class="span12">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Test Çözme Durumu Ekle</h3>
+            </div>
+            <div class="box-content nopadding">
+                <form id="form1" action="#" method="POST" class='form-horizontal form-column form-bordered' runat="server">
+                    
+                    <div class="span6">
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Sınıf</label>
+                            <div class="controls">
+                                <select name="select" id="slcSinif" class="input-large" runat="server">
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Ders Adı</label>
+                            <div class="controls">
+                                <select name="select" id="slcDersAdi" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Konu Adı</label>
+                            <div class="controls">
+                                <select name="select" id="slcKonuAdi" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="control-group">
+                            <label for="textfield" class="control-label ">Test No</label>
+                            <div class="controls">
+                                <input type="text" name="textfield" id="txtTestNo" class="input-large" runat="server"></input>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="textfield" class="control-label ">Test Adı</label>
+                            <div class="controls">
+                                <input type="text" name="textfield" id="txtTestAdi" class="input-large" runat="server"></input>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="select" class="control-label ">Hafta</label>
+                            <div class="controls">
+                                <select name="select" id="slcHafta" class="input-large" runat="server"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span12">
+                        <div class="form-actions">
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Save changes</button>
+                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</asp:Content>

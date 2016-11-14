@@ -1,0 +1,9 @@
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\KasifBusiness.dll.config
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\KasifBusiness.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\KasifBusiness.pdb
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\EntityFramework.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\EntityFramework.SqlServer.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\EntityFramework.xml
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\EntityFramework.SqlServer.xml
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Release\KasifBusiness.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Release\KasifBusiness.pdb

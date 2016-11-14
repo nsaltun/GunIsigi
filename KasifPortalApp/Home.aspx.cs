@@ -10,8 +10,7 @@ namespace KasifPortalApp
     public partial class Home : System.Web.UI.Page
     {
         public string ogrBilgiUrl = "";
-        public string ogrDevamsizlikUrl = "";
-        public string hocaDevamsizlikUrl = "";
+        public string DevamsizlikUrl = "";
         public string hocaBilgiUrl = "";
         public string MufredatTakipUrl= "";
         public string etkinlikUrl = "";
@@ -25,8 +24,7 @@ namespace KasifPortalApp
         {
             ogrBilgiUrl = Page.GetRouteUrl("OgrBilgi-page", null);
             hocaBilgiUrl = Page.GetRouteUrl("HocaBilgi-page", null);
-            ogrDevamsizlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
-            hocaDevamsizlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
+            DevamsizlikUrl = Page.GetRouteUrl("DevamsizlikBilgi-page", null);
             MufredatTakipUrl = Page.GetRouteUrl("MufredatTakip-page", null);
             etkinlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
             dersBilgisiUrl = Page.GetRouteUrl("DersBilgi-page", null);

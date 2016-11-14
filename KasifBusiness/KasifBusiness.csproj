@@ -131,6 +131,9 @@
       <DependentUpon>GN_KASIF.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\MenuTreeItemObject.cs" />
+    <Compile Include="Objects\ScreenObjects\TestCozmeDurumuObj.cs" />
+    <Compile Include="Objects\ScreenObjects\TestBilgiObj.cs" />
+    <Compile Include="Objects\ScreenObjects\HocaAndOgrenciObj.cs" />
     <Compile Include="Objects\ScreenObjects\DevamsizlikBilgiObj.cs" />
     <Compile Include="Objects\ScreenObjects\MufredatTakipObj.cs" />
     <Compile Include="Objects\ScreenObjects\DersKonuBilgiObj.cs" />

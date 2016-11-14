@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="KasifPortal" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\_PROJECTS\\GUNISIGI\\GunIsigi\\KasifPortalApp\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\_PROJECTS\\GUNISIGI\\GunIsigi\\KasifPortalApp\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="GN_KASIFEntities-Web.config Connection String" description="" value="metadata=&quot;res://*/DB Operations.EntityObject.GN_KASIF.csdl|res://*/DB Operations.EntityObject.GN_KASIF.ssdl|res://*/DB Operations.EntityObject.GN_KASIF.msl&quot;;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-CTULLHV;initial catalog=GN_KASIF;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\_PROJECTS\\GUNISIGI\\GunIsigi\\KasifPortalApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GN_KASIFEntities']/@connectionString" />
+  </parameter>
+</parameters>

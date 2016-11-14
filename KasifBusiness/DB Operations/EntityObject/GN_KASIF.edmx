@@ -178,9 +178,11 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
           <Property Name="GUID" Type="bigint" Nullable="false" />
           <Property Name="STATUS" Type="smallint" />
           <Property Name="LASTUPDATED" Type="bigint" />
+          <Property Name="TEST_ADI" Type="nvarchar" MaxLength="100" />
           <Property Name="TEST_NO" Type="int" />
           <Property Name="DERS_ID" Type="bigint" />
           <Property Name="DERS_KONU_ID" Type="bigint" />
+          <Property Name="HAFTA_ID" Type="bigint" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -620,6 +622,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
           <Property Name="TEST_NO" Type="Int32" />
           <Property Name="DERS_ID" Type="Int64" />
           <Property Name="DERS_KONU_ID" Type="Int64" />
+          <Property Name="TEST_ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HAFTA_ID" Type="Int64" />
         </EntityType>
         <EntityType Name="DERS_BILGI">
           <Key>
@@ -875,6 +879,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
           <EntitySetMapping Name="TEST_BILGI">
             <EntityTypeMapping TypeName="GN_KASIFModel.TEST_BILGI">
               <MappingFragment StoreEntitySet="TEST_BILGI">
+                <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
+                <ScalarProperty Name="TEST_ADI" ColumnName="TEST_ADI" />
                 <ScalarProperty Name="DERS_KONU_ID" ColumnName="DERS_KONU_ID" />
                 <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
                 <ScalarProperty Name="TEST_NO" ColumnName="TEST_NO" />

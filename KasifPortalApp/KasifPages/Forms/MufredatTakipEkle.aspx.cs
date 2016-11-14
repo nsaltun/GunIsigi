@@ -58,10 +58,19 @@ namespace KasifPortalApp.KasifPages.Forms
                 //}
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
-                RaisePopUp(standardErr, ResultStatus.Error);
+                string errMsg = ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    errMsg += " - innerEx : " + ex.InnerException.Message;
+                }
+
+                RaisePopUp(errMsg, ResultStatus.Error);
+
+                throw ex;
             }
         }
 
@@ -237,6 +246,10 @@ namespace KasifPortalApp.KasifPages.Forms
             catch (Exception ex)
             {
                 errMsg = ex.Message;
+                if (ex.InnerException != null)
+                {
+                    errMsg += " - inner ex : " + ex.InnerException.Message;
+                }
                 return false;
             }
         }
@@ -247,7 +260,7 @@ namespace KasifPortalApp.KasifPages.Forms
             System.Web.HttpContext context = System.Web.HttpContext.Current;
             //var konuAdi = (context.Request["KonuAdi"] != null && context.Request["KonuAdi"] != "") ? Convert.ToString(context.Request["KonuAdi"]) : "";
             //var dersId = (context.Request["DersId"] != null && context.Request["DersId"] != "") ? Convert.ToString(context.Request["DersId"]) : "";
-            string[] postData = new string[] { Hoca,Hafta, Sinif, DersId, KonuAdi, TakipDurumu };
+            string[] postData = new string[] { Hoca, Hafta, Sinif, DersId, KonuAdi, TakipDurumu };
             string errorMessage = "";
             bool bControl = ProcessRequest(postData, ref errorMessage);
             if (bControl)
@@ -274,7 +287,7 @@ namespace KasifPortalApp.KasifPages.Forms
                 return false;
             }
         }
-        
+
         #region Utilities 
         private void RaisePopUp(string msg, ResultStatus resultStatus)
         {

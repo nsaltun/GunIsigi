@@ -105,6 +105,31 @@ namespace KasifPortalApp
             "DevamsizlikBilgi/edit/{param}",
             "~/KasifPages/Forms/DevamsizlikBilgisiGuncelle.aspx");
 
+            routes.MapPageRoute(
+           "TestBilgi-page",
+           "TestBilgi",
+           "~/KasifPages/Tables/TestBilgisi.aspx");
+            routes.MapPageRoute(
+            "TestBilgi-page-add",
+            "TestBilgi/add",
+            "~/KasifPages/Forms/TestBilgisiEkle.aspx");
+            routes.MapPageRoute(
+            "TestBilgi-page-edit",
+            "TestBilgi/edit/{param}",
+            "~/KasifPages/Forms/TestBilgisiGuncelle.aspx");
+
+            routes.MapPageRoute(
+           "TestCozmeDurumu-page",
+           "TestCozmeDurumu",
+           "~/KasifPages/Tables/TestCozmeDurumu.aspx");
+            routes.MapPageRoute(
+            "TestCozmeDurumu-page-add",
+            "TestCozmeDurumu/add",
+            "~/KasifPages/Forms/TestCozmeDurumuEkle.aspx");
+            routes.MapPageRoute(
+            "TestCozmeDurumu-page-edit",
+            "TestCozmeDurumu/edit/{param}",
+            "~/KasifPages/Forms/TestCozmeDurumuGuncelle.aspx");
 
         }
 

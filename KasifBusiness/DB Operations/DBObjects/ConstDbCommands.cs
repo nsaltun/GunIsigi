@@ -36,7 +36,10 @@ namespace KasifBusiness.DB_Operations.DBObjects
             GET_HAFTA_BILGI,
             PRM_TAKIP_DURUMU,
             PRM_HOCA,
-            GET_DEVAMSIZLIK_BILGI
+            GET_DEVAMSIZLIK_BILGI,
+            GET_HOCA_AND_OGRENCI,
+            GET_TEST_BILGI,
+            GET_OGR_TEST_REL
         }
 
 
