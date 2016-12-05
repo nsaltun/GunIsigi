@@ -27,7 +27,7 @@
                         {
                             type: "select",
                             bCaseSensitive: true,
-                            values: ['Öğrenci','Hoca']
+                            values: ['Ögrenci','Hoca']
                         },
                         {
                             type: "text",

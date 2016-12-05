@@ -130,7 +130,7 @@ $(document).ready(function() {
 			},
 			'sDom': "lfrtip",
 			'aoColumnDefs' : [
-			{ 'bSortable': false, 'aTargets': [0, 5] }
+			{ 'bSortable': false, 'aTargets': [0, 9] }
 			],
 			'oColVis': {
 				"buttonText": "Change columns <i class='icon-angle-down'></i>"

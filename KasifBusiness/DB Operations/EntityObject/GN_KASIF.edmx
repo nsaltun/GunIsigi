@@ -152,6 +152,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
           <Property Name="DURUM" Type="smallint" />
           <Property Name="DOGRU_SAYISI" Type="int" />
           <Property Name="YANLIS_SAYISI" Type="int" />
+          <Property Name="HAFTA_ID" Type="bigint" />
         </EntityType>
         <EntityType Name="PRM_TAKIP_DURUMU">
           <Key>
@@ -611,6 +612,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
           <Property Name="DURUM" Type="Int16" />
           <Property Name="DOGRU_SAYISI" Type="Int32" />
           <Property Name="YANLIS_SAYISI" Type="Int32" />
+          <Property Name="HAFTA_ID" Type="Int64" />
         </EntityType>
         <EntityType Name="TEST_BILGI">
           <Key>
@@ -865,6 +867,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
           <EntitySetMapping Name="OGR_TEST_REL">
             <EntityTypeMapping TypeName="GN_KASIFModel.OGR_TEST_REL">
               <MappingFragment StoreEntitySet="OGR_TEST_REL">
+                <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
                 <ScalarProperty Name="YANLIS_SAYISI" ColumnName="YANLIS_SAYISI" />
                 <ScalarProperty Name="DOGRU_SAYISI" ColumnName="DOGRU_SAYISI" />
                 <ScalarProperty Name="DURUM" ColumnName="DURUM" />

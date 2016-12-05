@@ -29,8 +29,8 @@ namespace KasifPortalApp
             etkinlikUrl = Page.GetRouteUrl("OgrBilgi-page", null);
             dersBilgisiUrl = Page.GetRouteUrl("DersBilgi-page", null);
             dersKonuBilgisiUrl = Page.GetRouteUrl("DersKonuBilgi-page", null);
-            testBilgisiUrl = Page.GetRouteUrl("OgrBilgi-page", null);
-            testTakibiUrl = Page.GetRouteUrl("OgrBilgi-page", null);
+            testBilgisiUrl = Page.GetRouteUrl("TestBilgi-page", null);
+            testTakibiUrl = Page.GetRouteUrl("TestCozmeDurumu-page", null);
 
 
         }

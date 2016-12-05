@@ -25,7 +25,7 @@ namespace KasifPortalApp.KasifPages.Tables
             try
             {
                 PageOperations PageOps = new PageOperations();
-                List<TestCozmeDurumuObj> lstScreenInfoObj = PageOps.RunQueryForPage<TestCozmeDurumuObj>(DbCommandList.GET_TEST_BILGI, null, null);
+                List<TestBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, null, null);
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();

@@ -50,10 +50,11 @@ namespace KasifPortalApp.KasifPages.Forms
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(standardErr, ResultStatus.Error);
+                throw ex;
             }
         }
         private bool LoadParameters()
@@ -126,13 +127,19 @@ namespace KasifPortalApp.KasifPages.Forms
             {
                 OGR_BILGI OgrBilgiObj = new OGR_BILGI();
                 OgrBilgiObj.BIRT_PLACE = txtDogumYeri.Value;
-                OgrBilgiObj.CLASS = Convert.ToInt16(slcSinif.Value);
-                OgrBilgiObj.DATE_OF_BIRTH = Convert.ToDateTime(txtDogumTarihi.Value).ToShortDateString();
+                if (!String.IsNullOrEmpty(slcSinif.Value))
+                {
+                    OgrBilgiObj.CLASS = Convert.ToInt16(slcSinif.Value);
+                }
+                OgrBilgiObj.DATE_OF_BIRTH = txtDogumTarihi.Value;
                 OgrBilgiObj.BOLGE_ID = Convert.ToInt64(slcMahalle.Value);
                 OgrBilgiObj.NAME = txtOgrAdi.Value;
                 OgrBilgiObj.OGR_EMAIL = txtEmail.Value;
                 OgrBilgiObj.OGR_ID = 100;
-                OgrBilgiObj.OGR_NO = Convert.ToInt32(txtOkulNo.Value);
+                if (!String.IsNullOrEmpty(txtOkulNo.Value))
+                {
+                    OgrBilgiObj.OGR_NO = Convert.ToInt32(txtOkulNo.Value);
+                }
                 OgrBilgiObj.PARENT_EMAIL = txtVeliEmail.Value;
                 OgrBilgiObj.PARENT_NAME = txtVeliAdi.Value;
                 OgrBilgiObj.PARENT_PHONE = txtVeliTel.Value;

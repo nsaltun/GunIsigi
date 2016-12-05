@@ -22,5 +22,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public Nullable<short> DURUM { get; set; }
         public Nullable<int> DOGRU_SAYISI { get; set; }
         public Nullable<int> YANLIS_SAYISI { get; set; }
+        public Nullable<long> HAFTA_ID { get; set; }
     }
 }

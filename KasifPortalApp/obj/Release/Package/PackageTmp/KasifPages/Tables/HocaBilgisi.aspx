@@ -46,32 +46,10 @@
                 $("#dtTable").css("width", '100%');
             }
 
-            $('.delete').click(function (event) {
-                event.preventDefault();
-                var postData = {
-                    "RowGuid":this.getAttribute('dataId')
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/HocaBilgisi.aspx/DeleteCurrentRow") %>",
-                    data: JSON.stringify(postData),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "JSON",
-                    success: function (result) {
-                        alert(result.d);
-                        window.location="<%=Page.GetRouteUrl(pageName,null)%>"
-                    },
-                    failure: function (result) {
-                        alert('error');
-                    },
-                    error: function (result) {
-                        alert('error');
-                    }
-                });
-
-            });
 
         });
+
+        
 
     </script>
 
@@ -139,6 +117,35 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        $('.delete').click(function (event) {
+            event.preventDefault();
+            var postData = {
+                "RowGuid":this.getAttribute('dataId')
+            };
+            $.ajax({
+                type: "POST",
+                url: "<%= ResolveClientUrl("~/KasifPages/Tables/HocaBilgisi.aspx/DeleteCurrentRow") %>",
+                data: JSON.stringify(postData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "JSON",
+                success: function (result) {
+                    alert(result.d);
+                    window.location="<%=Page.GetRouteUrl(pageName,null)%>"
+                },
+                failure: function (result) {
+                    alert('error');
+                },
+                error: function (result) {
+                    alert('error');
+                }
+            });
+
+        });
+
+    </script>
 
 
 </asp:Content>

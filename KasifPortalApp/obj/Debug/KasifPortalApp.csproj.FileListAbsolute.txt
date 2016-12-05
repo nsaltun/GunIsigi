@@ -8,3 +8,13 @@ C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalAp
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\EntityFramework.dll
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\KasifBusiness.pdb
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifPortalApp\bin\EntityFramework.xml
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\KasifPortalApp.dll.config
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\KasifPortalApp.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\KasifPortalApp.pdb
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\KasifBusiness.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\EntityFramework.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\KasifBusiness.pdb
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\bin\EntityFramework.xml
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\obj\Debug\KasifPortalApp.csprojResolveAssemblyReference.cache
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\obj\Debug\KasifPortalApp.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifPortalApp\obj\Debug\KasifPortalApp.pdb

@@ -8,3 +8,12 @@ C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.xml
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Enes\Documents\Visual Studio 2013\Projects\KasifPortalApp\KasifBusiness\obj\Debug\KasifBusiness.csprojResolveAssemblyReference.cache
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\KasifBusiness.dll.config
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\KasifBusiness.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\KasifBusiness.pdb
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.SqlServer.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.xml
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Debug\EntityFramework.SqlServer.xml
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.dll
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Debug\KasifBusiness.pdb

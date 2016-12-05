@@ -37,10 +37,10 @@
                         <a href="<%=dersKonuBilgisiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Ders Konu Bilgisi</span></a>
                     </li>
                     <li class="red">
-                        <a href="#"><span><i class="icon-signout"></i></span><span class="name">Test Takibi</span></a>
+                        <a href="<%=testTakibiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Test Takibi</span></a>
                     </li>
                     <li class="orange">
-                        <a href="#"><span><i class="icon-signout"></i></span><span class="name">Test Bilgisi</span></a>
+                        <a href="<%=testBilgisiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Test Bilgisi</span></a>
                     </li>
                     <li class="teal long">
                         <a href="#"><span><i class="icon-cloud-upload"></i></span><span class="name">Etkinlikler</span></a>

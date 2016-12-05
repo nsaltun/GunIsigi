@@ -13,7 +13,9 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string HAFTA { get; set; }
         public string TEST_ADI { get; set; }
         public string DERS_ADI { get; set; }
+        public long DERS_ID { get; set; }
         public Nullable<short> SINIF { get; set; }
         public string KONU { get; set; }
+        public long KONU_ID { get; set; }
     }
 }

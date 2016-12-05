@@ -39,7 +39,8 @@ namespace KasifBusiness.DB_Operations.DBObjects
             GET_DEVAMSIZLIK_BILGI,
             GET_HOCA_AND_OGRENCI,
             GET_TEST_BILGI,
-            GET_OGR_TEST_REL
+            GET_OGR_TEST_REL,
+            PRM_OGR
         }
 
 

@@ -19,6 +19,7 @@ namespace KasifPortalApp.KasifPages.Forms
     {
         public string pageTitle = "Hoca Bilgisi Ekle";
         public string standardErr = "İşlem Başarılı";
+        public string pageName = "HocaBilgi-page";
 
         bool isOk = true;
         string exErr = "";
@@ -121,7 +122,7 @@ namespace KasifPortalApp.KasifPages.Forms
         {
             if (resultStatus == ResultStatus.Success)
             {
-                String script = "<script>$(document).ready(function () {showSuccessModal('" + pageTitle + "','" + msg + "','" + Page.GetRouteUrl("OgrBilgi-page", null) + "');});</script>";
+                String script = "<script>$(document).ready(function () {showSuccessModal('" + pageTitle + "','" + msg + "','" + Page.GetRouteUrl(pageName, null) + "');});</script>";
                 ClientScript.RegisterStartupScript(typeof(Page), "ProcessError", script);
             }
             else
@@ -134,7 +135,7 @@ namespace KasifPortalApp.KasifPages.Forms
 
         public string GenerateListUrl()
         {
-            return Page.GetRouteUrl("HocaBilgi-page", null);
+            return Page.GetRouteUrl(pageName, null);
         }
 
 

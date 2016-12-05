@@ -49,22 +49,49 @@ namespace KasifPortalApp.KasifPages.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlSelect slcKonuAdi;
         
         /// <summary>
-        /// txtTestNo control.
+        /// slcTestAdi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTestNo;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcTestAdi;
         
         /// <summary>
-        /// txtTestAdi control.
+        /// slcCozmeDurumu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTestAdi;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcCozmeDurumu;
+        
+        /// <summary>
+        /// slcOgr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcOgr;
+        
+        /// <summary>
+        /// txtDogruSayisi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDogruSayisi;
+        
+        /// <summary>
+        /// txtYanlisSayisi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtYanlisSayisi;
         
         /// <summary>
         /// slcHafta control.

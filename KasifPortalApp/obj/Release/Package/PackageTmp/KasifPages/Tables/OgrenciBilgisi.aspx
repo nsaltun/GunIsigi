@@ -5,62 +5,6 @@
 
         $(document).ready(function () {
             DtInit();
-
-
-
-
-
-
-            function DtInit() {
-                var oTable = $('#dtTable').dataTable();
-
-                $('.dataTables_filter input').attr("placeholder", "Ara...");
-                $(".dataTables_length select").wrap("<div class='input-mini'></div>").chosen({
-                    disable_search_threshold: 9999999
-                });
-                $.datepicker.setDefaults({
-                    dateFormat: "dd-mm-yy"
-                });
-                oTable.columnFilter({
-                    "sPlaceHolder": "head:after",
-                    'sRangeFormat': "{from}{to}",
-                    'aoColumns': [
-                        null,
-                        {
-                            type: "text",
-                        },
-                        {
-                            type: "select",
-                            bCaseSensitive: true,
-                            values: ['5', '6', '7', '8']
-                        },
-                        {
-                            type: "text",
-                        },
-
-                        {
-                            type: "text",
-                        },
-                        {
-                            type: "text",
-                        },
-                        {
-                            type: "text",
-                        },
-                        {
-                            type: "text",
-                        },
-                        {
-                            type: "text",
-                        },
-                        {
-                            type: "text",
-                        }
-                    ]
-                });
-                $("#dtTable").css("width", '100%');
-            }
-
             $('.delete').click(function (event) {
                 event.preventDefault();
                 var postData = {
@@ -87,6 +31,59 @@
             });
         });
 
+        function DtInit() {
+            var oTable = $('#dtTable').dataTable();
+
+            $('.dataTables_filter input').attr("placeholder", "Ara...");
+            $(".dataTables_length select").wrap("<div class='input-mini'></div>").chosen({
+                disable_search_threshold: 9999999
+            });
+            $.datepicker.setDefaults({
+                dateFormat: "dd-mm-yy"
+            });
+            oTable.columnFilter({
+                "sPlaceHolder": "head:after",
+                'sRangeFormat': "{from}{to}",
+                'aoColumns': [
+                    null,
+                    {
+                        type: "text",
+                    },
+                    {
+                        type: "select",
+                        bCaseSensitive: true,
+                        values: ['5', '6', '7', '8'],
+                        sWidth: "30%"
+                    },
+                    {
+                        type: "text",
+                    },
+
+                    {
+                        type: "text",
+                    },
+                    {
+                        type: "text",
+                    },
+                    {
+                        type: "text",
+                    },
+                    {
+                        type: "text",
+                    },
+                    {
+                        type: "text",
+                    },
+                    {
+                        type: "text",
+                    },
+                    null
+                ]
+            });
+            $(".dataTable").css("width", '100%');
+        }
+
+
     </script>
 
 </asp:Content>
@@ -107,7 +104,7 @@
             <div class="box-content nopadding">
                 <asp:Repeater ID="tblRepeater" runat="server">
                     <HeaderTemplate>
-                        <table id="dtTable" class="dataTable-scroll-x table table-hover table-nomargin table-bordered dataTable">
+                        <table id="dtTable" class="dataTable-scroll-x table table-hover table-nomargin table-bordered usertable dataTable">
                             <thead>
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>

@@ -9,7 +9,7 @@ namespace KasifBusiness.DB_Operations.DBOperations
 {
     public class OOgrBilgi
     {
-        OGR_BILGI ogrBilgiObj; 
+        OGR_BILGI ogrBilgiObj;
         public OOgrBilgi(OGR_BILGI ogrBilgiObj)
         {
             this.ogrBilgiObj = ogrBilgiObj;

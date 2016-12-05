@@ -23,6 +23,8 @@ namespace KasifPortalApp.KasifPages.Forms
         public string standardErr = "İşlem Başarılı";
         public List<DERS_BILGI> lstDersBilgi;
         public List<DersKonuBilgiObj> lstKonuBilgi;
+        public List<TestBilgiObj> lstTestBilgi;
+        public List<OGR_BILGI> lstOgrBilgi;
         public string pageName = "TestCozmeDurumu-page";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -147,6 +149,67 @@ namespace KasifPortalApp.KasifPages.Forms
             }
             #endregion
 
+            #region Test Adı
+            lstDataSource = null;
+            PageOps = null;
+            PageOps = new PageOperations();
+            lstDataSource = new List<NameValue>();
+            lstTestBilgi = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, null, null);
+            foreach (var item in lstTestBilgi)
+            {
+                lstDataSource.Add(new NameValue
+                {
+                    Name = item.TEST_NO + ". " + item.TEST_ADI,
+                    Value = item.TEST_GUID.ToString()
+                });
+            }
+
+            if (lstDataSource != null && lstDataSource.Count > 0)
+            {
+                slcTestAdi.DataSource = lstDataSource.ToArray();
+                slcTestAdi.DataTextField = "Name";
+                slcTestAdi.DataValueField = "Value";
+                slcTestAdi.DataBind();
+            }
+            else
+            {
+                slcTestAdi.DataSource = null;
+                slcTestAdi.DataBind();
+            }
+            #endregion
+
+            #region Fill Ogrenci
+            lstDataSource = null;
+            PageOps = null;
+            PageOps = new PageOperations();
+            lstDataSource = new List<NameValue>();
+            lstOgrBilgi = PageOps.RunQueryForPage<OGR_BILGI>(DbCommandList.PRM_OGR, null, null);
+            List<OGR_BILGI> lstCurrentOgrBilgiObj = lstOgrBilgi.Where<OGR_BILGI>(x => x.CLASS.ToString() == slcSinif.Value).ToList();
+
+
+            foreach (var item in lstCurrentOgrBilgiObj)
+            {
+                lstDataSource.Add(new NameValue
+                {
+                    Name = item.NAME + " " + item.SURNAME,
+                    Value = item.GUID.ToString()
+                });
+            }
+
+            if (lstDataSource != null && lstDataSource.Count > 0)
+            {
+                slcOgr.DataSource = lstDataSource.ToArray();
+                slcOgr.DataTextField = "Name";
+                slcOgr.DataValueField = "Value";
+                slcOgr.DataBind();
+            }
+            else
+            {
+                slcOgr.DataSource = null;
+                slcOgr.DataBind();
+            }
+            #endregion
+
             return true;
         }
 
@@ -155,11 +218,12 @@ namespace KasifPortalApp.KasifPages.Forms
             try
             {
                 OGR_TEST_REL TestCozmeDurumuObj = new OGR_TEST_REL();
-                //TestCozmeDurumuObj.TEST_ADI = lstPostData[0];
-                //TestCozmeDurumuObj.TEST_NO = Convert.ToInt16(lstPostData[1]);
-                //TestCozmeDurumuObj.DERS_ID = Convert.ToInt64(lstPostData[2]);
-                //TestCozmeDurumuObj.DERS_KONU_ID = Convert.ToInt64(lstPostData[3]);
-                //TestCozmeDurumuObj.HAFTA_ID = Convert.ToInt16(lstPostData[4]);
+                TestCozmeDurumuObj.TEST_ID = Convert.ToInt64(lstPostData[0]);
+                TestCozmeDurumuObj.OGR_ID = Convert.ToInt64(lstPostData[1]);
+                TestCozmeDurumuObj.DURUM = Convert.ToInt16(lstPostData[2]);
+                TestCozmeDurumuObj.DOGRU_SAYISI = Convert.ToInt32(lstPostData[3]);
+                TestCozmeDurumuObj.YANLIS_SAYISI = Convert.ToInt32(lstPostData[4]);
+                TestCozmeDurumuObj.HAFTA_ID = Convert.ToInt64(lstPostData[5]);
                 DbOperations.Insert(TestCozmeDurumuObj);
                 return true;
             }
@@ -175,10 +239,10 @@ namespace KasifPortalApp.KasifPages.Forms
         }
 
         [WebMethod]
-        public static string[] ProcessOperation(string TestAdi, string TestNo, string DersId, string KonuId, string HaftaId)
+        public static string[] ProcessOperation(string TestId, string OgrId, string Durum, string DogruSayisi, string YanlisSayisi, string HaftaId)
         {
             System.Web.HttpContext context = System.Web.HttpContext.Current;
-            string[] postData = new string[] { TestAdi, TestNo, DersId, KonuId, HaftaId };
+            string[] postData = new string[] { TestId, OgrId, Durum, DogruSayisi, YanlisSayisi, HaftaId };
             string errorMessage = "";
             bool bControl = ProcessRequest(postData, ref errorMessage);
             if (bControl)
