@@ -40,7 +40,11 @@ namespace KasifBusiness.DB_Operations.DBObjects
             GET_HOCA_AND_OGRENCI,
             GET_TEST_BILGI,
             GET_OGR_TEST_REL,
-            PRM_OGR
+            PRM_OGR,
+            PRM_USER_ROLES,
+            GET_USER_INFO,
+            GET_USER_USER,
+            GET_USER_MENUS
         }
 
 

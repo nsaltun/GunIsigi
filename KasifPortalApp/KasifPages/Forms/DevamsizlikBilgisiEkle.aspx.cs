@@ -17,14 +17,14 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
-    public partial class DevamsizlikBilgisiEkle : System.Web.UI.Page
+    public partial class DevamsizlikBilgisiEkle : BasePage
     {
         public string pageTitle = "Devamsızlık Bilgisi Ekle";
         public string standardErr = "İşlem Başarılı";
         public List<HocaAndOgrenciObj> lstKisiBilgi;
         public string pageName = "DevamsizlikBilgi-page";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {

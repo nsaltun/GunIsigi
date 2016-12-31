@@ -45,6 +45,9 @@
                     <li class="teal long">
                         <a href="#"><span><i class="icon-cloud-upload"></i></span><span class="name">Etkinlikler</span></a>
                     </li>
+                    <li class="teal">
+                        <a href="<%=userTableUrl %>"><span><i class="icon-cloud-upload"></i></span><span class="name">Kullanıcılar</span></a>
+                    </li>
                     <li class="blue">
                         <a href="#"><span><i class="icon-signout"></i></span><span class="name">Sign out</span></a>
                     </li>

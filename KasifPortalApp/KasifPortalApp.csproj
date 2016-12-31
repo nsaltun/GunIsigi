@@ -789,6 +789,8 @@
     <Content Include="KasifPages\Tables\DersKonuBilgisi.aspx" />
     <Content Include="KasifPages\Tables\HocaBilgisi.aspx" />
     <Content Include="KasifPages\Tables\OgrenciBilgisi.aspx" />
+    <Content Include="Management\Forms\UserTableAdd.aspx" />
+    <Content Include="Management\Tables\UserTable.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -806,7 +808,9 @@
     <Compile Include="Authentication\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BasePage.cs" />
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controls\BreadCrumb.ascx.cs">
       <DependentUpon>BreadCrumb.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -963,6 +967,20 @@
     </Compile>
     <Compile Include="MainMaster.Master.designer.cs">
       <DependentUpon>MainMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Forms\UserTableAdd.aspx.cs">
+      <DependentUpon>UserTableAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\Forms\UserTableAdd.aspx.designer.cs">
+      <DependentUpon>UserTableAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Tables\UserTable.aspx.cs">
+      <DependentUpon>UserTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\Tables\UserTable.aspx.designer.cs">
+      <DependentUpon>UserTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\UtilityScreenFunctions.cs" />

@@ -4,6 +4,8 @@
     <EntitySetMapping Name="USER_USER">
       <EntityTypeMapping TypeName="GN_KASIFModel.USER_USER">
         <MappingFragment StoreEntitySet="USER_USER">
+          <ScalarProperty Name="BOLGE_ID" ColumnName="BOLGE_ID" />
+          <ScalarProperty Name="SINIF" ColumnName="SINIF" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
@@ -61,6 +63,7 @@
     <EntitySetMapping Name="USER_ROLE_OWNERSHIP">
       <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_OWNERSHIP">
         <MappingFragment StoreEntitySet="USER_ROLE_OWNERSHIP">
+          <ScalarProperty Name="USER_GUID" ColumnName="USER_GUID" />
           <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
           <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
           <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />

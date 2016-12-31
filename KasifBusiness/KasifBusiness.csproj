@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Business\KasifPageOperations\PageOperations.cs" />
     <Compile Include="Business\Login\OLogin.cs" />
+    <Compile Include="Business\User\OUser.cs" />
     <Compile Include="DB Operations\DBObjects\ConstDbCommands.cs" />
     <Compile Include="DB Operations\DBOperations\DbOperations.cs" />
     <Compile Include="DB Operations\DBOperations\OOgrBilgi.cs" />
@@ -130,7 +131,9 @@
     <Compile Include="DB Operations\EntityObject\USER_USER.cs">
       <DependentUpon>GN_KASIF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Objects\CodeMgmt\ResultObj.cs" />
     <Compile Include="Objects\MenuTreeItemObject.cs" />
+    <Compile Include="Objects\ScreenObjects\UserTableObj.cs" />
     <Compile Include="Objects\ScreenObjects\TestCozmeDurumuObj.cs" />
     <Compile Include="Objects\ScreenObjects\TestBilgiObj.cs" />
     <Compile Include="Objects\ScreenObjects\HocaAndOgrenciObj.cs" />
@@ -139,7 +142,7 @@
     <Compile Include="Objects\ScreenObjects\DersKonuBilgiObj.cs" />
     <Compile Include="Objects\ScreenObjects\HocaBilgiObj.cs" />
     <Compile Include="Objects\ScreenObjects\PageOgrBilgiObj.cs" />
-    <Compile Include="Objects\SessionObjects.cs" />
+    <Compile Include="Objects\SessionInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\KasifHelper.cs" />
   </ItemGroup>

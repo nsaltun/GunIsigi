@@ -81,8 +81,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
   <EntityType Name="MENU_TREE">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LASTUPDATED" />
     </Key>
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" Nullable="false" />
@@ -185,8 +183,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE' does not have a primary ke
   <EntityType Name="USER_ROLE">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LAST_UPDATED" />
     </Key>
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" Nullable="false" />
@@ -198,8 +194,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_MENU' does not have a prima
   <EntityType Name="USER_ROLE_MENU">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LASTUPDATED" />
     </Key>
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" Nullable="false" />
@@ -207,19 +201,16 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_MENU' does not have a prima
     <Property Name="ROLE_GUID" Type="bigint" />
     <Property Name="NODE_GUID" Type="bigint" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_OWNERSHIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="USER_ROLE_OWNERSHIP">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LAST_UPDATED" />
     </Key>
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" Nullable="false" />
     <Property Name="LAST_UPDATED" Type="bigint" Nullable="false" />
     <Property Name="ROLE_GUID" Type="bigint" />
     <Property Name="USER_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="USER_GUID" Type="bigint" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'GN_KASIF.dbo.USER_SESSION_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -245,21 +236,17 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
     <Property Name="ID" Type="bigint" Nullable="false" />
     <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="250" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="USER_USER">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="USER_ID" />
-      <PropertyRef Name="EMAIL" />
     </Key>
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" Nullable="false" />
     <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
-    <Property Name="USER_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="USER_ID" Type="nvarchar" MaxLength="50" />
     <Property Name="NAME" Type="nvarchar" MaxLength="100" />
     <Property Name="SURNAME" Type="nvarchar" MaxLength="100" />
-    <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
     <Property Name="IS_ADMIN" Type="smallint" />
     <Property Name="INSERT_USER" Type="bigint" />
     <Property Name="INSERT_DATETIME" Type="bigint" />
@@ -267,6 +254,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     <Property Name="LAST_PWD_CHANGE_DATE" Type="bigint" />
     <Property Name="USER_STATUS" Type="smallint" />
     <Property Name="PASSWORD" Type="binary" MaxLength="256" />
+    <Property Name="SINIF" Type="smallint" />
+    <Property Name="BOLGE_ID" Type="bigint" />
   </EntityType>
   <EntityContainer Name="GN_KASIFModelStoreContainer">
     <EntitySet Name="BOLGE_INFO" EntityType="Self.BOLGE_INFO" Schema="dbo" store:Type="Tables" />
@@ -282,6 +271,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     <EntitySet Name="PRM_TAKIP_DURUMU" EntityType="Self.PRM_TAKIP_DURUMU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QUERY_TABLE" EntityType="Self.QUERY_TABLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TEST_BILGI" EntityType="Self.TEST_BILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_ROLE_OWNERSHIP" EntityType="Self.USER_ROLE_OWNERSHIP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_USER" EntityType="Self.USER_USER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MENU_TREE" EntityType="Self.MENU_TREE" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [MENU_TREE].[GUID] AS [GUID], 
@@ -313,15 +304,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     [USER_ROLE_MENU].[NODE_GUID] AS [NODE_GUID]
     FROM [dbo].[USER_ROLE_MENU] AS [USER_ROLE_MENU]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="USER_ROLE_OWNERSHIP" EntityType="Self.USER_ROLE_OWNERSHIP" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [USER_ROLE_OWNERSHIP].[GUID] AS [GUID], 
-    [USER_ROLE_OWNERSHIP].[STATUS] AS [STATUS], 
-    [USER_ROLE_OWNERSHIP].[LAST_UPDATED] AS [LAST_UPDATED], 
-    [USER_ROLE_OWNERSHIP].[ROLE_GUID] AS [ROLE_GUID], 
-    [USER_ROLE_OWNERSHIP].[USER_ID] AS [USER_ID]
-    FROM [dbo].[USER_ROLE_OWNERSHIP] AS [USER_ROLE_OWNERSHIP]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="USER_SESSION_INFO" EntityType="Self.USER_SESSION_INFO" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [USER_SESSION_INFO].[USER_ID] AS [USER_ID], 
@@ -337,24 +319,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_USER' does not have a primary ke
     [USER_STATUS].[ID] AS [ID], 
     [USER_STATUS].[DESCRIPTION] AS [DESCRIPTION]
     FROM [dbo].[USER_STATUS] AS [USER_STATUS]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="USER_USER" EntityType="Self.USER_USER" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [USER_USER].[GUID] AS [GUID], 
-    [USER_USER].[STATUS] AS [STATUS], 
-    [USER_USER].[LASTUPDATED] AS [LASTUPDATED], 
-    [USER_USER].[USER_ID] AS [USER_ID], 
-    [USER_USER].[NAME] AS [NAME], 
-    [USER_USER].[SURNAME] AS [SURNAME], 
-    [USER_USER].[EMAIL] AS [EMAIL], 
-    [USER_USER].[IS_ADMIN] AS [IS_ADMIN], 
-    [USER_USER].[INSERT_USER] AS [INSERT_USER], 
-    [USER_USER].[INSERT_DATETIME] AS [INSERT_DATETIME], 
-    [USER_USER].[LAST_LOGIN_DATE] AS [LAST_LOGIN_DATE], 
-    [USER_USER].[LAST_PWD_CHANGE_DATE] AS [LAST_PWD_CHANGE_DATE], 
-    [USER_USER].[USER_STATUS] AS [USER_STATUS], 
-    [USER_USER].[PASSWORD] AS [PASSWORD]
-    FROM [dbo].[USER_USER] AS [USER_USER]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

@@ -19,5 +19,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public long LAST_UPDATED { get; set; }
         public Nullable<long> ROLE_GUID { get; set; }
         public string USER_ID { get; set; }
+        public Nullable<long> USER_GUID { get; set; }
     }
 }

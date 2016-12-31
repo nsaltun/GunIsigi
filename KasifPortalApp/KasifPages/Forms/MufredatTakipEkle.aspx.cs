@@ -17,7 +17,7 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
-    public partial class MufredatTakipEkle : System.Web.UI.Page
+    public partial class MufredatTakipEkle : BasePage
     {
         public string pageTitle = "Müfredat Takibi Bilgisi Ekle";
         public string standardErr = "İşlem Başarılı";
@@ -25,7 +25,7 @@ namespace KasifPortalApp.KasifPages.Forms
         public List<DersKonuBilgiObj> lstKonuBilgi;
         public string pageName = "MufredatTakip-page";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {

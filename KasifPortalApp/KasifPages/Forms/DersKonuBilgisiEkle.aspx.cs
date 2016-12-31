@@ -17,7 +17,7 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
-    public partial class DersKonuBilgisiEkle : System.Web.UI.Page
+    public partial class DersKonuBilgisiEkle : BasePage
     {
         public string pageTitle = "Ders Konu Bilgisi Ekle";
         public string standardErr = "İşlem Başarılı";
@@ -28,7 +28,7 @@ namespace KasifPortalApp.KasifPages.Forms
         bool isOk = true;
         string exErr = "";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {
@@ -67,6 +67,7 @@ namespace KasifPortalApp.KasifPages.Forms
                 RaisePopUp(standardErr, ResultStatus.Error);
             }
         }
+
         private bool LoadParameters()
         {
             #region FillDersAdı
@@ -104,7 +105,6 @@ namespace KasifPortalApp.KasifPages.Forms
 
             return true;
         }
-
 
         private static bool FillParametersAndInsertDb(string[] lstPostData, ref string errMsg)
         {

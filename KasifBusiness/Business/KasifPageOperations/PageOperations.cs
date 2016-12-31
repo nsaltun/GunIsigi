@@ -17,7 +17,7 @@ namespace KasifBusiness.Business.KasifPageOperations
             try
             {
                 List<T> lstPageObj = new List<T>();
-                DbOperations.RunDbQuery<T>(ref lstPageObj, dbCommands, null, null);
+                DbOperations.RunDbQuery<T>(ref lstPageObj, dbCommands, paramNames, paramValues);
                 if (lstPageObj != null && lstPageObj.Count > 0)
                 {
                     foreach (object item in lstPageObj)
@@ -32,7 +32,6 @@ namespace KasifBusiness.Business.KasifPageOperations
                             }
                         }
                     }
-
                     return lstPageObj;
                 }
                 else

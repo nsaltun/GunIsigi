@@ -3,16 +3,14 @@
   <EntityType Name="USER_USER">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="USER_ID" />
-      <PropertyRef Name="EMAIL" />
     </Key>
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" Nullable="false" />
     <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
-    <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IS_ADMIN" Type="Int16" />
     <Property Name="INSERT_USER" Type="Int64" />
     <Property Name="INSERT_DATETIME" Type="Int64" />
@@ -20,6 +18,8 @@
     <Property Name="LAST_PWD_CHANGE_DATE" Type="Int64" />
     <Property Name="USER_STATUS" Type="Int16" />
     <Property Name="PASSWORD" Type="Binary" MaxLength="256" FixedLength="true" />
+    <Property Name="SINIF" Type="Int16" />
+    <Property Name="BOLGE_ID" Type="Int64" />
   </EntityType>
   <EntityContainer Name="GN_KASIFEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="USER_USER" EntityType="Self.USER_USER" />
@@ -46,8 +46,6 @@
   <EntityType Name="MENU_TREE">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LASTUPDATED" />
     </Key>
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" Nullable="false" />
@@ -63,8 +61,6 @@
   <EntityType Name="USER_ROLE">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LAST_UPDATED" />
     </Key>
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" Nullable="false" />
@@ -74,8 +70,6 @@
   <EntityType Name="USER_ROLE_MENU">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LASTUPDATED" />
     </Key>
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" Nullable="false" />
@@ -86,14 +80,13 @@
   <EntityType Name="USER_ROLE_OWNERSHIP">
     <Key>
       <PropertyRef Name="GUID" />
-      <PropertyRef Name="STATUS" />
-      <PropertyRef Name="LAST_UPDATED" />
     </Key>
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" Nullable="false" />
     <Property Name="LAST_UPDATED" Type="Int64" Nullable="false" />
     <Property Name="ROLE_GUID" Type="Int64" />
     <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USER_GUID" Type="Int64" />
   </EntityType>
   <EntityType Name="USER_SESSION_INFO">
     <Key>

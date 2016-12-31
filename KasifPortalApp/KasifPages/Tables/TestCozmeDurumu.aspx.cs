@@ -14,13 +14,13 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
-    public partial class TestCozmeDurumu : System.Web.UI.Page
+    public partial class TestCozmeDurumu : BasePage
     {
         public string pageTitle = "Test Çözme Durumu";
         public string standardErr = "İşlem Başarılı";
         public string pageName = "TestCozmeDurumu-page";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {

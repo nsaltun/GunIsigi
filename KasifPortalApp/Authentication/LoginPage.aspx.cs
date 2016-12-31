@@ -34,24 +34,16 @@ namespace KasifPortalApp.Authentication
         {
             Response.Redirect(Page.GetRouteUrl("home-page", null));
         }
-        
-        private void FillSession(OLogin LoginOprObj)
-        { 
-            
-            SessionObjects sessionObj = new SessionObjects();
-            Session.Add("Email", LoginOprObj.SessionObj.Email);
-            Session.Add("UserId", LoginOprObj.SessionObj.UserId);
-            Session.Add("RoleGuid", LoginOprObj.SessionObj.RoleGuid);
-            Session.Add("RoleName", LoginOprObj.SessionObj.RoleName);
-            Session.Add("IsAdmin", LoginOprObj.SessionObj.IsAdmin);
-            Session.Add("MenuTreeItems", LoginOprObj.SessionObj.MenuTreeItemInfo);
 
+        private void FillSession(OLogin LoginOprObj)
+        {
+            SessionInfo sessionObj = new SessionInfo();
+            Session["KsfSessionInfo"] = LoginOprObj.SessionObj;
         }
         private void LoadVariables()
-        { 
+        {
 
         }
-
 
     }
 }

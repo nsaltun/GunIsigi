@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace KasifPortalApp
 {
-    public partial class Home : System.Web.UI.Page
+    public partial class Home : BasePage
     {
         public string ogrBilgiUrl = "";
         public string DevamsizlikUrl = "";
@@ -18,9 +18,9 @@ namespace KasifPortalApp
         public string dersKonuBilgisiUrl= "";
         public string testBilgisiUrl= "";
         public string testTakibiUrl = "";
+        public string userTableUrl = "";
 
-
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             ogrBilgiUrl = Page.GetRouteUrl("OgrBilgi-page", null);
             hocaBilgiUrl = Page.GetRouteUrl("HocaBilgi-page", null);
@@ -31,6 +31,7 @@ namespace KasifPortalApp
             dersKonuBilgisiUrl = Page.GetRouteUrl("DersKonuBilgi-page", null);
             testBilgisiUrl = Page.GetRouteUrl("TestBilgi-page", null);
             testTakibiUrl = Page.GetRouteUrl("TestCozmeDurumu-page", null);
+            userTableUrl = Page.GetRouteUrl("UserTable-page", null);
 
 
         }

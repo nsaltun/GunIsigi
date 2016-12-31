@@ -28,5 +28,7 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public Nullable<long> LAST_PWD_CHANGE_DATE { get; set; }
         public Nullable<short> USER_STATUS { get; set; }
         public byte[] PASSWORD { get; set; }
+        public Nullable<short> SINIF { get; set; }
+        public Nullable<long> BOLGE_ID { get; set; }
     }
 }

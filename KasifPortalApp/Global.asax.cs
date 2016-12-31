@@ -131,6 +131,20 @@ namespace KasifPortalApp
             "TestCozmeDurumu/edit/{param}",
             "~/KasifPages/Forms/TestCozmeDurumuGuncelle.aspx");
 
+            routes.MapPageRoute(
+           "UserTable-page",
+           "UserTable",
+           "~/Management/Tables/UserTable.aspx");
+            routes.MapPageRoute(
+            "UserTable-page-add",
+            "UserTable/add",
+            "~/Management/Forms/UserTableAdd.aspx");
+            routes.MapPageRoute(
+            "UserTable-page-edit",
+            "UserTable/edit/{param}",
+            "~/Management/Forms/UserTableEdit.aspx");
+
+
         }
 
 

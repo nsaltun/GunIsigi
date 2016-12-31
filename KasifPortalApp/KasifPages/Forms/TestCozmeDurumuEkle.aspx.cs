@@ -17,7 +17,7 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
-    public partial class TestCozmeDurumuEkle : System.Web.UI.Page
+    public partial class TestCozmeDurumuEkle : BasePage
     {
         public string pageTitle = "Test Çözme Durumu Ekle";
         public string standardErr = "İşlem Başarılı";
@@ -27,7 +27,7 @@ namespace KasifPortalApp.KasifPages.Forms
         public List<OGR_BILGI> lstOgrBilgi;
         public string pageName = "TestCozmeDurumu-page";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {

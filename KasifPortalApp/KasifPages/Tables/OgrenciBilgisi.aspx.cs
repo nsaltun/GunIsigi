@@ -14,14 +14,14 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
-    public partial class OgrenciBilgisi : System.Web.UI.Page
+    public partial class OgrenciBilgisi : BasePage
     {
         public string pageTitle = "Öğrenci Bilgisi";
         public string standardErr = "İşlem Başarılı";
         public string pageName = "OgrBilgi-page";
         public string deleteUrl = "";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {

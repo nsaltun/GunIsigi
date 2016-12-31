@@ -1,6 +1,9 @@
 ﻿using KasifBusiness.Business.KasifPageOperations;
+using KasifBusiness.Business.User;
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
+using KasifBusiness.Objects;
+using KasifBusiness.Objects.CodeMgmt;
 using KasifBusiness.Objects.ScreenObjects;
 using KasifPortalApp.Utilities;
 using System;
@@ -13,13 +16,14 @@ using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
 using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
-namespace KasifPortalApp.KasifPages.Forms
+namespace KasifPortalApp.Management.Forms
 {
-    public partial class OgrenciBilgisiEkle : BasePage
+    public partial class UserTableAdd : BasePage
     {
-        public string pageTitle = "Öğrenci Bilgisi Ekle";
+        public string pageTitle = "Kullanıcı Bilgisi Ekle";
         public string standardErr = "İşlem Başarılı";
-        public string pageName = "OgrBilgi-page";
+        public string pageName = "UserTable-page";
+        public SessionInfo KsfSI;
 
         bool isOk = true;
         string exErr = "";
@@ -29,25 +33,29 @@ namespace KasifPortalApp.KasifPages.Forms
             try
             {
                 ResultStatus resultStatus = ResultStatus.Error;
+                KsfSI = (SessionInfo)Session["KsfSessionInfo"];
+
                 if (!Page.IsPostBack)
                 {
                     LoadParameters();
                 }
                 else
                 {
-                    if (FillParameters())
+                    ResultObject result = FillParameters();
+                    if (result.isOk)
                     {
                         standardErr = "İşlem Başarılı.";
                         resultStatus = ResultStatus.Success;
+                        RaisePopUp(standardErr, resultStatus);
                     }
                     else
                     {
                         isOk = false;
                         standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                         resultStatus = ResultStatus.Error;
+                        RaisePopUp(result.errorMsg, resultStatus);
                     }
 
-                    RaisePopUp(standardErr, resultStatus);
                 }
 
             }
@@ -60,35 +68,35 @@ namespace KasifPortalApp.KasifPages.Forms
         }
         private bool LoadParameters()
         {
-            #region FillHocaBilgisi
+            #region Fill User Role Info
             PageOperations PageOps = new PageOperations();
-            List<HocaBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI, null, null);
+            List<USER_ROLE> lstScreenInfoObj = PageOps.RunQueryForPage<USER_ROLE>(DbCommandList.PRM_USER_ROLES, null, null);
             List<NameValue> lstDataSource = new List<NameValue>();
 
             foreach (var item in lstScreenInfoObj)
             {
                 lstDataSource.Add(new NameValue
                 {
-                    Name = item.HOCA_ADI + " " + item.HOCA_SOYADI + " - " + item.SINIF + ". sınıf",
-                    Value = item.HOCA_GUID.ToString()
+                    Name = item.ROLE_NAME,
+                    Value = item.GUID.ToString()
                 });
             }
 
             if (lstDataSource != null && lstDataSource.Count > 0)
             {
-                slcHocaBilgi.DataSource = lstDataSource.ToArray();
-                slcHocaBilgi.DataTextField = "Name";
-                slcHocaBilgi.DataValueField = "Value";
-                slcHocaBilgi.DataBind();
+                slcRole.DataSource = lstDataSource.ToArray();
+                slcRole.DataTextField = "Name";
+                slcRole.DataValueField = "Value";
+                slcRole.DataBind();
             }
             else
             {
-                slcHocaBilgi.DataSource = null;
-                slcHocaBilgi.DataBind();
+                slcRole.DataSource = null;
+                slcRole.DataBind();
             }
             #endregion
 
-            #region FillMahalleBilgisi
+            #region Fill Mahalle Bilgisi
             List<BOLGE_INFO> lstBolgeInfo = PageOps.RunQueryForPage<BOLGE_INFO>(DbCommandList.GET_BOLGE_INFO, null, null);
 
             lstDataSource.Clear();
@@ -117,47 +125,51 @@ namespace KasifPortalApp.KasifPages.Forms
             }
             #endregion
 
-
             return true;
         }
 
 
-        private bool FillParameters()
+        private ResultObject FillParameters()
         {
             try
             {
-                OGR_BILGI OgrBilgiObj = new OGR_BILGI();
-                OgrBilgiObj.BIRT_PLACE = txtDogumYeri.Value;
+                USER_USER UserObj = new USER_USER();
                 if (!String.IsNullOrEmpty(slcSinif.Value))
                 {
-                    OgrBilgiObj.CLASS = Convert.ToInt16(slcSinif.Value);
+                    UserObj.SINIF = Convert.ToInt16(slcSinif.Value);
                 }
-                OgrBilgiObj.DATE_OF_BIRTH = txtDogumTarihi.Value;
-                OgrBilgiObj.BOLGE_ID = Convert.ToInt64(slcMahalle.Value);
-                OgrBilgiObj.NAME = txtOgrAdi.Value;
-                OgrBilgiObj.OGR_EMAIL = txtEmail.Value;
-                OgrBilgiObj.OGR_ID = 100;
-                if (!String.IsNullOrEmpty(txtOkulNo.Value))
+                if (!String.IsNullOrEmpty(slcMahalle.Value))
                 {
-                    OgrBilgiObj.OGR_NO = Convert.ToInt32(txtOkulNo.Value);
+                    UserObj.BOLGE_ID = Convert.ToInt64(slcMahalle.Value);
                 }
-                OgrBilgiObj.PARENT_EMAIL = txtVeliEmail.Value;
-                OgrBilgiObj.PARENT_NAME = txtVeliAdi.Value;
-                OgrBilgiObj.PARENT_PHONE = txtVeliTel.Value;
-                OgrBilgiObj.PHONE = txtOgrTel.Value;
-                OgrBilgiObj.SCHOOL_NAME = txtOkul.Value;
-                OgrBilgiObj.SURNAME = txtOgrSoyadi.Value;
-                OgrBilgiObj.HOCA_GUID = Convert.ToInt64(slcHocaBilgi.Value);
-                OgrBilgiObj.DIGER = txtDiger.Value;
+                UserObj.EMAIL = txtEmail.Value;
+                UserObj.INSERT_USER = KsfSI.UserGuid;
+                UserObj.IS_ADMIN = slcAdmin.Value == "1" ? short.Parse("1") : short.Parse("0");
+                UserObj.NAME = txtAd.Value;
+                UserObj.PASSWORD = KasifBusiness.Utilities.KasifHelper.GetSha512HashedData(txtPassword.Value);
+                UserObj.SURNAME = txtSoyad.Value;
+                UserObj.USER_STATUS = short.Parse("1");
 
-                OOgrBilgi OgrBilgi = new OOgrBilgi(OgrBilgiObj);
-                OgrBilgi.DoJob();
-                return true;
+                OUser oUser = new OUser(UserObj);
+                ResultObject result = oUser.OUserOperation();
+
+                if (result.isOk)
+                {
+                    USER_ROLE_OWNERSHIP uRo = new USER_ROLE_OWNERSHIP();
+                    uRo.USER_GUID = UserObj.GUID;
+                    uRo.ROLE_GUID = Convert.ToInt64(slcRole.Value);
+                    DbOperations.Insert(uRo);
+                }
+                return result;
             }
             catch (Exception ex)
             {
                 exErr = ex.Message;
-                return false;
+                ResultObject result = new ResultObject();
+                result.errorMsg = ex.Message;
+                result.errPrefix = "Beklenmeyen Hata. ";
+                result.isOk = false;
+                return result;
             }
         }
 
@@ -173,7 +185,6 @@ namespace KasifPortalApp.KasifPages.Forms
                 String script = "<script>$(document).ready(function () {showErrorModal('" + pageTitle + " - Hata','" + msg + "');});</script>";
                 ClientScript.RegisterStartupScript(typeof(Page), "ProcessError", script);
             }
-
         }
 
         public string GenerateListUrl()

@@ -7,8 +7,6 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KasifBusiness.DB_Operations.DBOperations
 {
@@ -123,6 +121,7 @@ namespace KasifBusiness.DB_Operations.DBOperations
             string queryText = "";
             if (RunQueryForQueryContent(queryName.ToString(), ref queryText))
             {
+                queryText = CheckParametersInQuery(queryText, parameterNames);
                 PrepareAndExecuteQuery(ref entityObj, queryText, parameterNames, parameterValues);
                 return true;
             }
@@ -158,6 +157,51 @@ namespace KasifBusiness.DB_Operations.DBOperations
             }
         }
 
+        private static string CheckParametersInQuery(string queryText, string[] parameterNames)
+        {
+            /* -- JOB DESCRIPTION --
+             search queryText by rows for parameter. get parameters in query and keep them in a variable with row id.
+                if sent parameter not exist in this variable : delete related row.
+             */
+
+            List<string[]> lstPrmInQuery = new List<string[]>();
+            List<int> lstDeletedRows = new List<int>();
+            List<string> lst = queryText.Split(new char[] { '\r' }).ToList();
+            for (int i = 0; i < lst.Count; i++)
+            {
+                if (lst[i].Contains('@'))
+                {
+                    int startIndex = lst[i].IndexOf('@');
+                    int endIndex = lst[i].IndexOf(' ', startIndex);
+                    if (endIndex == -1)
+                    {
+                        endIndex = lst[i].Length;
+                    }
+                    lstPrmInQuery.Add(new string[] { i.ToString(), lst[i].Substring(startIndex + 1, endIndex - startIndex - 1) });
+                    lstDeletedRows.Add(i);
+                }
+            }
+            if (parameterNames != null && parameterNames.Length > 0)
+            {
+                foreach (string item1 in parameterNames)
+                {
+                    foreach (string[] item2 in lstPrmInQuery)
+                    {
+                        if (item1 == item2[1])
+                        {
+                            lstDeletedRows.Remove(Convert.ToInt32(item2[0]));
+                            break;
+                        }
+                    }
+                }
+            }
+            foreach (int index in lstDeletedRows)
+            {
+                lst.RemoveAt(index);
+            }
+
+            return string.Join("", lst);
+        }
 
         #region commented - not used
         private static string GetQuery(ConstDbCommands.DbCommandList queryName)

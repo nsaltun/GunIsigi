@@ -14,17 +14,17 @@ namespace KasifBusiness.Business.Login
 {
     public class OLogin
     {
-        public SessionObjects SessionObj;
+        public SessionInfo SessionObj;
 
         USER_USER userObj;
-        MenuTreeItemObject[] menuTreeObj;
+        List<MenuTreeItemObject> lstMenuTreeObj;
         string userId;
-        byte[] pwd;
+        byte[] hashedPwd;
 
         public OLogin(string userId, string pwd)
         {
             this.userId = userId;
-            this.pwd = Encoding.ASCII.GetBytes(pwd);
+            this.hashedPwd = KasifHelper.GetSha512HashedData(pwd);
         }
 
         public bool Execute()
@@ -32,6 +32,7 @@ namespace KasifBusiness.Business.Login
             userObj = CheckUserExist();
             if (userObj != null)
             {
+                FillMenuTreeObject();
                 FillSessionObject();
                 return true;
             }
@@ -43,7 +44,7 @@ namespace KasifBusiness.Business.Login
         {
             List<USER_USER> lstUser = new List<USER_USER>();
             string[] prmNames = new string[] { "P_EMAIL", "P_PASSWORD" };
-            object[] prmValues = new object[] { userId, this.pwd };
+            object[] prmValues = new object[] { userId, this.hashedPwd };
             DbOperations.RunDbQuery<USER_USER>(ref lstUser, DbCommands.GET_USER_BY_EMAIL, prmNames, prmValues);
             if (lstUser != null && lstUser.Count > 0)
             {
@@ -55,14 +56,29 @@ namespace KasifBusiness.Business.Login
             }
         }
 
+        private bool FillMenuTreeObject()
+        {
+            string[] prmNames = new string[] { "P_EMAIL"};
+            object[] prmValues = new object[] { userId};
+            DbOperations.RunDbQuery<MenuTreeItemObject>(ref lstMenuTreeObj, DbCommands.GET_USER_MENUS, prmNames, prmValues);
+            if (lstMenuTreeObj != null && lstMenuTreeObj.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private void FillSessionObject()
         {
-            SessionObj = new SessionObjects();
+            SessionObj = new SessionInfo();
             SessionObj.Email = userObj.EMAIL;
             SessionObj.IsAdmin = userObj.IS_ADMIN;
             SessionObj.UserId = userObj.USER_ID;
-            //SessionObj.MenuTreeItemInfo = menuTreeObj;
+            SessionObj.UserGuid = userObj.GUID;
+            SessionObj.MenuTreeItemInfo = lstMenuTreeObj;
             //SessionObj.RoleGuid = roleguid;
             //SessionObj.RoleName = rolename;
             SessionObj.SessionGuid = KasifHelper.GuidFactory();

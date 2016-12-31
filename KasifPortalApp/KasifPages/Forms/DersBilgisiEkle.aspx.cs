@@ -15,7 +15,7 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
-    public partial class DersBilgisiEkle : System.Web.UI.Page
+    public partial class DersBilgisiEkle : BasePage
     {
         public string pageTitle = "Ders Bilgisi Ekle";
         public string standardErr = "İşlem Başarılı";
@@ -24,7 +24,7 @@ namespace KasifPortalApp.KasifPages.Forms
         bool isOk = true;
         string exErr = "";
 
-        protected void Page_Load(object sender, EventArgs e)
+        public override void Page_Load(object sender, EventArgs e)
         {
             try
             {

@@ -12,20 +12,22 @@ using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
 using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
-namespace KasifPortalApp.KasifPages.Tables
+namespace KasifPortalApp.Management.Tables
 {
-    public partial class DersBilgisi : BasePage
+    public partial class UserTable : BasePage
     {
-        public string pageTitle = "Ders Bilgisi";
+        public string pageTitle = "Kullanıcı Bilgisi";
         public string standardErr = "İşlem Başarılı";
-        public string pageName = "DersBilgi-page";
+        public string pageName = "UserTable-page";
+        public string deleteUrl = "";
 
         public override void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                deleteUrl = pageName + "/DeleteCurrentRow";
                 PageOperations PageOps = new PageOperations();
-                List<DERS_BILGI> lstScreenInfoObj = PageOps.RunQueryForPage<DERS_BILGI>(DbCommandList.GET_DERS_BILGI, null, null);
+                List<UserTableObj> lstScreenInfoObj = PageOps.RunQueryForPage<UserTableObj>(DbCommandList.GET_USER_INFO, null, null);
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
@@ -35,6 +37,8 @@ namespace KasifPortalApp.KasifPages.Tables
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(ex.Message, ResultStatus.Error);
             }
+
+
         }
 
         private void RaisePopUp(string msg, ResultStatus resultStatus)
@@ -49,6 +53,7 @@ namespace KasifPortalApp.KasifPages.Tables
                 String script = "<script>$(document).ready(function () {showErrorModal('" + pageTitle + " - Hata','" + msg + "');});</script>";
                 ClientScript.RegisterStartupScript(typeof(Page), "ProcessError", script);
             }
+
         }
 
         public string GenerateAddUrl()
@@ -57,13 +62,21 @@ namespace KasifPortalApp.KasifPages.Tables
         }
 
         [WebMethod()]
-        public static string DeleteCurrentRow(string RowGuid)
+        public static string DeleteCurrentRow(string RowGuid, string RoleGuid)
         {
             try
             {
-                DERS_BILGI dersBilgiObj = new DERS_BILGI();
-                dersBilgiObj.GUID = Convert.ToInt64(RowGuid);
-                DbOperations.Delete(dersBilgiObj);
+                USER_USER userUSerObj = new USER_USER();
+                userUSerObj.GUID = Convert.ToInt64(RowGuid);
+                DbOperations.Delete(userUSerObj);
+
+                //USER_ROLE_OWNERSHIP uroObj = new USER_ROLE_OWNERSHIP();
+                //uroObj.ROLE_GUID = Convert.ToInt64(RoleGuid);
+                //uroObj.USER_GUID = Convert.ToInt64(RowGuid);
+                //DbOperations.Delete(uroObj);
+
+
+
                 return "success";
             }
             catch (Exception ex)
