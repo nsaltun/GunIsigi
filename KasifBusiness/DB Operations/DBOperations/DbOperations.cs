@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace KasifBusiness.DB_Operations.DBOperations
 {
     public class DbOperations
     {
-
         private static void DbAction(Action<GN_KASIFEntities> action)
         {
             using (var context = new GN_KASIFEntities())
@@ -63,7 +63,7 @@ namespace KasifBusiness.DB_Operations.DBOperations
             {
                 if (prop.Name == "STATUS")
                 {
-                    prop.SetValue(model, 1);
+                    prop.SetValue(model, Convert.ToInt16(1));
                 }
                 else if (prop.Name == "LASTUPDATED")
                 {
@@ -99,6 +99,18 @@ namespace KasifBusiness.DB_Operations.DBOperations
                 context.Entry(model).State = EntityState.Modified;
                 context.SaveChanges();
             });
+        }
+
+        public static void FindBy<T>(ref List<T> entityObj, object model, Expression<Func<T, bool>> predicate)
+        {
+            List<T> lstObj = new List<T>();
+            DbAction(context =>
+            {
+                //_entities.Set<T>().Where(predicate);
+                lstObj = context.Set(model.GetType()).OfType<T>().Where(predicate).ToList();
+
+            });
+            entityObj = lstObj;
         }
 
         private static bool RunQueryForQueryContent(string queryName, ref string queryText)
@@ -195,9 +207,11 @@ namespace KasifBusiness.DB_Operations.DBOperations
                     }
                 }
             }
+            int j = 0;
             foreach (int index in lstDeletedRows)
             {
-                lst.RemoveAt(index);
+                lst.RemoveAt(index - j);
+                j++;
             }
 
             return string.Join("", lst);

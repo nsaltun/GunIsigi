@@ -15,5 +15,6 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string KONU { get; set; }
         public string TAKIP_DURUMU { get; set; }
         public string DERS_ADI { get; set; }
+        public long HOCA_GUID { get; set; }
     }
 }

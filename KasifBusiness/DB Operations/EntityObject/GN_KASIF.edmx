@@ -80,6 +80,13 @@
           <Property Name="GUID" Type="bigint" Nullable="false" />
           <Property Name="STATUS" Type="smallint" Nullable="false" />
           <Property Name="LASTUPDATED" Type="bigint" />
+          <Property Name="STYLE" Type="nvarchar" MaxLength="100" />
+          <Property Name="NODE_GUID" Type="bigint" />
+          <Property Name="DISPLAY_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="NODE_POSITION" Type="int" />
+          <Property Name="FILE_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="ICON_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="TILE_TYPE" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -98,6 +105,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
           <Property Name="NODE_POSITION" Type="smallint" />
           <Property Name="CLASS_NAME" Type="nvarchar" MaxLength="200" />
           <Property Name="FILE_NAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="NODE_VISIBILITY" Type="nvarchar" MaxLength="50" />
           <Property Name="RESOURCE_ID" Type="int" />
         </EntityType>
         <EntityType Name="MUFREDAT_TAKIP">
@@ -198,19 +206,16 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE' does not have a primary ke
           <Property Name="LAST_UPDATED" Type="bigint" Nullable="false" />
           <Property Name="ROLE_NAME" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_MENU' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="USER_ROLE_MENU">
           <Key>
             <PropertyRef Name="GUID" />
-            
-            
           </Key>
           <Property Name="GUID" Type="bigint" Nullable="false" />
           <Property Name="STATUS" Type="smallint" Nullable="false" />
           <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
           <Property Name="ROLE_GUID" Type="bigint" />
           <Property Name="NODE_GUID" Type="bigint" />
+          <Property Name="AUTH_LEVEL" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="USER_ROLE_OWNERSHIP">
           <Key>
@@ -218,8 +223,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE_MENU' does not have a prima
           </Key>
           <Property Name="GUID" Type="bigint" Nullable="false" />
           <Property Name="STATUS" Type="smallint" Nullable="false" />
-          <Property Name="LAST_UPDATED" Type="bigint" Nullable="false" />
-          <Property Name="ROLE_GUID" Type="bigint" />
+          <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
+          <Property Name="ROLE_GUID" Type="bigint" Nullable="false" />
           <Property Name="USER_ID" Type="nvarchar" MaxLength="50" />
           <Property Name="USER_GUID" Type="bigint" />
         </EntityType>
@@ -254,7 +259,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="GUID" Type="bigint" Nullable="false" />
           <Property Name="STATUS" Type="smallint" Nullable="false" />
           <Property Name="LASTUPDATED" Type="bigint" Nullable="false" />
-          <Property Name="USER_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="USER_ID" Type="bigint" />
           <Property Name="NAME" Type="nvarchar" MaxLength="100" />
           <Property Name="SURNAME" Type="nvarchar" MaxLength="100" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
@@ -267,6 +272,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="PASSWORD" Type="binary" MaxLength="256" />
           <Property Name="SINIF" Type="smallint" />
           <Property Name="BOLGE_ID" Type="bigint" />
+          <Property Name="OGR_GUID" Type="bigint" />
+          <Property Name="HOCA_GUID" Type="bigint" />
         </EntityType>
         <EntityContainer Name="GN_KASIFModelStoreContainer">
           <EntitySet Name="BOLGE_INFO" EntityType="Self.BOLGE_INFO" Schema="dbo" store:Type="Tables" />
@@ -282,6 +289,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySet Name="PRM_TAKIP_DURUMU" EntityType="Self.PRM_TAKIP_DURUMU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QUERY_TABLE" EntityType="Self.QUERY_TABLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEST_BILGI" EntityType="Self.TEST_BILGI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_ROLE_MENU" EntityType="Self.USER_ROLE_MENU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_ROLE_OWNERSHIP" EntityType="Self.USER_ROLE_OWNERSHIP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_USER" EntityType="Self.USER_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MENU_TREE" EntityType="Self.MENU_TREE" store:Type="Tables" store:Schema="dbo">
@@ -295,6 +303,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
     [MENU_TREE].[NODE_POSITION] AS [NODE_POSITION], 
     [MENU_TREE].[CLASS_NAME] AS [CLASS_NAME], 
     [MENU_TREE].[FILE_NAME] AS [FILE_NAME], 
+    [MENU_TREE].[NODE_VISIBILITY] AS [NODE_VISIBILITY], 
     [MENU_TREE].[RESOURCE_ID] AS [RESOURCE_ID]
     FROM [dbo].[MENU_TREE] AS [MENU_TREE]</DefiningQuery>
           </EntitySet>
@@ -305,15 +314,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
     [USER_ROLE].[LAST_UPDATED] AS [LAST_UPDATED], 
     [USER_ROLE].[ROLE_NAME] AS [ROLE_NAME]
     FROM [dbo].[USER_ROLE] AS [USER_ROLE]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="USER_ROLE_MENU" EntityType="Self.USER_ROLE_MENU" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [USER_ROLE_MENU].[GUID] AS [GUID], 
-    [USER_ROLE_MENU].[STATUS] AS [STATUS], 
-    [USER_ROLE_MENU].[LASTUPDATED] AS [LASTUPDATED], 
-    [USER_ROLE_MENU].[ROLE_GUID] AS [ROLE_GUID], 
-    [USER_ROLE_MENU].[NODE_GUID] AS [NODE_GUID]
-    FROM [dbo].[USER_ROLE_MENU] AS [USER_ROLE_MENU]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="USER_SESSION_INFO" EntityType="Self.USER_SESSION_INFO" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -343,7 +343,6 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="GUID" Type="Int64" Nullable="false" />
           <Property Name="STATUS" Type="Int16" Nullable="false" />
           <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
-          <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -356,6 +355,8 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="PASSWORD" Type="Binary" MaxLength="256" FixedLength="true" />
           <Property Name="SINIF" Type="Int16" />
           <Property Name="BOLGE_ID" Type="Int64" />
+          <Property Name="OGR_GUID" Type="Int64" />
+          <Property Name="HOCA_GUID" Type="Int64" />
         </EntityType>
         <EntityContainer Name="GN_KASIFEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="USER_USER" EntityType="Self.USER_USER" />
@@ -393,6 +394,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="CLASS_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="FILE_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="RESOURCE_ID" Type="Int32" />
+          <Property Name="NODE_VISIBILITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="USER_ROLE">
           <Key>
@@ -412,6 +414,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
           <Property Name="ROLE_GUID" Type="Int64" />
           <Property Name="NODE_GUID" Type="Int64" />
+          <Property Name="AUTH_LEVEL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="USER_ROLE_OWNERSHIP">
           <Key>
@@ -419,10 +422,10 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           </Key>
           <Property Name="GUID" Type="Int64" Nullable="false" />
           <Property Name="STATUS" Type="Int16" Nullable="false" />
-          <Property Name="LAST_UPDATED" Type="Int64" Nullable="false" />
-          <Property Name="ROLE_GUID" Type="Int64" />
+          <Property Name="ROLE_GUID" Type="Int64" Nullable="false" />
           <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="USER_GUID" Type="Int64" />
+          <Property Name="LASTUPDATED" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="USER_SESSION_INFO">
           <Key>
@@ -477,6 +480,13 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="GUID" Type="Int64" Nullable="false" />
           <Property Name="STATUS" Type="Int16" Nullable="false" />
           <Property Name="LASTUPDATED" Type="Int64" />
+          <Property Name="STYLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NODE_GUID" Type="Int64" />
+          <Property Name="DISPLAY_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NODE_POSITION" Type="Int32" />
+          <Property Name="FILE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ICON_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TILE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BOLGE_INFO">
           <Key>
@@ -614,12 +624,13 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySetMapping Name="USER_USER">
             <EntityTypeMapping TypeName="GN_KASIFModel.USER_USER">
               <MappingFragment StoreEntitySet="USER_USER">
+                <ScalarProperty Name="HOCA_GUID" ColumnName="HOCA_GUID" />
+                <ScalarProperty Name="OGR_GUID" ColumnName="OGR_GUID" />
                 <ScalarProperty Name="BOLGE_ID" ColumnName="BOLGE_ID" />
                 <ScalarProperty Name="SINIF" ColumnName="SINIF" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
-                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -636,6 +647,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySetMapping Name="MENU_TREE">
             <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TREE">
               <MappingFragment StoreEntitySet="MENU_TREE">
+                <ScalarProperty Name="NODE_VISIBILITY" ColumnName="NODE_VISIBILITY" />
                 <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
                 <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
                 <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
@@ -662,6 +674,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySetMapping Name="USER_ROLE_MENU">
             <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_MENU">
               <MappingFragment StoreEntitySet="USER_ROLE_MENU">
+                <ScalarProperty Name="AUTH_LEVEL" ColumnName="AUTH_LEVEL" />
                 <ScalarProperty Name="NODE_GUID" ColumnName="NODE_GUID" />
                 <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
                 <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
@@ -673,10 +686,10 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySetMapping Name="USER_ROLE_OWNERSHIP">
             <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_OWNERSHIP">
               <MappingFragment StoreEntitySet="USER_ROLE_OWNERSHIP">
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
                 <ScalarProperty Name="USER_GUID" ColumnName="USER_GUID" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
                 <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
-                <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
               </MappingFragment>
@@ -732,6 +745,13 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySetMapping Name="MENU_TILES">
             <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TILES">
               <MappingFragment StoreEntitySet="MENU_TILES">
+                <ScalarProperty Name="TILE_TYPE" ColumnName="TILE_TYPE" />
+                <ScalarProperty Name="ICON_NAME" ColumnName="ICON_NAME" />
+                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+                <ScalarProperty Name="NODE_POSITION" ColumnName="NODE_POSITION" />
+                <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+                <ScalarProperty Name="NODE_GUID" ColumnName="NODE_GUID" />
+                <ScalarProperty Name="STYLE" ColumnName="STYLE" />
                 <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />

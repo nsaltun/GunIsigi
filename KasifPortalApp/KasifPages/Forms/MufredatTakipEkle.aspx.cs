@@ -81,6 +81,11 @@ namespace KasifPortalApp.KasifPages.Forms
             List<NameValue> lstDataSource = new List<NameValue>();
             List<HOCA_BILGI> lstHocaBilgi = PageOps.RunQueryForPage<HOCA_BILGI>(DbCommandList.PRM_HOCA, null, null);
 
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+            {
+                lstHocaBilgi = lstHocaBilgi.Where(x => x.GUID == ksfSI.HocaGuid).ToList();
+            }
+
             lstDataSource = new List<NameValue>();
             foreach (var item in lstHocaBilgi)
             {

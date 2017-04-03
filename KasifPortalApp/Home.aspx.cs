@@ -1,9 +1,8 @@
-﻿using System;
+﻿using KasifBusiness.DB_Operations.EntityObject;
+using KasifBusiness.Objects;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace KasifPortalApp
 {
@@ -20,6 +19,8 @@ namespace KasifPortalApp
         public string testTakibiUrl = "";
         public string userTableUrl = "";
 
+        public List<MENU_TILES> lstMenuTiles;
+
         public override void Page_Load(object sender, EventArgs e)
         {
             ogrBilgiUrl = Page.GetRouteUrl("OgrBilgi-page", null);
@@ -33,7 +34,13 @@ namespace KasifPortalApp
             testTakibiUrl = Page.GetRouteUrl("TestCozmeDurumu-page", null);
             userTableUrl = Page.GetRouteUrl("UserTable-page", null);
 
+            FillMenuTiles();
+        }
 
+        public void FillMenuTiles()
+        {
+            SessionInfo ksfSi = (SessionInfo)Session["KsfSessionInfo"];
+            lstMenuTiles = ksfSi.MenuTiles;
         }
     }
 }

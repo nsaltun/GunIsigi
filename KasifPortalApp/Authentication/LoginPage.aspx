@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="KasifPortalApp.Authentication.LoginPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="~/LoginPage.aspx.cs" Inherits="KasifPortalApp.Authentication.LoginPage" EnableViewState="false" %>
 
 <!DOCTYPE html>
 
@@ -14,30 +14,30 @@
     <title>Kâşif Portal - Giriş</title>
 
     <!-- Bootstrap -->
-    <link href="../Common/Template/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/bootstrap.min.css") %>" rel="stylesheet" />
     <!-- Bootstrap responsive -->
-    <link href="../Common/Template/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/bootstrap-responsive.min.css") %>" rel="stylesheet" />
     <!-- icheck -->
-    <link href="../Common/Template/css/plugins/icheck/all.css" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/plugins/icheck/all.css") %>" rel="stylesheet" />
     <!-- Theme CSS -->
-    <link href="../Common/Template/css/style.css" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/style.css") %>" rel="stylesheet" />
     <!-- Color CSS -->
-    <link href="../Common/Template/css/themes.css" rel="stylesheet" />
+    <link href="<%= ResolveClientUrl("~/Common/Template/css/themes.css") %>" rel="stylesheet" />
 
 
     <!-- jQuery -->
-    <script src="../Common/Template/js/jquery.min.js"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/jquery.min.js")%>"></script>
 
     <!-- Nice Scroll -->
-    <script src="../Common/Template/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/nicescroll/jquery.nicescroll.min.js") %>"></script>
     <!-- Validation -->
-    <script src="../Common/Template/js/plugins/validation/jquery.validate.min.js"></script>
-    <script src="../Common/Template/js/plugins/validation/additional-methods.min.js"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/validation/jquery.validate.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/validation/additional-methods.min.js") %>"></script>
     <!-- icheck -->
-    <script src="../Common/Template/js/plugins/icheck/jquery.icheck.min.js"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/icheck/jquery.icheck.min.js") %>"></script>
     <!-- Bootstrap -->
-    <script src="../Common/Template/js/bootstrap.min.js"></script>
-    <script src="../Common/Template/js/eakroko.js"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/bootstrap.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/Common/Template/js/eakroko.js") %>"></script>
 
     <!--[if lte IE 9]>
 		<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
@@ -50,14 +50,27 @@
 
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../Common/Template/img/favicon.ico">
+    <link rel="shortcut icon" href="<%= ResolveClientUrl("~/Common/Template/img/favicon.ico") %>">
     <!-- Apple devices Homescreen icon -->
-    <link rel="apple-touch-icon-precomposed" href="../Common/Template/img/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="<%= ResolveClientUrl("~/Common/Template/img/apple-touch-icon-precomposed.png") %>">
+
+    <script>
+        function showErrorModal(header, msg) {
+            $('#errorModal > .modal-header > h3 > span#lblErrorModalHeader').html(header);
+            $('#errorModal > .modal-body').html(msg);
+            $('#errorModal').modal({
+                backdrop: true,
+                keyboard: false
+            });
+        }
+
+    </script>
+
 </head>
 <body class="login">
     <div class="wrapper">
         <h1><a href="#">
-            <img src="../Common/Template/img/logo-big.png" alt="" class="retina-ready">KÂŞİF PORTAL</a></h1>
+            <img src="<%= ResolveClientUrl("~/Common/Template/img/logo-big.png") %>" alt="" class="retina-ready">KÂŞİF PORTAL</a></h1>
         <div class="login-body">
             <h2>GİRİŞ</h2>
             <form runat="server" method="get" class="form-validate" id="test" novalidate="novalidate">
@@ -78,12 +91,29 @@
 						</div> 
                         <label for="remember">Beni Hatırla</label>
 					</div>--%>
-                    <input type="submit" value="Giriş" class="btn btn-primary">
+                    <%--<input runat="server" type="submit" value="Giriş" class="btn btn-primary">--%>
+                    <asp:Button ID="btnSubmit" runat="server" Text="Giriş" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                </div>
+                <div>
+                    <label id="lblError" runat="server" style="display:none;color:red;">test</label>
                 </div>
             </form>
             <div class="forget">
                 <a href="#"><span>Şifremi Unuttum?</span></a>
             </div>
+        </div>
+    </div>
+    <div id="errorModal" class="modal hide fade">
+        <div class="modal-header">
+            <h3><span id="lblErrorModalHeader" style="color: red;"></span>
+            </h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" onclick="$('#errorModal').modal('hide');">OK</button>
+        </div>
+        <div class="modal-footer-strip">
         </div>
     </div>
 </body>

@@ -4,10 +4,13 @@
     <EntitySetMapping Name="USER_USER">
       <EntityTypeMapping TypeName="GN_KASIFModel.USER_USER">
         <MappingFragment StoreEntitySet="USER_USER">
+          <ScalarProperty Name="HOCA_GUID" ColumnName="HOCA_GUID" />
+          <ScalarProperty Name="OGR_GUID" ColumnName="OGR_GUID" />
+          <ScalarProperty Name="BOLGE_ID" ColumnName="BOLGE_ID" />
+          <ScalarProperty Name="SINIF" ColumnName="SINIF" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
-          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -50,6 +53,7 @@
     <EntitySetMapping Name="USER_ROLE_MENU">
       <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_MENU">
         <MappingFragment StoreEntitySet="USER_ROLE_MENU">
+          <ScalarProperty Name="AUTH_LEVEL" ColumnName="AUTH_LEVEL" />
           <ScalarProperty Name="NODE_GUID" ColumnName="NODE_GUID" />
           <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
@@ -61,9 +65,10 @@
     <EntitySetMapping Name="USER_ROLE_OWNERSHIP">
       <EntityTypeMapping TypeName="GN_KASIFModel.USER_ROLE_OWNERSHIP">
         <MappingFragment StoreEntitySet="USER_ROLE_OWNERSHIP">
+          <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+          <ScalarProperty Name="USER_GUID" ColumnName="USER_GUID" />
           <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
           <ScalarProperty Name="ROLE_GUID" ColumnName="ROLE_GUID" />
-          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
         </MappingFragment>
@@ -119,6 +124,13 @@
     <EntitySetMapping Name="MENU_TILES">
       <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TILES">
         <MappingFragment StoreEntitySet="MENU_TILES">
+          <ScalarProperty Name="TILE_TYPE" ColumnName="TILE_TYPE" />
+          <ScalarProperty Name="ICON_NAME" ColumnName="ICON_NAME" />
+          <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+          <ScalarProperty Name="NODE_POSITION" ColumnName="NODE_POSITION" />
+          <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+          <ScalarProperty Name="NODE_GUID" ColumnName="NODE_GUID" />
+          <ScalarProperty Name="STYLE" ColumnName="STYLE" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />

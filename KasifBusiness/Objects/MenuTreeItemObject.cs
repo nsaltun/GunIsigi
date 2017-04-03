@@ -16,5 +16,6 @@ namespace KasifBusiness.Objects
         public short NODE_POSITION { get; set; }
         public string NODE_TYPE { get; set; }
         public Nullable<long> PARENT_NODE_GUID { get; set; }
+        public string NODE_VISIBILITY { get; set; }
     }
 }

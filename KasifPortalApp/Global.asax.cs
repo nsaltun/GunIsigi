@@ -144,14 +144,19 @@ namespace KasifPortalApp
             "UserTable/edit/{param}",
             "~/Management/Forms/UserTableEdit.aspx");
 
+            routes.MapPageRoute(
+            "ChangePwd-page",
+            "ChangePwd",
+            "~/Management/Tables/ChangePwd.aspx");
+
+
+
+            Utilities.RouteHandler.Routes = routes;
 
         }
 
-
-
-
-
         #region Unused Global.asax Methods
+
         protected void Session_Start(object sender, EventArgs e)
         {
 

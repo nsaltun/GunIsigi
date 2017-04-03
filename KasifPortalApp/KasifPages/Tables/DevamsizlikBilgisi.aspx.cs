@@ -2,15 +2,12 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
-using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
@@ -24,8 +21,27 @@ namespace KasifPortalApp.KasifPages.Tables
         {
             try
             {
+                string[] paramNames = null;
+                object[] paramValues = null;
                 PageOperations PageOps = new PageOperations();
-                List<DevamsizlikBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_DEVAMSIZLIK_BILGI, null, null);
+                List<DevamsizlikBilgiObj> lstScreenInfoObj = null;
+
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                {
+                    paramNames = new string[] { "P_HOCA_ID" };
+                    paramValues = new object[] { ksfSI.HocaGuid };
+                    lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_OGR_DEVAMSIZLIK_BILGI, paramNames, paramValues);
+                }
+                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+                {
+                    paramNames = new string[] { "P_OGR_ID" };
+                    paramValues = new object[] { ksfSI.OgrenciGuid };
+                    lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_OGR_DEVAMSIZLIK_BILGI, paramNames, paramValues);
+                }
+                else//Hem Hocaların hem de öğrencilerin devamsızlık bilgilerini getirir.
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_DEVAMSIZLIK_BILGI, null, null);
+                }
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
@@ -35,8 +51,6 @@ namespace KasifPortalApp.KasifPages.Tables
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(ex.Message, ResultStatus.Error);
             }
-
-
         }
 
         private void RaisePopUp(string msg, ResultStatus resultStatus)
@@ -72,7 +86,7 @@ namespace KasifPortalApp.KasifPages.Tables
             {
                 return ex.Message;
             }
-
         }
+        
     }
 }

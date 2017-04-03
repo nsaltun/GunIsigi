@@ -53,8 +53,11 @@
     <Compile Include="Business\KasifPageOperations\PageOperations.cs" />
     <Compile Include="Business\Login\OLogin.cs" />
     <Compile Include="Business\User\OUser.cs" />
+    <Compile Include="Business\User\OUserRoleOwnership.cs" />
     <Compile Include="DB Operations\DBObjects\ConstDbCommands.cs" />
     <Compile Include="DB Operations\DBOperations\DbOperations.cs" />
+    <Compile Include="DB Operations\DBOperations\GenericRepository.cs" />
+    <Compile Include="DB Operations\DBOperations\IGenericRepository.cs" />
     <Compile Include="DB Operations\DBOperations\OOgrBilgi.cs" />
     <Compile Include="DB Operations\EntityObject\BOLGE_INFO.cs">
       <DependentUpon>GN_KASIF.tt</DependentUpon>

@@ -13,5 +13,7 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string AD_SOYAD { get; set; }
         public Nullable<short> SINIF { get; set; }
         public long BOLGE_ID { get; set; }
+        public long HOCA_GUID { get; set; }
+
     }
 }

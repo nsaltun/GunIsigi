@@ -2,15 +2,12 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
-using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
@@ -25,7 +22,22 @@ namespace KasifPortalApp.KasifPages.Tables
             try
             {
                 PageOperations PageOps = new PageOperations();
-                List<TestCozmeDurumuObj> lstScreenInfoObj = PageOps.RunQueryForPage<TestCozmeDurumuObj>(DbCommandList.GET_OGR_TEST_REL, null, null);
+
+                List<TestCozmeDurumuObj> lstScreenInfoObj = null;
+                string[] paramNames = null;
+                object[] paramValues = null;
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+                {
+                    paramNames = new string[] { "P_OGR_ID" };
+                    paramValues = new object[] { ksfSI.OgrenciGuid };
+                    lstScreenInfoObj = PageOps.RunQueryForPage<TestCozmeDurumuObj>(DbCommandList.GET_OGR_TEST_REL, paramNames, paramValues);
+                }
+                else//Hem Hocaların hem de öğrencilerin müfredat bilgilerini getirir.
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<TestCozmeDurumuObj>(DbCommandList.GET_OGR_TEST_REL, null, null);
+                }
+
+                
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();

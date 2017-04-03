@@ -27,7 +27,7 @@
                         {
                             type: "select",
                             bCaseSensitive: true,
-                            values: ['Ögrenci','Hoca']
+                            values: ['Öğrenci','Hoca']
                         },
                         {
                             type: "text",
@@ -89,10 +89,12 @@
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3 class="pull-left"><i class="icon-table"></i><%=pageTitle %></h3>
+                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1",ksfSI) == "1")
+                    {%>
                 <div class="action pull-right">
                     <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding:10px; margin-right:10px;"> <i class=" icon-plus" style="margin-right:10px;"></i>Yeni Ekle</a>
                 </div>
-
+                <%} %>
             </div>
             <div class="box-content nopadding">
                 <asp:Repeater ID="tblRepeater" runat="server">
@@ -124,11 +126,16 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
-                                <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
+                            
+                            <td style="text-align:right">
+                                <% if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1",ksfSI) == "1")
+                                {%>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"DEVAMSIZLIK_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
+                                <%} %>
                             </td>
+                            
+
                             <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TIP").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"KISI_AD_SOYAD").ToString() %></td>

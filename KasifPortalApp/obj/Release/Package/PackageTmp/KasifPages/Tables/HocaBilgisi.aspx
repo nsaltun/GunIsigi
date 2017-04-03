@@ -8,7 +8,7 @@
             function DtInit() {
                 var oTable = $('#dtTable').dataTable();
 
-                $('.dataTables_filter input').attr("placeholder", "Ara...");
+                $(".dataTables_filter input").attr("placeholder", "Ara...");
                 $(".dataTables_length select").wrap("<div class='input-mini'></div>").chosen({
                     disable_search_threshold: 9999999
                 });
@@ -17,8 +17,8 @@
                 });
                 oTable.columnFilter({
                     "sPlaceHolder": "head:after",
-                    'sRangeFormat': "{from}{to}",
-                    'aoColumns': [
+                    "sRangeFormat": "{from}{to}",
+                    "aoColumns": [
                         null,
                         {
                             type: "text",
@@ -49,7 +49,7 @@
 
         });
 
-        
+
 
     </script>
 
@@ -63,10 +63,12 @@
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3 class="pull-left"><i class="icon-table"></i><%=pageTitle %></h3>
+                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
+                {%>
                 <div class="action pull-right">
-                    <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding:10px; margin-right:10px;"> <i class=" icon-plus" style="margin-right:10px;"></i>Yeni Ekle</a>
+                    <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding: 10px; margin-right: 10px;"><i class=" icon-plus" style="margin-right: 10px;"></i>Yeni Ekle</a>
                 </div>
-
+                <%} %>
             </div>
             <div class="box-content nopadding">
                 <asp:Repeater ID="tblRepeater" runat="server">
@@ -97,9 +99,12 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
+                                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
+                                    {%>
+                                <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"HOCA_GUID").ToString()%>"><i class="icon-remove"></i></a>
+                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"HOCA_GUID").ToString()%>"><i class="icon-remove"></i></a>
+                                <%} %>
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HOCA_ADI").ToString()%> <%# DataBinder.Eval(Container.DataItem,"HOCA_SOYADI") %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>
@@ -123,7 +128,7 @@
         $('.delete').click(function (event) {
             event.preventDefault();
             var postData = {
-                "RowGuid":this.getAttribute('dataId')
+                "RowGuid": this.getAttribute('dataId')
             };
             $.ajax({
                 type: "POST",
@@ -133,7 +138,7 @@
                 dataType: "JSON",
                 success: function (result) {
                     alert(result.d);
-                    window.location="<%=Page.GetRouteUrl(pageName,null)%>"
+                    window.location = "<%=Page.GetRouteUrl(pageName,null)%>"
                 },
                 failure: function (result) {
                     alert('error');

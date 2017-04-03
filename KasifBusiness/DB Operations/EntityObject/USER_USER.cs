@@ -17,7 +17,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public long GUID { get; set; }
         public short STATUS { get; set; }
         public long LASTUPDATED { get; set; }
-        public string USER_ID { get; set; }
         public string NAME { get; set; }
         public string SURNAME { get; set; }
         public string EMAIL { get; set; }
@@ -30,5 +29,7 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public byte[] PASSWORD { get; set; }
         public Nullable<short> SINIF { get; set; }
         public Nullable<long> BOLGE_ID { get; set; }
+        public Nullable<long> OGR_GUID { get; set; }
+        public Nullable<long> HOCA_GUID { get; set; }
     }
 }

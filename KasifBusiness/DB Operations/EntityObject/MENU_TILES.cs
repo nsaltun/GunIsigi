@@ -17,5 +17,12 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public long GUID { get; set; }
         public short STATUS { get; set; }
         public Nullable<long> LASTUPDATED { get; set; }
+        public string STYLE { get; set; }
+        public Nullable<long> NODE_GUID { get; set; }
+        public string DISPLAY_NAME { get; set; }
+        public Nullable<int> NODE_POSITION { get; set; }
+        public string FILE_NAME { get; set; }
+        public string ICON_NAME { get; set; }
+        public string TILE_TYPE { get; set; }
     }
 }

@@ -53,19 +53,36 @@ namespace KasifPortalApp.KasifPages.Forms
         private bool LoadParameters()
         {
             #region Fill Kişi
+
             PageOperations PageOps = new PageOperations();
             List<NameValue> lstDataSource = new List<NameValue>();
             lstKisiBilgi = PageOps.RunQueryForPage<HocaAndOgrenciObj>(DbCommandList.GET_HOCA_AND_OGRENCI, null, null);
 
             lstDataSource = new List<NameValue>();
-            foreach (var item in lstKisiBilgi.Where<HocaAndOgrenciObj>(x => x.TIP == 1).ToList())//Default olarak öğrenciler dolduruluyor.
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                lstDataSource.Add(new NameValue
+                lstKisiBilgi = lstKisiBilgi.Where(x => x.TIP == 1 && x.HOCA_GUID == ksfSI.HocaGuid).ToList();
+                foreach (var item in lstKisiBilgi.Where(x => x.TIP == 1 && x.HOCA_GUID == ksfSI.HocaGuid).ToList())//Default olarak öğrenciler dolduruluyor.
                 {
-                    Name = item.AD_SOYAD,
-                    Value = item.GUID.ToString()
-                });
+                    lstDataSource.Add(new NameValue
+                    {
+                        Name = item.AD_SOYAD,
+                        Value = item.GUID.ToString()
+                    });
+                }
             }
+            else
+            {
+                foreach (var item in lstKisiBilgi.Where(x => x.TIP == 1).ToList())//Default olarak öğrenciler dolduruluyor.
+                {
+                    lstDataSource.Add(new NameValue
+                    {
+                        Name = item.AD_SOYAD,
+                        Value = item.GUID.ToString()
+                    });
+                }
+            }
+
 
             if (lstDataSource != null && lstDataSource.Count > 0)
             {
@@ -159,6 +176,38 @@ namespace KasifPortalApp.KasifPages.Forms
             }
             #endregion
 
+            #region Fill Tip
+            if (ksfSI.IsAdmin == 1)
+            {
+                NameValue[] NameValueArr = new NameValue[2];
+                NameValueArr[0] = new NameValue();
+                NameValueArr[0].Name = "Öğrenci";
+                NameValueArr[0].Value = "1";
+                NameValueArr[1] = new NameValue();
+                NameValueArr[1].Name = "Hoca";
+                NameValueArr[1].Value = "2";
+
+                slcTip.DataSource = NameValueArr;
+                slcTip.DataTextField = "Name";
+                slcTip.DataValueField = "Value";
+                slcTip.DataBind();
+            }
+            else
+            {
+                NameValue[] NameValueArr = new NameValue[1];
+                NameValueArr[0] = new NameValue();
+                NameValueArr[0].Name = "Öğrenci";
+                NameValueArr[0].Value = "1";
+
+                slcTip.DataSource = NameValueArr;
+                slcTip.DataTextField = "Name";
+                slcTip.DataValueField = "Value";
+                slcTip.DataBind();
+            }
+
+
+            #endregion
+
             return true;
         }
 
@@ -192,7 +241,7 @@ namespace KasifPortalApp.KasifPages.Forms
             System.Web.HttpContext context = System.Web.HttpContext.Current;
             //var konuAdi = (context.Request["KonuAdi"] != null && context.Request["KonuAdi"] != "") ? Convert.ToString(context.Request["KonuAdi"]) : "";
             //var dersId = (context.Request["DersId"] != null && context.Request["DersId"] != "") ? Convert.ToString(context.Request["DersId"]) : "";
-            string[] postData = new string[] { Hafta, KisiId, Tip, DevamDurumu, Sebep};
+            string[] postData = new string[] { Hafta, KisiId, Tip, DevamDurumu, Sebep };
             string errorMessage = "";
             bool bControl = ProcessRequest(postData, ref errorMessage);
             if (bControl)

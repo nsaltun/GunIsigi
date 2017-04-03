@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KasifBusiness.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,9 +13,11 @@ namespace KasifPortalApp
         public string pageTitle;
         public string brandUrl;
         public string btnOk="Tamam";
+        public SessionInfo ksfSI;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ksfSI = (SessionInfo)Session["KsfSessionInfo"];
             brandUrl = Page.GetRouteUrl("home-page", null);
         }
     }

@@ -13,4 +13,11 @@ namespace KasifBusiness.Objects.CodeMgmt
         public string errPrefix { get; set; }
         public bool isOk { get; set; }
     }
+
+    public enum MenuNodeType
+    {
+        MAIN,
+        SUB,
+        SUBMAIN
+    }
 }

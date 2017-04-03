@@ -2,15 +2,12 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
-using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
@@ -25,7 +22,19 @@ namespace KasifPortalApp.KasifPages.Tables
             try
             {
                 PageOperations PageOps = new PageOperations();
-                List<HocaBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI, null, null);
+                //List<HocaBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI, null, null);
+                List<HocaBilgiObj> lstScreenInfoObj = null;
+
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI,
+                                                                                new string[] { "P_HOCA_ID" },
+                                                                                new object[] { ksfSI.HocaGuid });
+                }
+                else
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI, null, null);
+                }
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();

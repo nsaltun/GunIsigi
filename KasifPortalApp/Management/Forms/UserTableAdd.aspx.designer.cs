@@ -22,6 +22,24 @@ namespace KasifPortalApp.Management.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// hiddenHocaId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiddenHocaId;
+        
+        /// <summary>
+        /// hiddenOgrId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiddenOgrId;
+        
+        /// <summary>
         /// slcAdmin control.
         /// </summary>
         /// <remarks>
@@ -56,6 +74,24 @@ namespace KasifPortalApp.Management.Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect slcRole;
+        
+        /// <summary>
+        /// lblOgr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblOgr;
+        
+        /// <summary>
+        /// slcOgrenci control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcOgrenci;
         
         /// <summary>
         /// txtAd control.

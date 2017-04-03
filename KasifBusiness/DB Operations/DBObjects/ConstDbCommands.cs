@@ -44,7 +44,10 @@ namespace KasifBusiness.DB_Operations.DBObjects
             PRM_USER_ROLES,
             GET_USER_INFO,
             GET_USER_USER,
-            GET_USER_MENUS
+            GET_USER_MENUS,
+            GET_MENU_TILES,
+            GET_OGR_DEVAMSIZLIK_BILGI,
+            GET_ALLOWED_PAGES
         }
 
 

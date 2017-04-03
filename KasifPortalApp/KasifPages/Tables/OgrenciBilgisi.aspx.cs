@@ -2,15 +2,12 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
-using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {
@@ -27,7 +24,24 @@ namespace KasifPortalApp.KasifPages.Tables
             {
                 deleteUrl = pageName + "/DeleteCurrentRow";
                 PageOperations PageOps = new PageOperations();
-                List<PageOgrBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI, null, null);
+                List<PageOgrBilgiObj> lstScreenInfoObj = null;
+
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI, 
+                                                                                new string[] { "P_HOCA_ID"},
+                                                                                new object[] { ksfSI.HocaGuid });
+                }
+                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI,
+                                                                                new string[] { "P_OGR_ID" },
+                                                                                new object[] { ksfSI.OgrenciGuid });
+                }
+                else//Tüm öğrencileri getirir.
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI, null, null);
+                }
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
@@ -37,8 +51,6 @@ namespace KasifPortalApp.KasifPages.Tables
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(ex.Message, ResultStatus.Error);
             }
-
-
         }
 
         private void RaisePopUp(string msg, ResultStatus resultStatus)
@@ -53,7 +65,6 @@ namespace KasifPortalApp.KasifPages.Tables
                 String script = "<script>$(document).ready(function () {showErrorModal('" + pageTitle + " - Hata','" + msg + "');});</script>";
                 ClientScript.RegisterStartupScript(typeof(Page), "ProcessError", script);
             }
-
         }
 
         public string GenerateAddUrl()

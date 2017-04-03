@@ -1,16 +1,12 @@
 ﻿using KasifBusiness.Business.KasifPageOperations;
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
-using KasifBusiness.Objects.ScreenObjects;
+using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
-using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Tables
 {

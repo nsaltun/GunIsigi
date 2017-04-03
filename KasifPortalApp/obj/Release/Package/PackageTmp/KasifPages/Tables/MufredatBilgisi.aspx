@@ -74,6 +74,12 @@
             });
         });
 
+        function RowControl()
+        {
+
+            return "1";
+        }
+
     </script>
 
 </asp:Content>
@@ -86,10 +92,12 @@
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3 class="pull-left"><i class="icon-table"></i><%=pageTitle %></h3>
+                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1",ksfSI) == "1")
+                {%>
                 <div class="action pull-right">
                     <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding:10px; margin-right:10px;"> <i class=" icon-plus" style="margin-right:10px;"></i>Yeni Ekle</a>
                 </div>
-
+                <%} %>
             </div>
             <div class="box-content nopadding">
                 <asp:Repeater ID="tblRepeater" runat="server">
@@ -119,10 +127,14 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
-                                <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
-                                <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem,"MUFREDAT_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
+                            <td runat="server" ondatabinding="OnDataBinding">
+                                <a href="#" class="btn" 
+                                    <%--style="visibility:<%# KasifPortalApp.Utilities.UtilityScreenFunctions.ControlActionAuthorized(  DataBinder.Eval(Container.DataItem, "HOCA_GUID").ToString(),ksfSI)%>"--%>
+                                    rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="#" class="btn delete" 
+                                    <%--style="visibility:<%# KasifPortalApp.Utilities.UtilityScreenFunctions.ControlActionAuthorized(  DataBinder.Eval(Container.DataItem, "HOCA_GUID").ToString(),ksfSI)%>"--%>
+                                    rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem, "MUFREDAT_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
+                                
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HOCA_AD_SOYAD").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>

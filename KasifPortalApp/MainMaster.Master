@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMaster.master.cs" Inherits="KasifPortalApp.MainMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/MainMaster.master.cs" Inherits="KasifPortalApp.MainMaster" %>
 
 <%@ Register Src="~/Controls/TopMenu.ascx" TagPrefix="uc1" TagName="TopMenu" %>
 
@@ -170,17 +170,23 @@
 
             <div class="user">
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">John Doe
+<%--                <div >--%>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <%--John Doe--%>
+                        <%=ksfSI.userNameSurname %>
                         <img src="<%= ResolveClientUrl("~/Common/Template/img/logo.png") %>" alt="" /></a>
                     <ul class="dropdown-menu pull-right">
-                        <li>
+                        <%--<li>
                             <a href="more-userprofile.html">Edit profile</a>
                         </li>
                         <li>
                             <a href="#">Account settings</a>
+                        </li>--%>
+                        <li>
+                            <a href="<%=GetRouteUrl("ChangePwd-page",null) %>">Şifreni Değiştir</a>
                         </li>
                         <li>
-                            <a href="more-login.html">Sign out</a>
+                            <a href="<%=GetRouteUrl("login-page",null) %>">Çıkış</a>
                         </li>
                     </ul>
                 </div>

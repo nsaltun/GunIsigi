@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,9 +25,20 @@ namespace KasifPortalApp.Management.Forms
         public string standardErr = "İşlem Başarılı";
         public string pageName = "UserTable-page";
         public SessionInfo KsfSI;
-
-        bool isOk = true;
-        string exErr = "";
+        public List<OGR_BILGI> lstOgrBilgi;
+        public List<HOCA_BILGI> lstHocaBilgi;
+        //public List<OGR_BILGI> lstOgrBilgi
+        //{
+        //    get
+        //    {
+        //        if (this.ViewState["lstOgrBilgi"] != null)
+        //        {
+        //            return (List<OGR_BILGI>)(this.ViewState["lstOgrBilgi"]);
+        //        }
+        //        return new List<OGR_BILGI>();
+        //    }
+        //    set { this.ViewState["lstOgrBilgi"] = value; }
+        //}
 
         public override void Page_Load(object sender, EventArgs e)
         {
@@ -50,7 +62,6 @@ namespace KasifPortalApp.Management.Forms
                     }
                     else
                     {
-                        isOk = false;
                         standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                         resultStatus = ResultStatus.Error;
                         RaisePopUp(result.errorMsg, resultStatus);
@@ -66,8 +77,11 @@ namespace KasifPortalApp.Management.Forms
                 throw ex;
             }
         }
+
         private bool LoadParameters()
         {
+
+
             #region Fill User Role Info
             PageOperations PageOps = new PageOperations();
             List<USER_ROLE> lstScreenInfoObj = PageOps.RunQueryForPage<USER_ROLE>(DbCommandList.PRM_USER_ROLES, null, null);
@@ -125,9 +139,22 @@ namespace KasifPortalApp.Management.Forms
             }
             #endregion
 
+            #region Fill Ogrenci
+            PageOps = new PageOperations();
+            lstOgrBilgi = PageOps.RunQueryForPage<OGR_BILGI>(DbCommandList.PRM_OGR, null, null);
+            #endregion
+
+            #region Fill Hoca
+            lstDataSource = null;
+            PageOps = new PageOperations();
+            lstHocaBilgi = PageOps.RunQueryForPage<HOCA_BILGI>(DbCommandList.PRM_HOCA, null, null);
+            #endregion
+
+            ViewState.Clear();
+            ViewState.Add("lstOgrBilgi", lstOgrBilgi);
+
             return true;
         }
-
 
         private ResultObject FillParameters()
         {
@@ -142,13 +169,22 @@ namespace KasifPortalApp.Management.Forms
                 {
                     UserObj.BOLGE_ID = Convert.ToInt64(slcMahalle.Value);
                 }
+                if (!String.IsNullOrEmpty(hiddenOgrId.Value))
+                {
+                    UserObj.OGR_GUID = Convert.ToInt64(hiddenOgrId.Value);
+                    lstOgrBilgi = (List<OGR_BILGI>)ViewState["lstOgrBilgi"];
+                    UserObj.HOCA_GUID = lstOgrBilgi.Where(x => x.GUID == UserObj.OGR_GUID).ToList()[0].HOCA_GUID;
+                }
+                if (!String.IsNullOrEmpty(hiddenHocaId.Value))
+                {
+                    UserObj.HOCA_GUID = Convert.ToInt64(hiddenHocaId.Value);
+                }
                 UserObj.EMAIL = txtEmail.Value;
                 UserObj.INSERT_USER = KsfSI.UserGuid;
                 UserObj.IS_ADMIN = slcAdmin.Value == "1" ? short.Parse("1") : short.Parse("0");
                 UserObj.NAME = txtAd.Value;
                 UserObj.PASSWORD = KasifBusiness.Utilities.KasifHelper.GetSha512HashedData(txtPassword.Value);
                 UserObj.SURNAME = txtSoyad.Value;
-                UserObj.USER_STATUS = short.Parse("1");
 
                 OUser oUser = new OUser(UserObj);
                 ResultObject result = oUser.OUserOperation();
@@ -164,7 +200,6 @@ namespace KasifPortalApp.Management.Forms
             }
             catch (Exception ex)
             {
-                exErr = ex.Message;
                 ResultObject result = new ResultObject();
                 result.errorMsg = ex.Message;
                 result.errPrefix = "Beklenmeyen Hata. ";
@@ -192,7 +227,11 @@ namespace KasifPortalApp.Management.Forms
             return Page.GetRouteUrl(pageName, null);
         }
 
-
+        public string JsSerialize(object o)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize(o);
+        }
 
     }
 }

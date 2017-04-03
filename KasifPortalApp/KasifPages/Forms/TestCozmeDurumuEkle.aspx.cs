@@ -155,7 +155,8 @@ namespace KasifPortalApp.KasifPages.Forms
             PageOps = new PageOperations();
             lstDataSource = new List<NameValue>();
             lstTestBilgi = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, null, null);
-            foreach (var item in lstTestBilgi)
+            List<TestBilgiObj> lstCurrentTestBilgi = lstTestBilgi.Where<TestBilgiObj>(x => x.KONU_ID.ToString() == slcKonuAdi.Value).ToList();
+            foreach (var item in lstCurrentTestBilgi)
             {
                 lstDataSource.Add(new NameValue
                 {
@@ -179,22 +180,52 @@ namespace KasifPortalApp.KasifPages.Forms
             #endregion
 
             #region Fill Ogrenci
+
             lstDataSource = null;
             PageOps = null;
             PageOps = new PageOperations();
             lstDataSource = new List<NameValue>();
             lstOgrBilgi = PageOps.RunQueryForPage<OGR_BILGI>(DbCommandList.PRM_OGR, null, null);
-            List<OGR_BILGI> lstCurrentOgrBilgiObj = lstOgrBilgi.Where<OGR_BILGI>(x => x.CLASS.ToString() == slcSinif.Value).ToList();
 
-
-            foreach (var item in lstCurrentOgrBilgiObj)
+            lstDataSource = new List<NameValue>();
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                lstDataSource.Add(new NameValue
+                lstOgrBilgi = lstOgrBilgi.Where(x => x.HOCA_GUID == ksfSI.HocaGuid).ToList();
+                List<OGR_BILGI> lstCurrentOgrBilgiObj = lstOgrBilgi.Where<OGR_BILGI>(x => x.CLASS.ToString() == slcSinif.Value
+                                                                                        && x.HOCA_GUID == ksfSI.HocaGuid).ToList();
+                foreach (var item in lstCurrentOgrBilgiObj)//Default olarak öğrenciler dolduruluyor.
                 {
-                    Name = item.NAME + " " + item.SURNAME,
-                    Value = item.GUID.ToString()
-                });
+                    lstDataSource.Add(new NameValue
+                    {
+                        Name = item.NAME + " " + item.SURNAME,
+                        Value = item.GUID.ToString()
+                    });
+                }
             }
+            else
+            {
+                foreach (var item in lstOgrBilgi.Where(x => x.CLASS.ToString() == slcSinif.Value).ToList())//Default olarak öğrenciler dolduruluyor.
+                {
+                    lstDataSource.Add(new NameValue
+                    {
+                        Name = item.NAME + " " + item.SURNAME,
+                        Value = item.GUID.ToString()
+                    });
+                }
+            }
+
+
+            //List<OGR_BILGI> lstCurrentOgrBilgiObj = lstOgrBilgi.Where<OGR_BILGI>(x => x.CLASS.ToString() == slcSinif.Value).ToList();
+
+
+            //foreach (var item in lstCurrentOgrBilgiObj)
+            //{
+            //    lstDataSource.Add(new NameValue
+            //    {
+            //        Name = item.NAME + " " + item.SURNAME,
+            //        Value = item.GUID.ToString()
+            //    });
+            //}
 
             if (lstDataSource != null && lstDataSource.Count > 0)
             {

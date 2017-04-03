@@ -178,15 +178,13 @@
                             <label for="select" class="control-label ">Tip</label>
                             <div class="controls">
                                 <select name="select" id="slcTip" class="input-large" runat="server">
-                                    <option value="1">Öğrenci</option>
-                                    <option value="2">Hoca</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="span6">
                         <div class="control-group">
-                            <label for="select" class="control-label ">Kim</label>
+                            <label for="select" class="control-label ">Öğrenci/Hoca</label>
                             <div class="controls">
                                 <select name="select" id="slcKisi" class="input-large" runat="server"></select>
                             </div>

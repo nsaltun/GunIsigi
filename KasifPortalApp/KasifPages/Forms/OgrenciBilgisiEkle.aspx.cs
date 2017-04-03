@@ -65,6 +65,12 @@ namespace KasifPortalApp.KasifPages.Forms
             List<HocaBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI, null, null);
             List<NameValue> lstDataSource = new List<NameValue>();
 
+            //Login olan kullanıcı Hoca rolündeyse sadece o hocanın bilgisi gelir.
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+            {
+                lstScreenInfoObj = lstScreenInfoObj.Where(x => x.HOCA_GUID == ksfSI.HocaGuid).ToList();
+            }
+
             foreach (var item in lstScreenInfoObj)
             {
                 lstDataSource.Add(new NameValue

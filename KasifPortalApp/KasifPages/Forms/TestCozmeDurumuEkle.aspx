@@ -22,7 +22,7 @@
 
                 var slcKonu = document.getElementById('<%=slcKonuAdi.ClientID%>');
                 slcDers.options.length=0;
-                for(var i=0;i<lstDers.length;i++)
+                for(var i=0;i<=lstDers.length;i++)
                 {
                     if(i==0)
                     {
@@ -31,11 +31,11 @@
                         opt.value = "";
                         slcDers.appendChild(opt);
                     }
-                    if(lstDers[i].SINIF==slcSinif.value)
+                    else if(lstDers[i-1].SINIF==slcSinif.value)
                     {
                         var opt = document.createElement('option');
-                        opt.text = lstDers[i].DERS_ADI;
-                        opt.value = lstDers[i].GUID;
+                        opt.text = lstDers[i-1].DERS_ADI;
+                        opt.value = lstDers[i-1].GUID;
                         slcDers.appendChild(opt);
                     }
                 }
@@ -80,7 +80,7 @@
                 var slcTest = document.getElementById('<%=slcTestAdi.ClientID%>');
 
                 slcKonu.options.length=0;
-                for(var i=0;i<lstKonu.length;i++)
+                for(var i=0;i<=lstKonu.length;i++)
                 {
                     if(i==0)
                     {
@@ -89,11 +89,11 @@
                         opt.value = "";
                         slcKonu.appendChild(opt);
                     }
-                    if(lstKonu[i].DERS_GUID==slcDers.value)
+                    else if(lstKonu[i-1].DERS_GUID==slcDers.value)
                     {
                         var opt = document.createElement('option');
-                        opt.text = lstKonu[i].KONU;
-                        opt.value = lstKonu[i].DERS_KONU_GUID;
+                        opt.text = lstKonu[i-1].KONU;
+                        opt.value = lstKonu[i-1].DERS_KONU_GUID;
                         slcKonu.appendChild(opt);
                     }
                 }

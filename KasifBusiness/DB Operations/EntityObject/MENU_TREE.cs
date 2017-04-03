@@ -24,5 +24,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public string CLASS_NAME { get; set; }
         public string FILE_NAME { get; set; }
         public Nullable<int> RESOURCE_ID { get; set; }
+        public string NODE_VISIBILITY { get; set; }
     }
 }

@@ -8,13 +8,20 @@ namespace KasifPortalApp
 {
     public abstract class BasePage:System.Web.UI.Page
     {
+        public SessionInfo ksfSI;
         protected override void OnInit(EventArgs e)
         {
             try
             {
-                SessionInfo KsfSI = (SessionInfo)Session["KsfSessionInfo"];
+                ksfSI = (SessionInfo)Session["KsfSessionInfo"];
+                if (ksfSI == null)
+                {
+                    Session.Clear();
+                    Response.Redirect(Page.GetRouteUrl("login-page", null));
+                }
 
-                if (KsfSI == null)
+                //Ulaşılmak istenen sayfaya yetki yoksa logout yapılıyor.
+                if (!CheckUserPageAuthorization(ksfSI.lstAllowedPages))
                 {
                     Session.Clear();
                     Response.Redirect(Page.GetRouteUrl("login-page", null));
@@ -28,9 +35,32 @@ namespace KasifPortalApp
             }
             
         }
+
+        private bool CheckUserPageAuthorization(List<MenuTreeItemObject> userMenuTree)
+        {
+            //home.aspx
+            string virtUrl = ((System.Web.Routing.PageRouteHandler)(Request.RequestContext.RouteData.RouteHandler)).VirtualPath.Substring(2);
+            //home
+            string url = Request.RawUrl.Substring(1);//OgrBilgi
+            //OgrBilgi/add => yani alt sayfalar için '/' işaretinden sonraki kısım atılıyor. Kök kontrol ediliyor.
+            if (url.Contains("/"))
+            {
+                url = url.Split('/')[0];
+            }
+
+            foreach (var item in userMenuTree)
+            {
+                if (item.CLASS_NAME.ToUpper().Contains(url.ToUpper()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         protected override void OnLoad(EventArgs e)
         {
-
             try
             {
                 base.OnLoad(e);
@@ -40,12 +70,9 @@ namespace KasifPortalApp
             {
                 throw ex;
             }
-            
         }
-        
 
         public abstract void Page_Load(object sender, EventArgs e);
-            
     }
 
     

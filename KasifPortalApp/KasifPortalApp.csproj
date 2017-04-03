@@ -769,6 +769,7 @@
     <Content Include="Common\Template\js\plugins\xeditable\demo.min.js" />
     <Content Include="Controls\BreadCrumb.ascx" />
     <Content Include="Controls\MobileMenu.ascx" />
+    <Content Include="Controls\TopMenuBackup.ascx" />
     <Content Include="Controls\TopMenu.ascx" />
     <Content Include="DefaultWebForm.aspx" />
     <Content Include="Global.asax" />
@@ -791,6 +792,7 @@
     <Content Include="KasifPages\Tables\OgrenciBilgisi.aspx" />
     <Content Include="Management\Forms\UserTableAdd.aspx" />
     <Content Include="Management\Tables\UserTable.aspx" />
+    <Content Include="Management\Tables\ChangePwd.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -824,6 +826,13 @@
     </Compile>
     <Compile Include="Controls\MobileMenu.ascx.designer.cs">
       <DependentUpon>MobileMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TopMenuBackup.ascx.cs">
+      <DependentUpon>TopMenuBackup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TopMenuBackup.ascx.designer.cs">
+      <DependentUpon>TopMenuBackup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\TopMenu.ascx.cs">
       <DependentUpon>TopMenu.ascx</DependentUpon>
@@ -982,7 +991,15 @@
     <Compile Include="Management\Tables\UserTable.aspx.designer.cs">
       <DependentUpon>UserTable.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\Tables\ChangePwd.aspx.cs">
+      <DependentUpon>ChangePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\Tables\ChangePwd.aspx.designer.cs">
+      <DependentUpon>ChangePwd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\RouteHandler.cs" />
     <Compile Include="Utilities\UtilityScreenFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1045,6 +1062,9 @@
       <Project>{bc3af1bf-f688-4db4-9e13-9b6a1d13f2a6}</Project>
       <Name>KasifBusiness</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

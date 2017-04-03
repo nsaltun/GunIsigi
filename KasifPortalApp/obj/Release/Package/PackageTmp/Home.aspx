@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="KasifPortalApp.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="MainMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="KasifPortalApp.Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -18,36 +18,17 @@
         <div class="box-content" style="margin-left: 0px;">
             <div class="span12">
                 <ul class="tiles" style="margin-top: 0px;">
-                    <li class="red high long">
-                        <a href="<%=ogrBilgiUrl %>"><span><i class="icon-envelope"></i></span><span class="name">Öğrenci Bilgisi </span></a>
+                    <%
+                        if (lstMenuTiles != null)
+                            foreach (var item in lstMenuTiles)
+                            {
+                    %>
+                    <li class="<%=item.STYLE%>">
+                        <a href="<%= item.NODE_GUID!=null && item.NODE_GUID!=0? GetRouteUrl(item.FILE_NAME,null) : "#" %>"><span><i class="<%=item.ICON_NAME %>"></i></span><span class="name"><%=item.DISPLAY_NAME %> </span></a>
                     </li>
-                    <li class="lime long">
-                        <a href="<%=hocaBilgiUrl %>"><span><i class="icon-comment"></i></span><span class="name">Hoca Bilgisi</span></a>
-                    </li>
-                    <li class="orange long">
-                        <a href="<%=DevamsizlikUrl %>"><span><i class="icon-shopping-cart"></i></span><span class="name">Devamsızlık Bilgisi</span></a>
-                    </li>
-                    <li class="green long">
-                        <a href="<%=MufredatTakipUrl %>"><span><i class="icon-globe"></i></span><span class="name">Müfredat Takibi</span></a>
-                    </li>
-                    <li class="green">
-                        <a href="<%=dersBilgisiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Ders Bilgisi</span></a>
-                    </li>
-                    <li class="teal">
-                        <a href="<%=dersKonuBilgisiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Ders Konu Bilgisi</span></a>
-                    </li>
-                    <li class="red">
-                        <a href="<%=testTakibiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Test Takibi</span></a>
-                    </li>
-                    <li class="orange">
-                        <a href="<%=testBilgisiUrl %>"><span><i class="icon-signout"></i></span><span class="name">Test Bilgisi</span></a>
-                    </li>
-                    <li class="teal long">
-                        <a href="#"><span><i class="icon-cloud-upload"></i></span><span class="name">Etkinlikler</span></a>
-                    </li>
-                    <li class="blue">
-                        <a href="#"><span><i class="icon-signout"></i></span><span class="name">Sign out</span></a>
-                    </li>
+                    <%
+                            }
+                    %>
                 </ul>
             </div>
         </div>

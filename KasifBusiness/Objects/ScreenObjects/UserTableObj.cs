@@ -24,5 +24,7 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string BOLGE_ADI { get; set; }
         public string ROLE_NAME { get; set; }
         public Int64 ROLE_GUID { get; set; }
+        public Nullable<long> HOCA_GUID { get; set; }
+        public Nullable<long> OGR_GUID { get; set; }
     }
 }

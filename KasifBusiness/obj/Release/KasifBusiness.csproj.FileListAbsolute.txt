@@ -7,3 +7,4 @@ C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\EntityFramework.xml
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\bin\Release\EntityFramework.SqlServer.xml
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Release\KasifBusiness.dll
 C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Release\KasifBusiness.pdb
+C:\_PROJECTS\GUNISIGI\GunIsigi\KasifBusiness\obj\Release\KasifBusiness.csprojResolveAssemblyReference.cache
