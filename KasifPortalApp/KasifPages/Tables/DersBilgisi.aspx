@@ -11,7 +11,7 @@
                 $('.dataTables_filter input').attr("placeholder", "Ara...");
                 $(".dataTables_length select").wrap("<div class='input-mini'></div>").chosen({
                     disable_search_threshold: 9999999
-                });
+                }); 
                 $.datepicker.setDefaults({
                     dateFormat: "dd-mm-yy"
                 });
