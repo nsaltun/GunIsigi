@@ -10,7 +10,7 @@
 namespace KasifPortalApp.KasifPages.Forms {
     
     
-    public partial class TestCozmeDurumuEkle {
+    public partial class OgrenciBilgisiDuzenle {
         
         /// <summary>
         /// form1 control.
@@ -22,6 +22,24 @@ namespace KasifPortalApp.KasifPages.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// txtOgrAdi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOgrAdi;
+        
+        /// <summary>
+        /// txtOgrSoyadi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOgrSoyadi;
+        
+        /// <summary>
         /// slcSinif control.
         /// </summary>
         /// <remarks>
@@ -31,84 +49,111 @@ namespace KasifPortalApp.KasifPages.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlSelect slcSinif;
         
         /// <summary>
-        /// slcDersAdi control.
+        /// slcHocaBilgi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slcDersAdi;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcHocaBilgi;
         
         /// <summary>
-        /// slcKonuAdi control.
+        /// slcMahalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slcKonuAdi;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slcMahalle;
         
         /// <summary>
-        /// slcTestAdi control.
+        /// txtOkul control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slcTestAdi;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOkul;
         
         /// <summary>
-        /// slcCozmeDurumu control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slcCozmeDurumu;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmail;
         
         /// <summary>
-        /// slcOgr control.
+        /// txtVeliEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slcOgr;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtVeliEmail;
         
         /// <summary>
-        /// txtDogruSayisi control.
+        /// txtOgrTel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDogruSayisi;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOgrTel;
         
         /// <summary>
-        /// txtYanlisSayisi control.
+        /// txtDogumTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtYanlisSayisi;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDogumTarihi;
         
         /// <summary>
-        /// txtTarih control.
+        /// txtDogumYeri control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTarih;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDogumYeri;
         
         /// <summary>
-        /// btnSubmit control.
+        /// txtVeliAdi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSubmit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtVeliAdi;
+        
+        /// <summary>
+        /// txtVeliTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtVeliTel;
+        
+        /// <summary>
+        /// txtOkulNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOkulNo;
+        
+        /// <summary>
+        /// txtDiger control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDiger;
     }
 }

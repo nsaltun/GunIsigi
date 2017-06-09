@@ -15,9 +15,13 @@ namespace KasifBusiness.DB_Operations.DBOperations
             this.ogrBilgiObj = ogrBilgiObj;
         }
 
-        public void DoJob()
+        public void Insert()
         {
             DbOperations.Insert(ogrBilgiObj);
+        }
+        public void Update()
+        {
+            DbOperations.Update(ogrBilgiObj);
         }
 
     }

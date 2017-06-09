@@ -61,7 +61,7 @@ namespace KasifPortalApp.KasifPages.Forms
             lstDataSource = new List<NameValue>();
             if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                lstKisiBilgi = lstKisiBilgi.Where(x => x.TIP == 1 && x.HOCA_GUID == ksfSI.HocaGuid).ToList();
+                lstKisiBilgi = lstKisiBilgi.Where(x => x.HOCA_GUID == ksfSI.HocaGuid).ToList();
                 foreach (var item in lstKisiBilgi.Where(x => x.TIP == 1 && x.HOCA_GUID == ksfSI.HocaGuid).ToList())//Default olarak öğrenciler dolduruluyor.
                 {
                     lstDataSource.Add(new NameValue
@@ -98,52 +98,57 @@ namespace KasifPortalApp.KasifPages.Forms
             }
             #endregion
 
-            #region Fill Hafta
-            lstDataSource = null;
-            PageOps = null;
-            PageOps = new PageOperations();
-            lstDataSource = new List<NameValue>();
-            List<HAFTA_BILGI> lstHaftaBilgi = PageOps.RunQueryForPage<HAFTA_BILGI>(DbCommandList.GET_HAFTA_BILGI, null, null);
-            lstDataSource = new List<NameValue>();
-            bool isFirstIteration = true;
-            foreach (var item in lstHaftaBilgi)
-            {
-                if (isFirstIteration)
-                {
-                    lstDataSource.Add(new NameValue
-                    {
-                        Name = "Hafta Seç..",
-                        Value = ""
-                    });
-                    isFirstIteration = false;
-                }
-                lstDataSource.Add(new NameValue
-                {
-                    Name = item.HAFTA_ADI + " : " + item.TARIH,
-                    Value = item.HAFTA_ID.ToString()
-                });
-            }
+            #region Fill Hafta --Commented
+            //lstDataSource = null;
+            //PageOps = null;
+            //PageOps = new PageOperations();
+            //lstDataSource = new List<NameValue>();
+            //List<HAFTA_BILGI> lstHaftaBilgi = PageOps.RunQueryForPage<HAFTA_BILGI>(DbCommandList.GET_HAFTA_BILGI, null, null);
+            //lstDataSource = new List<NameValue>();
+            //bool isFirstIteration = true;
+            //foreach (var item in lstHaftaBilgi)
+            //{
+            //    if (isFirstIteration)
+            //    {
+            //        lstDataSource.Add(new NameValue
+            //        {
+            //            Name = "Hafta Seç..",
+            //            Value = ""
+            //        });
+            //        isFirstIteration = false;
+            //    }
+            //    lstDataSource.Add(new NameValue
+            //    {
+            //        Name = item.HAFTA_ADI + " : " + item.TARIH,
+            //        Value = item.HAFTA_ID.ToString()
+            //    });
+            //}
 
-            if (lstDataSource != null && lstDataSource.Count > 0)
-            {
-                slcHafta.DataSource = lstDataSource.ToArray();
-                slcHafta.DataTextField = "Name";
-                slcHafta.DataValueField = "Value";
-                slcHafta.DataBind();
-            }
-            else
-            {
-                slcHafta.DataSource = null;
-                slcHafta.DataBind();
-            }
+            //if (lstDataSource != null && lstDataSource.Count > 0)
+            //{
+            //    slcHafta.DataSource = lstDataSource.ToArray();
+            //    slcHafta.DataTextField = "Name";
+            //    slcHafta.DataValueField = "Value";
+            //    slcHafta.DataBind();
+            //}
+            //else
+            //{
+            //    slcHafta.DataSource = null;
+            //    slcHafta.DataBind();
+            //}
             #endregion
 
             #region Fill Mahalle
             List<BOLGE_INFO> lstBolgeInfo = PageOps.RunQueryForPage<BOLGE_INFO>(DbCommandList.GET_BOLGE_INFO, null, null);
-
             lstDataSource.Clear();
             lstDataSource = new List<NameValue>();
-            isFirstIteration = true;
+            bool isFirstIteration = true;
+
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+            {
+                lstBolgeInfo = lstBolgeInfo.Where(x => x.GUID == lstKisiBilgi[0].BOLGE_ID).ToList();
+            }
+
             foreach (var item in lstBolgeInfo)
             {
                 if (isFirstIteration)
@@ -177,33 +182,63 @@ namespace KasifPortalApp.KasifPages.Forms
             #endregion
 
             #region Fill Tip
-            if (ksfSI.IsAdmin == 1)
-            {
-                NameValue[] NameValueArr = new NameValue[2];
-                NameValueArr[0] = new NameValue();
-                NameValueArr[0].Name = "Öğrenci";
-                NameValueArr[0].Value = "1";
-                NameValueArr[1] = new NameValue();
-                NameValueArr[1].Name = "Hoca";
-                NameValueArr[1].Value = "2";
+            //if (ksfSI.IsAdmin == 1)
+            //{
+            NameValue[] NameValueArr = new NameValue[2];
+            NameValueArr[0] = new NameValue();
+            NameValueArr[0].Name = "Öğrenci";
+            NameValueArr[0].Value = "1";
+            NameValueArr[1] = new NameValue();
+            NameValueArr[1].Name = "Hoca";
+            NameValueArr[1].Value = "2";
 
-                slcTip.DataSource = NameValueArr;
-                slcTip.DataTextField = "Name";
-                slcTip.DataValueField = "Value";
-                slcTip.DataBind();
+            slcTip.DataSource = NameValueArr;
+            slcTip.DataTextField = "Name";
+            slcTip.DataValueField = "Value";
+            slcTip.DataBind();
+            //}
+            //else
+            //{
+            //    NameValue[] NameValueArr = new NameValue[1];
+            //    NameValueArr[0] = new NameValue();
+            //    NameValueArr[0].Name = "Öğrenci";
+            //    NameValueArr[0].Value = "1";
+
+            //    slcTip.DataSource = NameValueArr;
+            //    slcTip.DataTextField = "Name";
+            //    slcTip.DataValueField = "Value";
+            //    slcTip.DataBind();
+            //}
+
+
+            #endregion
+            
+            #region FillSinif
+            List<NameValue> lstNameValue = new List<NameValue>();
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+            {
+                lstNameValue.Add(new NameValue
+                {
+                    Name = lstKisiBilgi[0].SINIF.ToString(),
+                    Value = lstKisiBilgi[0].SINIF.ToString()
+                });
+
             }
             else
             {
-                NameValue[] NameValueArr = new NameValue[1];
-                NameValueArr[0] = new NameValue();
-                NameValueArr[0].Name = "Öğrenci";
-                NameValueArr[0].Value = "1";
-
-                slcTip.DataSource = NameValueArr;
-                slcTip.DataTextField = "Name";
-                slcTip.DataValueField = "Value";
-                slcTip.DataBind();
+                for (int i = 5; i <= 8; i++)
+                {
+                    lstNameValue.Add(new NameValue
+                    {
+                        Name = i.ToString(),
+                        Value = i.ToString()
+                    });
+                }
             }
+            slcSinif.DataSource = lstNameValue.ToArray();
+            slcSinif.DataTextField = "Name";
+            slcSinif.DataValueField = "Value";
+            slcSinif.DataBind();
 
 
             #endregion
@@ -216,7 +251,7 @@ namespace KasifPortalApp.KasifPages.Forms
             try
             {
                 DEVAMSIZLIK_BILGI DevamsizlikBilgiObj = new DEVAMSIZLIK_BILGI();
-                DevamsizlikBilgiObj.HAFTA_ID = Convert.ToInt32(lstPostData[0]);
+                DevamsizlikBilgiObj.DATE = lstPostData[0];
                 DevamsizlikBilgiObj.KISI_ID = Convert.ToInt64(lstPostData[1]);
                 DevamsizlikBilgiObj.TIP = Convert.ToInt16(lstPostData[2]);
                 DevamsizlikBilgiObj.DURUM = Convert.ToInt16(lstPostData[3]);
@@ -236,12 +271,12 @@ namespace KasifPortalApp.KasifPages.Forms
         }
 
         [WebMethod]
-        public static string[] ProcessOperation(string Hafta, string KisiId, string Tip, string DevamDurumu, string Sebep)
+        public static string[] ProcessOperation(string Tarih, string KisiId, string Tip, string DevamDurumu, string Sebep)
         {
             System.Web.HttpContext context = System.Web.HttpContext.Current;
             //var konuAdi = (context.Request["KonuAdi"] != null && context.Request["KonuAdi"] != "") ? Convert.ToString(context.Request["KonuAdi"]) : "";
             //var dersId = (context.Request["DersId"] != null && context.Request["DersId"] != "") ? Convert.ToString(context.Request["DersId"]) : "";
-            string[] postData = new string[] { Hafta, KisiId, Tip, DevamDurumu, Sebep };
+            string[] postData = new string[] { Tarih, KisiId, Tip, DevamDurumu, Sebep };
             string errorMessage = "";
             bool bControl = ProcessRequest(postData, ref errorMessage);
             if (bControl)

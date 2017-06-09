@@ -49,13 +49,13 @@ namespace KasifPortalApp.KasifPages.Forms {
         protected global::System.Web.UI.HtmlControls.HtmlSelect slcHoca;
         
         /// <summary>
-        /// slcHafta control.
+        /// txtTarih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slcHafta;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTarih;
         
         /// <summary>
         /// slcSinif control.

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KasifBusiness.Objects.ScreenObjects
+namespace KasifBusiness.DB_Operations.DBObjects
 {
-    public class PageOgrBilgiObj
+    [Serializable]
+    public partial class OgrBilgi
     {
         public long GUID { get; set; }
         public short STATUS { get; set; }
@@ -18,8 +19,6 @@ namespace KasifBusiness.Objects.ScreenObjects
         public Nullable<short> CLASS { get; set; }
         public string SUBCLASS { get; set; }
         public string SCHOOL_NAME { get; set; }
-        public Nullable<long> BOLGE_ID { get; set; }
-        public string BOLGE_ADI { get; set; }
         public string PARENT_NAME { get; set; }
         public string DATE_OF_BIRTH { get; set; }
         public string BIRT_PLACE { get; set; }
@@ -29,7 +28,8 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string PARENT_EMAIL { get; set; }
         public byte[] OGR_IMG { get; set; }
         public Nullable<long> HOCA_GUID { get; set; }
-        public string HOCA_AD_SOYAD { get; set; }
+        public Nullable<long> BOLGE_ID { get; set; }
         public string DIGER { get; set; }
+
     }
 }

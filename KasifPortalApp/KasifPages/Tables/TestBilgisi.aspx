@@ -85,7 +85,7 @@
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3 class="pull-left"><i class="icon-table"></i><%=pageTitle %></h3>
-                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
+                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1", ksfSI) == "1")
                     {%>
                 <div class="action pull-right">
                     <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding: 10px; margin-right: 10px;"><i class=" icon-plus" style="margin-right: 10px;"></i>Yeni Ekle</a>
@@ -104,7 +104,7 @@
                                     <th>Ders Adı</th>
                                     <th>Test No</th>
                                     <th>Test Adı</th>
-                                    <th>Hafta</th>
+                                    <th>Tarih</th>
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
@@ -113,7 +113,7 @@
                                     <th>Ders Adı</th>
                                     <th>Test No</th>
                                     <th>Test Adı</th>
-                                    <th>Hafta</th>
+                                    <th>Tarih</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,7 +121,7 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
+                                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1", ksfSI) == "1")
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
@@ -133,7 +133,7 @@
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TEST_NO").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TEST_ADI").ToString() %></td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TARIH").ToString() %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>

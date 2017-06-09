@@ -2,10 +2,14 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifBusiness.Utilities;
 using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -15,9 +19,9 @@ using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
-    public partial class OgrenciBilgisiEkle : BasePage
+    public partial class OgrenciBilgisiDuzenle : BasePage
     {
-        public string pageTitle = "Öğrenci Bilgisi Ekle";
+        public string pageTitle = "Öğrenci Bilgisi Düzenle";
         public string standardErr = "İşlem Başarılı";
         public string pageName = "OgrBilgi-page";
 
@@ -32,6 +36,7 @@ namespace KasifPortalApp.KasifPages.Forms
                 if (!Page.IsPostBack)
                 {
                     LoadParameters();
+                    GetInfo();
                 }
                 else
                 {
@@ -56,6 +61,46 @@ namespace KasifPortalApp.KasifPages.Forms
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(standardErr, ResultStatus.Error);
                 throw ex;
+            }
+        }
+
+        private void GetInfo()
+        {
+            try
+            {
+                //Read values from querystring and decrypt..
+                string encPostedParam = (String)Page.RouteData.Values["param"];
+                string decryptedQueryString = KasifHelper.DecryptStringFromBytes_Aes(encPostedParam);
+
+                PageOperations PageOps = new PageOperations();
+                List<PageOgrBilgiObj> lstScreenInfoObj = null;
+                lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI,
+                                                                            new string[] { "P_OGR_ID" },
+                                                                            new object[] { decryptedQueryString });
+                ViewState.Add("ogrGuid", lstScreenInfoObj[0].GUID);
+
+                //Filling Inputs on the screen
+                //txtOgrAdi.Value = lstScreenInfoObj
+                txtOgrAdi.Value = lstScreenInfoObj[0].NAME;
+                txtOgrSoyadi.Value = lstScreenInfoObj[0].SURNAME;
+                slcSinif.Value = lstScreenInfoObj[0].CLASS.ToString();
+                slcHocaBilgi.Value = lstScreenInfoObj[0].HOCA_GUID.ToString();
+                slcMahalle.Value = lstScreenInfoObj[0].BOLGE_ID.ToString();
+                txtOkul.Value = lstScreenInfoObj[0].SCHOOL_NAME;
+                txtEmail.Value = lstScreenInfoObj[0].OGR_EMAIL;
+                txtVeliEmail.Value = lstScreenInfoObj[0].PARENT_EMAIL;
+                txtOgrTel.Value = lstScreenInfoObj[0].PHONE;
+                txtDogumTarihi.Value = lstScreenInfoObj[0].DATE_OF_BIRTH;
+                txtDogumYeri.Value = lstScreenInfoObj[0].BIRT_PLACE;
+                txtVeliAdi.Value = lstScreenInfoObj[0].PARENT_NAME;
+                txtVeliTel.Value = lstScreenInfoObj[0].PARENT_PHONE;
+                txtOkulNo.Value = lstScreenInfoObj[0].OGR_NO.ToString();
+                txtDiger.Value = lstScreenInfoObj[0].DIGER;
+            }
+            catch (Exception ex)
+            {
+                exErr = ex.Message;
+                //return false;
             }
         }
 
@@ -133,15 +178,16 @@ namespace KasifPortalApp.KasifPages.Forms
             List<NameValue> lstNameValue = new List<NameValue>();
             if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                lstNameValue.Add(new NameValue{
+                lstNameValue.Add(new NameValue
+                {
                     Name = lstScreenInfoObj[0].SINIF.ToString(),
                     Value = lstScreenInfoObj[0].SINIF.ToString()
                 });
-                
+
             }
             else
             {
-                for (int i = 5; i <=8; i++)
+                for (int i = 5; i <= 8; i++)
                 {
                     lstNameValue.Add(new NameValue
                     {
@@ -166,6 +212,7 @@ namespace KasifPortalApp.KasifPages.Forms
             try
             {
                 OGR_BILGI OgrBilgiObj = new OGR_BILGI();
+
                 OgrBilgiObj.BIRT_PLACE = txtDogumYeri.Value;
                 if (!String.IsNullOrEmpty(slcSinif.Value))
                 {
@@ -188,9 +235,15 @@ namespace KasifPortalApp.KasifPages.Forms
                 OgrBilgiObj.SURNAME = txtOgrSoyadi.Value;
                 OgrBilgiObj.HOCA_GUID = Convert.ToInt64(slcHocaBilgi.Value);
                 OgrBilgiObj.DIGER = txtDiger.Value;
-
+                OgrBilgiObj.GUID = Convert.ToInt64(ViewState["ogrGuid"].ToString());
                 OOgrBilgi OgrBilgi = new OOgrBilgi(OgrBilgiObj);
-                OgrBilgi.Insert();
+
+                //List<OGR_BILGI> lstOgr = new List<OGR_BILGI>();
+                //DbOperations.FindBy<OGR_BILGI>(ref lstOgr, OgrBilgiObj, x => x.GUID ==  );
+
+
+
+                OgrBilgi.Update();
                 return true;
             }
             catch (Exception ex)
@@ -219,8 +272,6 @@ namespace KasifPortalApp.KasifPages.Forms
         {
             return Page.GetRouteUrl(pageName, null);
         }
-
-
 
     }
 }

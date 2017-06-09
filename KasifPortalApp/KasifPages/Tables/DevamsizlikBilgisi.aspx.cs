@@ -30,9 +30,9 @@ namespace KasifPortalApp.KasifPages.Tables
                 {
                     paramNames = new string[] { "P_HOCA_ID" };
                     paramValues = new object[] { ksfSI.HocaGuid };
-                    lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_OGR_DEVAMSIZLIK_BILGI, paramNames, paramValues);
+                    lstScreenInfoObj = PageOps.RunQueryForPage<DevamsizlikBilgiObj>(DbCommandList.GET_DEVAMSIZLIK_BILGI, paramNames, paramValues);
                 }
-                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpperInvariant() == RoleNames.VELI.ToString())
                 {
                     paramNames = new string[] { "P_OGR_ID" };
                     paramValues = new object[] { ksfSI.OgrenciGuid };

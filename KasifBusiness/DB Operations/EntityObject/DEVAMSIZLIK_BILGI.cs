@@ -17,10 +17,10 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public long GUID { get; set; }
         public Nullable<short> STATUS { get; set; }
         public Nullable<long> LASTUPDATED { get; set; }
-        public Nullable<int> HAFTA_ID { get; set; }
         public Nullable<long> KISI_ID { get; set; }
         public Nullable<short> TIP { get; set; }
         public Nullable<short> DURUM { get; set; }
         public string SEBEP { get; set; }
+        public string DATE { get; set; }
     }
 }

@@ -776,6 +776,7 @@
     <Content Include="Home.aspx" />
     <Content Include="KasifPages\Forms\DersBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\OgrenciBilgisiDuzenle.aspx" />
     <Content Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx" />
     <Content Include="KasifPages\Forms\TestBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\MufredatTakipEkle.aspx" />
@@ -871,6 +872,13 @@
     </Compile>
     <Compile Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx.designer.cs">
       <DependentUpon>DevamsizlikBilgisiEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\OgrenciBilgisiDuzenle.aspx.cs">
+      <DependentUpon>OgrenciBilgisiDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\OgrenciBilgisiDuzenle.aspx.designer.cs">
+      <DependentUpon>OgrenciBilgisiDuzenle.aspx</DependentUpon>
     </Compile>
     <Compile Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx.cs">
       <DependentUpon>TestCozmeDurumuEkle.aspx</DependentUpon>

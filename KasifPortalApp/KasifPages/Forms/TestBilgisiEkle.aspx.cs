@@ -13,7 +13,6 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static KasifBusiness.DB_Operations.DBObjects.ConstDbCommands;
-using static KasifPortalApp.Utilities.UtilityScreenFunctions;
 
 namespace KasifPortalApp.KasifPages.Forms
 {
@@ -54,45 +53,84 @@ namespace KasifPortalApp.KasifPages.Forms
 
         private bool LoadParameters()
         {
-            #region Fill Hafta
-            PageOperations PageOps = new PageOperations();
-            List<NameValue> lstDataSource = new List<NameValue>();
-            List<HOCA_BILGI> lstHocaBilgi = PageOps.RunQueryForPage<HOCA_BILGI>(DbCommandList.PRM_HOCA, null, null);
-            lstDataSource = new List<NameValue>();
+            #region Fill Hafta (@commented)
+            //List<HAFTA_BILGI> lstHaftaBilgi = PageOps.RunQueryForPage<HAFTA_BILGI>(DbCommandList.GET_HAFTA_BILGI, null, null);
+            //lstDataSource = new List<NameValue>();
+            //foreach (var item in lstHaftaBilgi)
+            //{
+            //    lstDataSource.Add(new NameValue
+            //    {
+            //        Name = item.HAFTA_ADI + " : " + item.TARIH,
+            //        Value = item.HAFTA_ID.ToString()
+            //    });
+            //}
 
-            List<HAFTA_BILGI> lstHaftaBilgi = PageOps.RunQueryForPage<HAFTA_BILGI>(DbCommandList.GET_HAFTA_BILGI, null, null);
+            //if (lstDataSource != null && lstDataSource.Count > 0)
+            //{
+            //    slcHafta.DataSource = lstDataSource.ToArray();
+            //    slcHafta.DataTextField = "Name";
+            //    slcHafta.DataValueField = "Value";
+            //    slcHafta.DataBind();
+            //}
+            //else
+            //{
+            //    slcHafta.DataSource = null;
+            //    slcHafta.DataBind();
+            //}
+            #endregion
+            PageOperations PageOps = null;
+            List<NameValue> lstDataSource = null;
+
+            #region FillSinif
+            PageOps = new PageOperations();
             lstDataSource = new List<NameValue>();
-            foreach (var item in lstHaftaBilgi)
+            List<USER_USER> lstThisUser = new List<USER_USER>();
+
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                lstDataSource.Add(new NameValue
+                string[] paramNames = new string[] { "P_USER_GUID" };
+                object[] paramValues = new object[] { ksfSI.UserGuid };
+
+                lstThisUser = PageOps.RunQueryForPage<USER_USER>(DbCommandList.GET_USER_USER, paramNames, paramValues);
+                if (lstThisUser == null || lstThisUser.Count == 0)
                 {
-                    Name = item.HAFTA_ADI + " : " + item.TARIH,
-                    Value = item.HAFTA_ID.ToString()
-                });
+                    return false;
+                }
             }
 
-            if (lstDataSource != null && lstDataSource.Count > 0)
+            List<NameValue> lstNameValue = new List<NameValue>();
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                slcHafta.DataSource = lstDataSource.ToArray();
-                slcHafta.DataTextField = "Name";
-                slcHafta.DataValueField = "Value";
-                slcHafta.DataBind();
+                lstNameValue.Add(new NameValue
+                {
+                    Name = lstThisUser[0].SINIF.ToString(),
+                    Value = lstThisUser[0].SINIF.ToString()
+                });
             }
             else
             {
-                slcHafta.DataSource = null;
-                slcHafta.DataBind();
+                for (int i = 5; i <= 8; i++)
+                {
+                    lstNameValue.Add(new NameValue
+                    {
+                        Name = i.ToString(),
+                        Value = i.ToString()
+                    });
+                }
             }
+            slcSinif.DataSource = lstNameValue.ToArray();
+            slcSinif.DataTextField = "Name";
+            slcSinif.DataValueField = "Value";
+            slcSinif.DataBind();
+
+
             #endregion
 
             #region Fill DersAdı
-            lstDataSource = null;
-            PageOps = null;
             PageOps = new PageOperations();
             lstDataSource = new List<NameValue>();
             lstDersBilgi = PageOps.RunQueryForPage<DERS_BILGI>(DbCommandList.GET_DERS_BILGI, null, null);
             List<DERS_BILGI> lstCurrentDersBilgiObj = lstDersBilgi.Where<DERS_BILGI>(x => x.SINIF.ToString() == slcSinif.Value).ToList();
-
 
             foreach (var item in lstCurrentDersBilgiObj)
             {
@@ -147,6 +185,8 @@ namespace KasifPortalApp.KasifPages.Forms
             }
             #endregion
 
+
+
             return true;
         }
 
@@ -159,7 +199,7 @@ namespace KasifPortalApp.KasifPages.Forms
                 TestBilgiObj.TEST_NO = Convert.ToInt16(lstPostData[1]);
                 TestBilgiObj.DERS_ID = Convert.ToInt64(lstPostData[2]);
                 TestBilgiObj.DERS_KONU_ID = Convert.ToInt64(lstPostData[3]);
-                TestBilgiObj.HAFTA_ID = Convert.ToInt16(lstPostData[4]);
+                TestBilgiObj.TARIH = lstPostData[4];
                 DbOperations.Insert(TestBilgiObj);
                 return true;
             }
@@ -175,10 +215,10 @@ namespace KasifPortalApp.KasifPages.Forms
         }
 
         [WebMethod]
-        public static string[] ProcessOperation(string TestAdi, string TestNo, string DersId, string KonuId, string HaftaId)
+        public static string[] ProcessOperation(string TestAdi, string TestNo, string DersId, string KonuId, string Tarih)
         {
             System.Web.HttpContext context = System.Web.HttpContext.Current;
-            string[] postData = new string[] { TestAdi, TestNo, DersId, KonuId, HaftaId };
+            string[] postData = new string[] { TestAdi, TestNo, DersId, KonuId, Tarih };
             string errorMessage = "";
             bool bControl = ProcessRequest(postData, ref errorMessage);
             if (bControl)

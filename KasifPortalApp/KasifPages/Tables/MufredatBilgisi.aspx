@@ -107,7 +107,7 @@
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>
                                     <th>Hoca</th>
-                                    <th>Hafta No</th>
+                                    <th>Tarih</th>
                                     <th>Sınıf</th>
                                     <th>Ders Adı</th>
                                     <th>Konu Adı</th>
@@ -116,7 +116,7 @@
                                 <tr>
                                     <th>Seçenekler</th>
                                     <th>Hoca</th>
-                                    <th>Hafta No</th>
+                                    <th>Tarih</th>
                                     <th>Sınıf</th>
                                     <th>Ders Adı</th>
                                     <th>Konu Adı</th>
@@ -137,7 +137,7 @@
                                 
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HOCA_AD_SOYAD").ToString()%> </td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TARIH").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"KONU").ToString() %></td>

@@ -58,9 +58,6 @@
                         },
                         {
                             type: "text",
-                        },
-                        {
-                            type: "text",
                         }
                     ]
                 });
@@ -128,8 +125,7 @@
                                     <th>Doğru Sayısı</th>
                                     <th>Yanlış Sayısı</th>
                                     <th>Mahalle</th>
-                                    <th>Hoca Ad Soyad</th>
-                                    <th>Hafta</th>
+                                    <th>Tarih</th>
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
@@ -143,8 +139,7 @@
                                     <th>Doğru Sayısı</th>
                                     <th>Yanlış Sayısı</th>
                                     <th>Mahalle</th>
-                                    <th>Hoca Ad Soyad</th>
-                                    <th>Hafta</th>
+                                    <th>Tarih</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -169,8 +164,7 @@
                             <td><%#DataBinder.Eval(Container.DataItem,"DOGRU_SAYISI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"YANLIS_SAYISI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"MAHALLE").ToString() %></td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"HOCA_AD_SOYAD").ToString() %></td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TARIH").ToString() %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>

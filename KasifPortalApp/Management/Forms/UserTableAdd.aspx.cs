@@ -1,5 +1,6 @@
 ﻿using KasifBusiness.Business.KasifPageOperations;
 using KasifBusiness.Business.User;
+using KasifBusiness.DB_Operations.DBObjects;
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects;
@@ -9,6 +10,7 @@ using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
@@ -25,20 +27,9 @@ namespace KasifPortalApp.Management.Forms
         public string standardErr = "İşlem Başarılı";
         public string pageName = "UserTable-page";
         public SessionInfo KsfSI;
-        public List<OGR_BILGI> lstOgrBilgi;
+        
+        public List<OgrBilgi> lstOgrBilgi = new List<OgrBilgi>();
         public List<HOCA_BILGI> lstHocaBilgi;
-        //public List<OGR_BILGI> lstOgrBilgi
-        //{
-        //    get
-        //    {
-        //        if (this.ViewState["lstOgrBilgi"] != null)
-        //        {
-        //            return (List<OGR_BILGI>)(this.ViewState["lstOgrBilgi"]);
-        //        }
-        //        return new List<OGR_BILGI>();
-        //    }
-        //    set { this.ViewState["lstOgrBilgi"] = value; }
-        //}
 
         public override void Page_Load(object sender, EventArgs e)
         {
@@ -141,7 +132,7 @@ namespace KasifPortalApp.Management.Forms
 
             #region Fill Ogrenci
             PageOps = new PageOperations();
-            lstOgrBilgi = PageOps.RunQueryForPage<OGR_BILGI>(DbCommandList.PRM_OGR, null, null);
+            lstOgrBilgi = PageOps.RunQueryForPage<OgrBilgi>(DbCommandList.PRM_OGR, null, null);
             #endregion
 
             #region Fill Hoca
@@ -172,7 +163,7 @@ namespace KasifPortalApp.Management.Forms
                 if (!String.IsNullOrEmpty(hiddenOgrId.Value))
                 {
                     UserObj.OGR_GUID = Convert.ToInt64(hiddenOgrId.Value);
-                    lstOgrBilgi = (List<OGR_BILGI>)ViewState["lstOgrBilgi"];
+                    lstOgrBilgi = (List<OgrBilgi>)ViewState["lstOgrBilgi"];
                     UserObj.HOCA_GUID = lstOgrBilgi.Where(x => x.GUID == UserObj.OGR_GUID).ToList()[0].HOCA_GUID;
                 }
                 if (!String.IsNullOrEmpty(hiddenHocaId.Value))
@@ -212,12 +203,13 @@ namespace KasifPortalApp.Management.Forms
         {
             if (resultStatus == ResultStatus.Success)
             {
-                String script = "<script>$(document).ready(function () {showSuccessModal('" + pageTitle + "','" + msg + "','" + Page.GetRouteUrl(pageName, null) + "');});</script>";
+                String script = "<script>$(document).ready(function () {showSuccessModal('" + pageTitle + "','" + msg.Replace("\r\n", "") + "','" + Page.GetRouteUrl(pageName, null) + "');});</script>";
                 ClientScript.RegisterStartupScript(typeof(Page), "ProcessError", script);
             }
             else
             {
-                String script = "<script>$(document).ready(function () {showErrorModal('" + pageTitle + " - Hata','" + msg + "');});</script>";
+
+                String script = "<script>$(document).ready(function () {showErrorModal(\"" + pageTitle + " - Hata\", \"" + msg.Replace("\r\n", "") + "\");});</script>";
                 ClientScript.RegisterStartupScript(typeof(Page), "ProcessError", script);
             }
         }

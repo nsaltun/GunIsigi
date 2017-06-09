@@ -9,7 +9,7 @@ namespace KasifBusiness.Objects.ScreenObjects
     public class DevamsizlikBilgiObj
     {
         public long DEVAMSIZLIK_GUID { get; set; }
-        public string HAFTA { get; set; }
+        public string DATE { get; set; }
         public string TIP { get; set; }
         public string KISI_AD_SOYAD { get; set; }
         public Nullable<short> SINIF { get; set; }

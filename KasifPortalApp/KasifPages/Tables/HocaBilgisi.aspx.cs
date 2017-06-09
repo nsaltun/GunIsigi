@@ -25,7 +25,7 @@ namespace KasifPortalApp.KasifPages.Tables
                 //List<HocaBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI, null, null);
                 List<HocaBilgiObj> lstScreenInfoObj = null;
 
-                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString() || ksfSI.RoleName.ToUpperInvariant() == RoleNames.VELI.ToString())
                 {
                     lstScreenInfoObj = PageOps.RunQueryForPage<HocaBilgiObj>(DbCommandList.GET_HOCA_BILGI,
                                                                                 new string[] { "P_HOCA_ID" },

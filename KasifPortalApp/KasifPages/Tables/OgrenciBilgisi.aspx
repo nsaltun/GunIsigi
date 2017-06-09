@@ -141,7 +141,7 @@
                                 <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1", ksfSI) == "1")
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
-                                <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="<%# GenerateEditUrl(DataBinder.Eval(Container.DataItem,"GUID").ToString().Trim())%>" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                                 <%} %>
                             </td>

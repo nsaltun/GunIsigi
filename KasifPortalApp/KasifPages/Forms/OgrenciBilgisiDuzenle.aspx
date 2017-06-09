@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="OgrenciBilgisiEkle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.OgrenciBilgisiEkle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="OgrenciBilgisiDuzenle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.OgrenciBilgisiDuzenle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
@@ -11,13 +11,13 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphTitle" runat="server">
-    <h3>Öğrenci Bilgisi Ekle</h3>
+    <h3>Öğrenci Bilgisi Düzenle</h3>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
     <div class="span12">
         <div class="box box-color box-bordered">
             <div class="box-title">
-                <h3><i class="icon-list"></i>Öğrenci Ekle</h3>
+                <h3><i class="icon-list"></i>Öğrenci Düzenle</h3>
             </div>
             <div class="box-content nopadding">
                 <form id="form1" action="#" method="POST" class='form-horizontal form-column form-bordered' runat="server">

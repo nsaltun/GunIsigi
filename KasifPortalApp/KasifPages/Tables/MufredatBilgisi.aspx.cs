@@ -26,7 +26,15 @@ namespace KasifPortalApp.KasifPages.Tables
                 List<MufredatTakipObj> lstScreenInfoObj = null;
                 string[] paramNames = null;
                 object[] paramValues = null;
-                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                {
+                    paramNames = new string[] { "P_HOCA_ID" };
+                    paramValues = new object[] { ksfSI.HocaGuid };
+                    lstScreenInfoObj = PageOps.RunQueryForPage<MufredatTakipObj>(DbCommandList.GET_MUFREDAT_BILGI, paramNames, paramValues);
+                }
+
+                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpperInvariant() == RoleNames.VELI.ToString())
                 {
                     paramNames = new string[] { "P_HOCA_ID" };
                     paramValues = new object[] { ksfSI.HocaGuid };

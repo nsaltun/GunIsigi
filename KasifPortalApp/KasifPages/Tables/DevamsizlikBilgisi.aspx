@@ -103,7 +103,7 @@
                             <thead>
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>
-                                    <th>Hafta No</th>
+                                    <th>Tarih</th>
                                     <th>Tip</th>
                                     <th>Ad Soyad</th>
                                     <th>Sınıf</th>
@@ -113,7 +113,7 @@
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
-                                    <th>Hafta No</th>
+                                    <th>Tarih</th>
                                     <th>Tip</th>
                                     <th>Ad Soyad</th>
                                     <th>Sınıf</th>
@@ -136,7 +136,7 @@
                             </td>
                             
 
-                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"DATE").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TIP").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"KISI_AD_SOYAD").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>

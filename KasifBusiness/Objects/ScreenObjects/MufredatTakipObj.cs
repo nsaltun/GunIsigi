@@ -10,7 +10,7 @@ namespace KasifBusiness.Objects.ScreenObjects
     {
         public long MUFREDAT_GUID { get; set; }
         public string HOCA_AD_SOYAD { get; set; }
-        public string HAFTA { get; set; }
+        public string TARIH { get; set; }
         public Nullable<short> SINIF { get; set; }
         public string KONU { get; set; }
         public string TAKIP_DURUMU { get; set; }

@@ -2,6 +2,7 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifBusiness.Utilities;
 using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,11 @@ namespace KasifPortalApp.KasifPages.Tables
 
                 if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
                 {
-                    lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI, 
-                                                                                new string[] { "P_HOCA_ID"},
+                    lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI,
+                                                                                new string[] { "P_HOCA_ID" },
                                                                                 new object[] { ksfSI.HocaGuid });
                 }
-                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpperInvariant() == RoleNames.VELI.ToString())
                 {
                     lstScreenInfoObj = PageOps.RunQueryForPage<PageOgrBilgiObj>(DbCommandList.GET_PAGE_OGR_BILGI,
                                                                                 new string[] { "P_OGR_ID" },
@@ -70,6 +71,12 @@ namespace KasifPortalApp.KasifPages.Tables
         public string GenerateAddUrl()
         {
             return Page.GetRouteUrl(pageName + "-add", null);
+        }
+
+        public string GenerateEditUrl(string key)
+        {
+            key = KasifHelper.EncryptStringToBytes_Aes(key);
+            return Page.GetRouteUrl(pageName + "-edit", new { param = key });
         }
 
         [WebMethod()]

@@ -10,7 +10,6 @@ namespace KasifPortalApp
 {
     public class Global : System.Web.HttpApplication
     {
-
         protected void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);
@@ -38,7 +37,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "OgrBilgi-page-edit",
             "OgrBilgi/edit/{param}",
-            "~/KasifPages/Forms/OgrenciBilgisiGuncelle.aspx");
+            "~/KasifPages/Forms/OgrenciBilgisiDuzenle.aspx");
 
             routes.MapPageRoute(
            "HocaBilgi-page",

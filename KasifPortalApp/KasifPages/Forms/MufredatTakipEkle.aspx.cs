@@ -110,35 +110,66 @@ namespace KasifPortalApp.KasifPages.Forms
             }
             #endregion
 
-            #region Fill Hafta
-            lstDataSource = null;
-            PageOps = null;
-            PageOps = new PageOperations();
-            lstDataSource = new List<NameValue>();
-            List<HAFTA_BILGI> lstHaftaBilgi = PageOps.RunQueryForPage<HAFTA_BILGI>(DbCommandList.GET_HAFTA_BILGI, null, null);
-            lstDataSource = new List<NameValue>();
-            foreach (var item in lstHaftaBilgi)
-            {
-                lstDataSource.Add(new NameValue
-                {
-                    Name = item.HAFTA_ADI + " : " + item.TARIH,
-                    Value = item.HAFTA_ID.ToString()
-                });
-            }
+            #region Fill Hafta (@commented)
+            //lstDataSource = null;
+            //PageOps = null;
+            //PageOps = new PageOperations();
+            //lstDataSource = new List<NameValue>();
+            //List<HAFTA_BILGI> lstHaftaBilgi = PageOps.RunQueryForPage<HAFTA_BILGI>(DbCommandList.GET_HAFTA_BILGI, null, null);
+            //lstDataSource = new List<NameValue>();
+            //foreach (var item in lstHaftaBilgi)
+            //{
+            //    lstDataSource.Add(new NameValue
+            //    {
+            //        Name = item.HAFTA_ADI + " : " + item.TARIH,
+            //        Value = item.HAFTA_ID.ToString()
+            //    });
+            //}
 
-            if (lstDataSource != null && lstDataSource.Count > 0)
+            //if (lstDataSource != null && lstDataSource.Count > 0)
+            //{
+            //    slcHafta.DataSource = lstDataSource.ToArray();
+            //    slcHafta.DataTextField = "Name";
+            //    slcHafta.DataValueField = "Value";
+            //    slcHafta.DataBind();
+            //}
+            //else
+            //{
+            //    slcHafta.DataSource = null;
+            //    slcHafta.DataBind();
+            //}
+            #endregion
+
+            #region FillSinif
+            List<NameValue> lstNameValue = new List<NameValue>();
+            if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
             {
-                slcHafta.DataSource = lstDataSource.ToArray();
-                slcHafta.DataTextField = "Name";
-                slcHafta.DataValueField = "Value";
-                slcHafta.DataBind();
+                lstNameValue.Add(new NameValue
+                {
+                    Name = lstHocaBilgi[0].SINIF.ToString(),
+                    Value = lstHocaBilgi[0].SINIF.ToString()
+                });
+
             }
             else
             {
-                slcHafta.DataSource = null;
-                slcHafta.DataBind();
+                for (int i = 5; i <= 8; i++)
+                {
+                    lstNameValue.Add(new NameValue
+                    {
+                        Name = i.ToString(),
+                        Value = i.ToString()
+                    });
+                }
             }
+            slcSinif.DataSource = lstNameValue.ToArray();
+            slcSinif.DataTextField = "Name";
+            slcSinif.DataValueField = "Value";
+            slcSinif.DataBind();
+
+
             #endregion
+
 
             #region Fill DersAdı
             lstDataSource = null;
@@ -240,7 +271,7 @@ namespace KasifPortalApp.KasifPages.Forms
             {
                 MUFREDAT_TAKIP MufredatTakipObj = new MUFREDAT_TAKIP();
                 MufredatTakipObj.HOCA_ID = Convert.ToInt64(lstPostData[0]);
-                MufredatTakipObj.HAFTA_ID = Convert.ToInt32(lstPostData[1]);
+                MufredatTakipObj.TARIH = lstPostData[1];
                 MufredatTakipObj.SINIF = Convert.ToInt16(lstPostData[2]);
                 MufredatTakipObj.DERS_ID = Convert.ToInt64(lstPostData[3]);
                 MufredatTakipObj.DERS_KONU_ID = Convert.ToInt64(lstPostData[4]);
@@ -260,12 +291,12 @@ namespace KasifPortalApp.KasifPages.Forms
         }
 
         [WebMethod]
-        public static string[] ProcessOperation(string Hoca, string Hafta, string Sinif, string DersId, string KonuAdi, string TakipDurumu)
+        public static string[] ProcessOperation(string Hoca, string Tarih, string Sinif, string DersId, string KonuAdi, string TakipDurumu)
         {
             System.Web.HttpContext context = System.Web.HttpContext.Current;
             //var konuAdi = (context.Request["KonuAdi"] != null && context.Request["KonuAdi"] != "") ? Convert.ToString(context.Request["KonuAdi"]) : "";
             //var dersId = (context.Request["DersId"] != null && context.Request["DersId"] != "") ? Convert.ToString(context.Request["DersId"]) : "";
-            string[] postData = new string[] { Hoca, Hafta, Sinif, DersId, KonuAdi, TakipDurumu };
+            string[] postData = new string[] { Hoca, Tarih, Sinif, DersId, KonuAdi, TakipDurumu };
             string errorMessage = "";
             bool bControl = ProcessRequest(postData, ref errorMessage);
             if (bControl)

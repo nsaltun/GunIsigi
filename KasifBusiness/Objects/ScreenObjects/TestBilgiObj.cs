@@ -10,7 +10,7 @@ namespace KasifBusiness.Objects.ScreenObjects
     {
         public long TEST_GUID { get; set; }
         public Int32 TEST_NO { get; set; }
-        public string HAFTA { get; set; }
+        public string TARIH { get; set; }
         public string TEST_ADI { get; set; }
         public string DERS_ADI { get; set; }
         public long DERS_ID { get; set; }

@@ -26,7 +26,15 @@ namespace KasifPortalApp.KasifPages.Tables
                 List<TestCozmeDurumuObj> lstScreenInfoObj = null;
                 string[] paramNames = null;
                 object[] paramValues = null;
-                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpper() == RoleNames.VELI.ToString())
+
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                {
+                    paramNames = new string[] { "P_HOCA_ID" };
+                    paramValues = new object[] { ksfSI.HocaGuid };
+                    lstScreenInfoObj = PageOps.RunQueryForPage<TestCozmeDurumuObj>(DbCommandList.GET_OGR_TEST_REL, paramNames, paramValues);
+                }
+
+                else if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.OGRENCI.ToString() || ksfSI.RoleName.ToUpperInvariant() == RoleNames.VELI.ToString())
                 {
                     paramNames = new string[] { "P_OGR_ID" };
                     paramValues = new object[] { ksfSI.OgrenciGuid };
@@ -37,8 +45,6 @@ namespace KasifPortalApp.KasifPages.Tables
                     lstScreenInfoObj = PageOps.RunQueryForPage<TestCozmeDurumuObj>(DbCommandList.GET_OGR_TEST_REL, null, null);
                 }
 
-                
-
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
             }
@@ -47,8 +53,6 @@ namespace KasifPortalApp.KasifPages.Tables
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(ex.Message, ResultStatus.Error);
             }
-
-
         }
 
         private void RaisePopUp(string msg, ResultStatus resultStatus)

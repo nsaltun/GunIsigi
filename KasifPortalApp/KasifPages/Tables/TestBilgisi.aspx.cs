@@ -22,7 +22,27 @@ namespace KasifPortalApp.KasifPages.Tables
             try
             {
                 PageOperations PageOps = new PageOperations();
-                List<TestBilgiObj> lstScreenInfoObj = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, null, null);
+                List<TestBilgiObj> lstScreenInfoObj = null;
+                string[] paramNames;
+                object[] paramValues;
+                if (ksfSI.RoleName.ToUpperInvariant() == RoleNames.HOCA.ToString())
+                {
+                    paramNames = new string[] { "P_USER_GUID" };
+                    paramValues = new object[] { ksfSI.UserGuid };
+
+                    List<USER_USER> lstThisUser = PageOps.RunQueryForPage<USER_USER>(DbCommandList.GET_USER_USER,paramNames, paramValues);
+                    if (lstThisUser != null && lstThisUser.Count > 0)
+                    {
+                        paramNames = new string[] { "P_SINIF" };
+                        paramValues = new object[] { lstThisUser[0].SINIF };
+                        lstScreenInfoObj = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, paramNames,paramValues);
+                    }
+                }
+                else//Tüm test bilgisini getirir.
+                {
+                    lstScreenInfoObj = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, null, null);
+
+                }
 
                 tblRepeater.DataSource = lstScreenInfoObj;
                 tblRepeater.DataBind();
@@ -32,8 +52,6 @@ namespace KasifPortalApp.KasifPages.Tables
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(ex.Message, ResultStatus.Error);
             }
-
-
         }
 
         private void RaisePopUp(string msg, ResultStatus resultStatus)
