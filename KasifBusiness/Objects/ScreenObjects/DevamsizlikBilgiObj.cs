@@ -16,6 +16,10 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string DEVAM_DURUMU { get; set; }
         public string SEBEP { get; set; }
         public string BOLGE_ADI { get; set; }
+        public long BOLGE_ID { get; set; }
+        public short TIP_ID { get; set; }
+        public long KISI_GUID { get; set; }
+        public short DEVAM_DURUMU_ID { get; set; }
 
     }
 }

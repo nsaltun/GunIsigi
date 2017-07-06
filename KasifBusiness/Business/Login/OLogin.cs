@@ -34,141 +34,187 @@ namespace KasifBusiness.Business.Login
 
         public bool Execute()
         {
-            userObj = CheckUserExist();
-            if (userObj != null)
+            try
             {
-                if (!FillUserInfo())
-                    return false;
-                if (!FillMenuTreeObject())
-                    return false;
-                if (!FillMenuTiles())
-                    return false;
-                if (!FillAllowedPages())
-                    return false;
+                userObj = CheckUserExist();
+                if (userObj != null)
+                {
+                    if (!FillUserInfo())
+                        return false;
+                    if (!FillMenuTreeObject())
+                        return false;
+                    if (!FillMenuTiles())
+                        return false;
+                    if (!FillAllowedPages())
+                        return false;
 
-                FillSessionObject();
-                return true;
+                    FillSessionObject();
+                    return true;
+                }
+
+                return false;
             }
-
-            return false;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private USER_USER CheckUserExist()
         {
-            List<USER_USER> lstUser = new List<USER_USER>();
-            string[] prmNames = new string[] { "P_EMAIL", "P_PASSWORD" };
-            object[] prmValues = new object[] { userId, this.hashedPwd };
-            //string[] prmNames = new string[] { "P_EMAIL" };
-            //object[] prmValues = new object[] { userId };
-            DbOperations.RunDbQuery<USER_USER>(ref lstUser, DbCommands.GET_USER_BY_EMAIL, prmNames, prmValues);
-            if (lstUser != null && lstUser.Count > 0)
+            try
             {
-                msg += "CheckUserExist is OK!<br/>";
-                return lstUser[0];
+                List<USER_USER> lstUser = new List<USER_USER>();
+                string[] prmNames = new string[] { "P_EMAIL", "P_PASSWORD" };
+                object[] prmValues = new object[] { userId, this.hashedPwd };
+                //string[] prmNames = new string[] { "P_EMAIL" };
+                //object[] prmValues = new object[] { userId };
+                DbOperations.RunDbQuery<USER_USER>(ref lstUser, DbCommands.GET_USER_BY_EMAIL, prmNames, prmValues);
+                if (lstUser != null && lstUser.Count > 0)
+                {
+                    msg += "CheckUserExist is OK!<br/>";
+                    return lstUser[0];
+                }
+                else
+                {
+                    msg += "CheckUserExist user not found!<br/>";
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                msg += "CheckUserExist user not found!<br/>";
-                return null;
+                throw ex;
             }
         }
 
         private bool FillMenuTreeObject()
         {
-            string[] prmNames = new string[] { "P_EMAIL" };
-            object[] prmValues = new object[] { userId };
-            DbOperations.RunDbQuery<MenuTreeItemObject>(ref lstMenuTreeObj, DbCommands.GET_USER_MENUS, prmNames, prmValues);
-            if (lstMenuTreeObj != null && lstMenuTreeObj.Count > 0)
+
+            try
             {
-                msg += "FillMenuTree is OK!<br/>";
-                return true;
+                string[] prmNames = new string[] { "P_EMAIL" };
+                object[] prmValues = new object[] { userId };
+                DbOperations.RunDbQuery<MenuTreeItemObject>(ref lstMenuTreeObj, DbCommands.GET_USER_MENUS, prmNames, prmValues);
+                if (lstMenuTreeObj != null && lstMenuTreeObj.Count > 0)
+                {
+                    msg += "FillMenuTree is OK!<br/>";
+                    return true;
+                }
+                else
+                {
+                    msg += "FillMenuTree not found!<br/>";
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                msg += "FillMenuTree not found!<br/>";
-                return false;
+
+                throw ex;
             }
         }
 
         private bool FillMenuTiles()
         {
-            List<MENU_TILES> lstTemp = new List<MENU_TILES>();
-            List<MENU_TILES> lstTemp2 = new List<MENU_TILES>();
-            lstMenuTile = new List<MENU_TILES>();
-            DbOperations.RunDbQuery<MENU_TILES>(ref lstTemp, DbCommands.GET_MENU_TILES, null, null);
-            if (lstTemp != null && lstTemp.Count > 0)
+            try
             {
-                if (lstMenuTreeObj != null && lstMenuTreeObj.Count > 0)
+                List<MENU_TILES> lstTemp = new List<MENU_TILES>();
+                lstMenuTile = new List<MENU_TILES>();
+                DbOperations.RunDbQuery<MENU_TILES>(ref lstTemp, DbCommands.GET_MENU_TILES, null, null);
+                if (lstTemp != null && lstTemp.Count > 0)
                 {
-                    foreach (var menuTileItem in lstTemp)
+                    if (lstMenuTreeObj != null && lstMenuTreeObj.Count > 0)
                     {
-                        foreach (var menuTreeitem in lstMenuTreeObj)
+                        foreach (var menuTileItem in lstTemp)
                         {
-                            if ((menuTileItem.NODE_GUID == menuTreeitem.NODE_GUID && menuTileItem.TILE_TYPE == "PRIVATE")
-                                || menuTileItem.TILE_TYPE == "PUBLIC")
+                            foreach (var menuTreeitem in lstMenuTreeObj)
                             {
-                                lstMenuTile.Add(menuTileItem);
-                                break;
+                                if ((menuTileItem.NODE_GUID == menuTreeitem.NODE_GUID && menuTileItem.TILE_TYPE == "PRIVATE")
+                                    || menuTileItem.TILE_TYPE == "PUBLIC")
+                                {
+                                    lstMenuTile.Add(menuTileItem);
+                                    break;
+                                }
                             }
                         }
                     }
-                }
 
-                return true;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+
+                throw ex;
             }
         }
 
         //Login olan herkesin görebildiği ekranları çeker. ayrıca izin verilen Menu Tree ekranlarını da buradaki listeye ekler.
         private bool FillAllowedPages()
         {
-            DbOperations.RunDbQuery<MenuTreeItemObject>(ref lstAllowedPagesObj, DbCommands.GET_ALLOWED_PAGES, null, null);
-            if (lstAllowedPagesObj != null && lstAllowedPagesObj.Count > 0)
+            try
             {
-                List<MenuTreeItemObject> lstTempMenuTree = new List<MenuTreeItemObject>();
-                MenuTreeItemObject currentObj = new MenuTreeItemObject();
-                lstTempMenuTree.AddRange(lstMenuTreeObj);
-                foreach (MenuTreeItemObject obj in lstAllowedPagesObj)
+                DbOperations.RunDbQuery<MenuTreeItemObject>(ref lstAllowedPagesObj, DbCommands.GET_ALLOWED_PAGES, null, null);
+                if (lstAllowedPagesObj != null && lstAllowedPagesObj.Count > 0)
                 {
-                    currentObj = lstTempMenuTree.Where(x => x.NODE_GUID == obj.NODE_GUID).FirstOrDefault();
-                    if(currentObj!=null)
-                        lstTempMenuTree.Remove(currentObj);
+                    List<MenuTreeItemObject> lstTempMenuTree = new List<MenuTreeItemObject>();
+                    MenuTreeItemObject currentObj = new MenuTreeItemObject();
+                    lstTempMenuTree.AddRange(lstMenuTreeObj);
+                    foreach (MenuTreeItemObject obj in lstAllowedPagesObj)
+                    {
+                        currentObj = lstTempMenuTree.Where(x => x.NODE_GUID == obj.NODE_GUID).FirstOrDefault();
+                        if (currentObj != null)
+                            lstTempMenuTree.Remove(currentObj);
+                    }
+
+                    lstAllowedPagesObj.AddRange(lstTempMenuTree);
+
+
+                    msg += "FillAllowedPages is OK!<br/>";
+                    return true;
                 }
-
-                lstAllowedPagesObj.AddRange(lstTempMenuTree);
-
-
-                msg += "FillAllowedPages is OK!<br/>";
-                return true;
+                else
+                {
+                    msg += "FillAllowedPages not found!<br/>";
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                msg += "FillAllowedPages not found!<br/>";
-                return false;
+
+                throw ex;
             }
         }
 
         private bool FillUserInfo()
         {
-            List<UserTableObj> lstUserInfo = null;
-            string[] prmNames = new string[] { "P_EMAIL" };
-            object[] prmValues = new object[] { userId };
-            DbOperations.RunDbQuery<UserTableObj>(ref lstUserInfo, DbCommands.GET_USER_INFO, prmNames, prmValues);
-            if (lstUserInfo != null && lstUserInfo.Count > 0)
+            try
             {
-                msg += "FillUserInfo is OK!<br/>";
+                List<UserTableObj> lstUserInfo = null;
+                string[] prmNames = new string[] { "P_EMAIL" };
+                object[] prmValues = new object[] { userId };
+                DbOperations.RunDbQuery<UserTableObj>(ref lstUserInfo, DbCommands.GET_USER_INFO, prmNames, prmValues);
+                if (lstUserInfo != null && lstUserInfo.Count > 0)
+                {
+                    msg += "FillUserInfo is OK!<br/>";
 
-                userInfo = lstUserInfo[0];
-                return true;
+                    userInfo = lstUserInfo[0];
+                    return true;
+                }
+                else
+                {
+                    msg += "FillUserInfo not found!<br/>";
+                    userInfo = null;
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                msg += "FillUserInfo not found!<br/>";
-                userInfo = null;
-                return false;
+
+                throw ex;
             }
 
         }

@@ -163,8 +163,8 @@
                     </div>
                     <div class="span12">
                         <div class="form-actions">
-                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Save changes</button>
-                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Kaydet</button>
+                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Geri dön</a>
                         </div>
                     </div>
                 </form>

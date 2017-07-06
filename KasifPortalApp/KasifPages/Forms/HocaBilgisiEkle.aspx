@@ -85,9 +85,9 @@
                     </div>
                     <div class="span12">
                         <div class="form-actions">
-                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary">Kaydet</button>
                             <%--<a href="<%=GenerateListUrl() %>" onclick="GoToSubmit(this)" role="button" class="btn notify" data-notify-time="1000" data-notify-title="Success!" data-notify-message="The user has been successfully edited.">Timed fade notification (1second)</a>--%>
-                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
+                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Geri dön</a>
                         </div>
                     </div>
                 </form>

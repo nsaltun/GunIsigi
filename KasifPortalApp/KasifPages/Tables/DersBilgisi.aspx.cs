@@ -53,18 +53,18 @@ namespace KasifPortalApp.KasifPages.Tables
         }
 
         [WebMethod()]
-        public static string DeleteCurrentRow(string RowGuid)
+        public static string[] DeleteCurrentRow(string RowGuid)
         {
             try
             {
                 DERS_BILGI dersBilgiObj = new DERS_BILGI();
                 dersBilgiObj.GUID = Convert.ToInt64(RowGuid);
                 DbOperations.Delete(dersBilgiObj);
-                return "success";
+                return new string[] { "success", "Silme işlemi başarılı" };
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return new string[] { ex.Message, ex.Message };
             }
 
         }

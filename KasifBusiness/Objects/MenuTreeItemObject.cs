@@ -13,7 +13,7 @@ namespace KasifBusiness.Objects
         public string FILE_NAME { get; set; }
         public string NODE_DISPLAY_NAME { get; set; }
         public long NODE_GUID { get; set; }
-        public short NODE_POSITION { get; set; }
+        public Nullable<short> NODE_POSITION { get; set; }
         public string NODE_TYPE { get; set; }
         public Nullable<long> PARENT_NODE_GUID { get; set; }
         public string NODE_VISIBILITY { get; set; }

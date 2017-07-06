@@ -5,7 +5,21 @@
 
         $(document).ready(function () {
             DtInit();
-            $('.delete').click(function (event) {
+
+            $(document).on('click', ".delete", function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/OgrenciBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
+
+            <%--$('.delete').click(function (event) {
                 event.preventDefault();
                 var postData = {
                     "RowGuid": this.getAttribute('dataId')
@@ -28,7 +42,7 @@
                     }
                 });
 
-            });
+            });--%>
         });
 
         function DtInit() {

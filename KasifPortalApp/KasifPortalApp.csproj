@@ -775,8 +775,13 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="KasifPages\Forms\DersBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\DevamsizlikBilgisiDuzenle.aspx" />
     <Content Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx" />
+    <Content Include="KasifPages\Forms\HocaBilgisiDuzenle.aspx" />
+    <Content Include="KasifPages\Forms\MufredatTakipDuzenle.aspx" />
     <Content Include="KasifPages\Forms\OgrenciBilgisiDuzenle.aspx" />
+    <Content Include="KasifPages\Forms\TestBilgisiDuzenle.aspx" />
+    <Content Include="KasifPages\Forms\TestCozmeDurumuDuzenle.aspx" />
     <Content Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx" />
     <Content Include="KasifPages\Forms\TestBilgisiEkle.aspx" />
     <Content Include="KasifPages\Forms\MufredatTakipEkle.aspx" />
@@ -866,6 +871,13 @@
     <Compile Include="KasifPages\Forms\DersBilgisiEkle.aspx.designer.cs">
       <DependentUpon>DersBilgisiEkle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="KasifPages\Forms\DevamsizlikBilgisiDuzenle.aspx.cs">
+      <DependentUpon>DevamsizlikBilgisiDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\DevamsizlikBilgisiDuzenle.aspx.designer.cs">
+      <DependentUpon>DevamsizlikBilgisiDuzenle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx.cs">
       <DependentUpon>DevamsizlikBilgisiEkle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -873,12 +885,40 @@
     <Compile Include="KasifPages\Forms\DevamsizlikBilgisiEkle.aspx.designer.cs">
       <DependentUpon>DevamsizlikBilgisiEkle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="KasifPages\Forms\HocaBilgisiDuzenle.aspx.cs">
+      <DependentUpon>HocaBilgisiDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\HocaBilgisiDuzenle.aspx.designer.cs">
+      <DependentUpon>HocaBilgisiDuzenle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\MufredatTakipDuzenle.aspx.cs">
+      <DependentUpon>MufredatTakipDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\MufredatTakipDuzenle.aspx.designer.cs">
+      <DependentUpon>MufredatTakipDuzenle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KasifPages\Forms\OgrenciBilgisiDuzenle.aspx.cs">
       <DependentUpon>OgrenciBilgisiDuzenle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="KasifPages\Forms\OgrenciBilgisiDuzenle.aspx.designer.cs">
       <DependentUpon>OgrenciBilgisiDuzenle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestBilgisiDuzenle.aspx.cs">
+      <DependentUpon>TestBilgisiDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestBilgisiDuzenle.aspx.designer.cs">
+      <DependentUpon>TestBilgisiDuzenle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestCozmeDurumuDuzenle.aspx.cs">
+      <DependentUpon>TestCozmeDurumuDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KasifPages\Forms\TestCozmeDurumuDuzenle.aspx.designer.cs">
+      <DependentUpon>TestCozmeDurumuDuzenle.aspx</DependentUpon>
     </Compile>
     <Compile Include="KasifPages\Forms\TestCozmeDurumuEkle.aspx.cs">
       <DependentUpon>TestCozmeDurumuEkle.aspx</DependentUpon>

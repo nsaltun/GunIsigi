@@ -17,5 +17,6 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string TEL_NO { get; set; }
         public string EMAIL { get; set; }
         public long HOCA_BOLGE_ID { get; set; }
+        public string DIGER { get; set; }
     }
 }

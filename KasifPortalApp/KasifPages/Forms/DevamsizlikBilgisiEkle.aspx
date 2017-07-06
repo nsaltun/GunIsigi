@@ -193,7 +193,7 @@
                                 <select name="select" id="slcDevamDurumu" class="input-large" runat="server">
                                     <option value="0">Geldi</option>
                                     <option value="1">Gelmedi</option>
-                                    <option value="1">Geç Geldi</option>
+                                    <option value="2">Geç Geldi</option>
                                 </select>
                             </div>
                         </div>
@@ -206,8 +206,8 @@
                     </div>
                     <div class="span12">
                         <div class="form-actions">
-                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Save changes</button>
-                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Kaydet</button>
+                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Geri dön</a>
                         </div>
                     </div>
                 </form>

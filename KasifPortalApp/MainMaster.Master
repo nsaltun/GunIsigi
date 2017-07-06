@@ -97,7 +97,8 @@
     <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/complexify/jquery.complexify-banlist.min.js")%>"></script>
     <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/complexify/jquery.complexify.min.js")%>"></script>
     <script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/mockjax/jquery.mockjax.js")%>"></script>
-
+	<script src="<%= ResolveClientUrl("~/Common/Template/js/plugins/fullcalendar/fullcalendar.min.js")%>"></script>
+    
 
 
     <!--[if lte IE 9]>
@@ -118,6 +119,26 @@
 
 
     <script>
+        $(document).ready(function () {
+
+            currentTime();
+            
+        });
+
+        function currentTime() {
+            var $el = $(".stats .icon-calendar").parent(),
+            currentDate = new Date(),
+            monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+            dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+
+            $el.find(".details .big").html(monthNames[currentDate.getMonth()] + " " + currentDate.getDate() + ", " + currentDate.getFullYear());
+            $el.find(".details span").last().html(dayNames[currentDate.getDay()] + ", " + currentDate.getHours() + ":" + ("0" + currentDate.getMinutes()).slice(-2));
+            setTimeout(function () {
+                currentTime();
+            }, 10000);
+        }
+
         function showSuccessModal(header, msg, href) {
             $('#successModal > .modal-header > h3 > span#lblSuccessModalHeader').html(header);
             $('#successModal > .modal-body').html(msg);
@@ -150,6 +171,64 @@
             });
         }
 
+        function showConfirmModalDelete(header, msg, href) {
+            $('#deleteConfirmModal > .modal-header > h3 > span#lblConfirmModalHeader').html(header);
+            $('#deleteConfirmModal > .modal-body').html(msg);
+            $('#deleteConfirmModal').modal({
+                backdrop: true,
+                keyboard: false
+            });
+            $('#deleteConfirmModal').off('hidden', function () {
+                return false;
+            });
+            $('#deleteConfirmModal').on('hidden', function () {
+                return true;
+            });
+
+        }
+
+        function AjaxConfirmModal(header, msg, href, callbackUrl, postData) {
+            $('#deleteConfirmModal > .modal-header > h3 > span#lblConfirmModalHeader').html(header);
+            $('#deleteConfirmModal > .modal-body').html(msg);
+            $('#deleteConfirmModal').modal({
+                backdrop: true,
+                keyboard: false
+            });
+            $('#deleteConfirmModal').on('hidden', function () {
+                $('#btnConfirmOk').off('click');
+            });
+            //$('#btnConfirmCancel').on('hidden');
+            $('#btnConfirmCancel').off('click');
+
+            $('#btnConfirmOk').on('click', function () {
+                $('#btnConfirmOk').off('click');
+                $.ajax({
+                    type: "POST",
+                    url: href,
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "JSON",
+                    success: function (result) {
+                        showSuccessModal(header, result.d[1], callbackUrl);
+                        //alert(result.d);
+                        //window.location = callbackUrl;
+                    },
+                    failure: function (result) {
+                        showErrorModal(header + ' - Hata', 'Beklenmeyen bir hata oluştu');
+                        //alert('error');
+                    },
+                    error: function (result) {
+                        showErrorModal(header + ' - Hata', 'Beklenmeyen bir hata oluştu');
+                        //alert('error');
+                    }
+                });
+            });
+
+
+
+        }
+
+
 
     </script>
 
@@ -170,7 +249,7 @@
 
             <div class="user">
                 <div class="dropdown">
-<%--                <div >--%>
+                    <%--                <div >--%>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <%--John Doe--%>
                         <%=ksfSI.userNameSurname %>
@@ -220,15 +299,15 @@
                 <div class="breadcrumbs">
                     <ul>
                         <li>
-                            <a href="more-login.html">Home</a>
+                            <a href="#">Home</a>
                             <i class="icon-angle-right"></i>
                         </li>
                         <li>
-                            <a href="forms-basic.html">Forms</a>
+                            <a href="#">Forms</a>
                             <i class="icon-angle-right"></i>
                         </li>
                         <li>
-                            <a href="forms-extended.html">Extended forms</a>
+                            <a href="#">Extended forms</a>
                         </li>
                     </ul>
                     <div class="close-bread">
@@ -291,6 +370,20 @@
             <button class="btn btn-primary" data-dismiss="modal" onclick="$('#errorModal').modal('hide');"><%=btnOk %></button>
         </div>
         <div class="modal-footer-strip">
+        </div>
+    </div>
+
+    <div id="deleteConfirmModal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3><span id="lblConfirmModalHeader" style="color: teal;"></span>
+            </h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button id="btnConfirmOk" class="btn btn-primary" data-dismiss="modal"><%=btnOk %></button>
+            <button id="btnConfirmCancel" class="btn btn-primary" data-dismiss="modal" onclick="$('#confirmModal').modal('hide');"><%=btnCancel %></button>
         </div>
     </div>
 

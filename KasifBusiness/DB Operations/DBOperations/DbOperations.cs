@@ -130,16 +130,24 @@ namespace KasifBusiness.DB_Operations.DBOperations
 
         public static bool RunDbQuery<T>(ref List<T> entityObj, ConstDbCommands.DbCommandList queryName, string[] parameterNames, object[] parameterValues)
         {
-            string queryText = "";
-            if (RunQueryForQueryContent(queryName.ToString(), ref queryText))
+            try
             {
-                queryText = CheckParametersInQuery(queryText, parameterNames);
-                PrepareAndExecuteQuery(ref entityObj, queryText, parameterNames, parameterValues);
-                return true;
+                string queryText = "";
+                if (RunQueryForQueryContent(queryName.ToString(), ref queryText))
+                {
+                    queryText = CheckParametersInQuery(queryText, parameterNames);
+                    PrepareAndExecuteQuery(ref entityObj, queryText, parameterNames, parameterValues);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+
+                throw ex;
             }
         }
 

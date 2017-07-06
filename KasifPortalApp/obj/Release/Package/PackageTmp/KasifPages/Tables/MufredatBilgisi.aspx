@@ -48,7 +48,20 @@
                 $("#dtTable").css("width", '100%');
             }
 
-            $('.delete').click(function (event) {
+             $(document).on('click', ".delete", function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/MufredatBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
+
+            <%--$(document).on('click', ".delete", function (event) {
                 event.preventDefault();
                 var postData = {
                     "RowGuid":this.getAttribute('dataId')
@@ -71,14 +84,8 @@
                     }
                 });
 
-            });
+            });--%>
         });
-
-        function RowControl()
-        {
-
-            return "1";
-        }
 
     </script>
 
@@ -107,7 +114,7 @@
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>
                                     <th>Hoca</th>
-                                    <th>Hafta No</th>
+                                    <th>Tarih</th>
                                     <th>Sınıf</th>
                                     <th>Ders Adı</th>
                                     <th>Konu Adı</th>
@@ -116,7 +123,7 @@
                                 <tr>
                                     <th>Seçenekler</th>
                                     <th>Hoca</th>
-                                    <th>Hafta No</th>
+                                    <th>Tarih</th>
                                     <th>Sınıf</th>
                                     <th>Ders Adı</th>
                                     <th>Konu Adı</th>
@@ -128,16 +135,13 @@
                     <ItemTemplate>
                         <tr>
                             <td runat="server" ondatabinding="OnDataBinding">
-                                <a href="#" class="btn" 
-                                    <%--style="visibility:<%# KasifPortalApp.Utilities.UtilityScreenFunctions.ControlActionAuthorized(  DataBinder.Eval(Container.DataItem, "HOCA_GUID").ToString(),ksfSI)%>"--%>
-                                    rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="<%# GenerateEditUrl(DataBinder.Eval(Container.DataItem,"MUFREDAT_GUID").ToString().Trim())%> " class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a href="#" class="btn delete" 
                                     <%--style="visibility:<%# KasifPortalApp.Utilities.UtilityScreenFunctions.ControlActionAuthorized(  DataBinder.Eval(Container.DataItem, "HOCA_GUID").ToString(),ksfSI)%>"--%>
                                     rel="tooltip" title="Delete" dataId="<%#DataBinder.Eval(Container.DataItem, "MUFREDAT_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
-                                
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"HOCA_AD_SOYAD").ToString()%> </td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString()%> </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TARIH").ToString()%> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"KONU").ToString() %></td>

@@ -33,7 +33,27 @@
                 $("#dtTable").css("width", '100%');
             }
 
+
             $('.delete').click(function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/DersBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
+
+
+
+
+            <%--$('.delete').click(function (event) {
+                var isConfirmed = showConfirmModalDelete('<%=pageTitle%>', 'Bu kaydı silmek istediğinize emin misiniz?', '<%= Page.GetRouteUrl(pageName, null) %>');
+                if (!isConfirmed)
+                    return false;
                 event.preventDefault();
                 var postData = {
                     "RowGuid": this.getAttribute('dataId')
@@ -56,7 +76,7 @@
                     }
                 });
 
-            });
+            });--%>
         });
 
     </script>

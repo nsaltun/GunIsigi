@@ -5,6 +5,46 @@
 
         $(document).ready(function () {
             DtInit();
+
+            $(document).on('click', ".delete", function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/DersKonuBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
+
+           <%-- $(document).on('click', ".deleteee", function(event) {
+
+                event.preventDefault();
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/DersKonuBilgisi.aspx/DeleteCurrentRow") %>",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "JSON",
+                    success: function (result) {
+                        alert(result.d);
+                        window.location = "<%=Page.GetRouteUrl(pageName,null)%>"
+                        },
+                    failure: function (result) {
+                        alert('error');
+                    },
+                    error: function (result) {
+                        alert('error');
+                    }
+                });
+            });--%>
+
+
             function DtInit() {
                 var oTable = $('#dtTable').dataTable();
 
@@ -37,31 +77,11 @@
                 $("#dtTable").css("width", '100%');
             }
 
-            $('.delete').click(function (event) {
-                event.preventDefault();
-                var postData = {
-                    "RowGuid": this.getAttribute('dataId')
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "<%= ResolveClientUrl("~/KasifPages/Tables/DersKonuBilgisi.aspx/DeleteCurrentRow") %>",
-                    data: JSON.stringify(postData),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "JSON",
-                    success: function (result) {
-                        alert(result.d);
-                        window.location = "<%=Page.GetRouteUrl(pageName,null)%>"
-                    },
-                    failure: function (result) {
-                        alert('error');
-                    },
-                    error: function (result) {
-                        alert('error');
-                    }
-                });
-            });
-
         });
+
+
+
+
 
     </script>
 
@@ -109,7 +129,7 @@
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a href="#" class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"DERS_KONU_GUID").ToString()%>"><i class="icon-remove"></i></a>
+                                <a class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"DERS_KONU_GUID").ToString()%>"><i class="icon-remove"></i></a>
                                 <%} %>
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>

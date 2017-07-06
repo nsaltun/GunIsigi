@@ -21,5 +21,12 @@ namespace KasifBusiness.Objects.ScreenObjects
         public Int32 DOGRU_SAYISI { get; set; }
         public Int32 YANLIS_SAYISI { get; set; }
         public string MAHALLE { get; set; }
+        public long DERS_GUID { get; set; }
+        public long KONU_GUID { get; set; }
+        public long TEST_GUID { get; set; }
+        public short DURUM_ID { get; set; }
+        public long OGR_GUID { get; set; }
+
+
     }
 }

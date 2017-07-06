@@ -71,7 +71,7 @@ namespace KasifPortalApp.Management.Tables
         }
 
         [WebMethod()]
-        public static string DeleteCurrentRow(string RowGuid, string RoleGuid)
+        public static string[] DeleteCurrentRow(string RowGuid, string RoleGuid)
         {
             try
             {
@@ -86,11 +86,11 @@ namespace KasifPortalApp.Management.Tables
                                     x.USER_GUID == lRowGuid);
                 DbOperations.Delete(uroObj);
 
-                return "success";
+                return new string[] { "success", "Silme işlemi başarılı" };
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return new string[] { ex.Message, ex.Message };
             }
 
         }

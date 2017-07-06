@@ -50,7 +50,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "HocaBilgi-page-edit",
             "HocaBilgi/edit/{param}",
-            "~/KasifPages/Forms/HocaBilgisiGuncelle.aspx");
+            "~/KasifPages/Forms/HocaBilgisiDuzenle.aspx");
 
             routes.MapPageRoute(
             "DersBilgi-page",
@@ -89,7 +89,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "MufredatTakip-page-edit",
             "MufredatTakip/edit/{param}",
-            "~/KasifPages/Forms/MufredatTakipGuncelle.aspx");
+            "~/KasifPages/Forms/MufredatTakipDuzenle.aspx");
 
             routes.MapPageRoute(
            "DevamsizlikBilgi-page",
@@ -102,7 +102,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "DevamsizlikBilgi-page-edit",
             "DevamsizlikBilgi/edit/{param}",
-            "~/KasifPages/Forms/DevamsizlikBilgisiGuncelle.aspx");
+            "~/KasifPages/Forms/DevamsizlikBilgisiDuzenle.aspx");
 
             routes.MapPageRoute(
            "TestBilgi-page",
@@ -115,7 +115,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "TestBilgi-page-edit",
             "TestBilgi/edit/{param}",
-            "~/KasifPages/Forms/TestBilgisiGuncelle.aspx");
+            "~/KasifPages/Forms/TestBilgisiDuzenle.aspx");
 
             routes.MapPageRoute(
            "TestCozmeDurumu-page",
@@ -128,7 +128,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "TestCozmeDurumu-page-edit",
             "TestCozmeDurumu/edit/{param}",
-            "~/KasifPages/Forms/TestCozmeDurumuGuncelle.aspx");
+            "~/KasifPages/Forms/TestCozmeDurumuDuzenle.aspx");
 
             routes.MapPageRoute(
            "UserTable-page",

@@ -47,7 +47,20 @@
                 $("#dtTable").css("width", '100%');
             }
 
-            $('.delete').click(function (event) {
+             $(document).on('click', ".delete", function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/TestBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
+
+           <%-- $(document).on('click', ".delete", function (event) {
                 event.preventDefault();
                 var postData = {
                     "RowGuid": this.getAttribute('dataId')
@@ -70,7 +83,7 @@
                     }
                 });
 
-            });
+            });--%>
         });
 
     </script>
@@ -124,7 +137,7 @@
                                 <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1", ksfSI) == "1")
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
-                                <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="<%# GenerateEditUrl(DataBinder.Eval(Container.DataItem,"TEST_GUID").ToString().Trim())%> " class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a href="#" class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"TEST_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                                 <%} %>
                             </td>

@@ -39,10 +39,10 @@
                             <label for="textfield" class="control-label ">Sınıf</label>
                             <div class="controls">
                                 <select name="select" id="slcSinif" class="input-large" runat="server">
-                                    <option value="5">5</option>
+                                   <%-- <option value="5">5</option>
                                     <option value="6">6</option>
                                     <option value="7">7</option>
-                                    <option value="8">8</option>
+                                    <option value="8">8</option>--%>
                                 </select>
                             </div>
                         </div>
@@ -128,9 +128,9 @@
                     </div>
                     <div class="span12">
                         <div class="form-actions">
-                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary">Kaydet</button>
                             <%--<a href="<%=GenerateListUrl() %>" onclick="GoToSubmit(this)" role="button" class="btn notify" data-notify-time="1000" data-notify-title="Success!" data-notify-message="The user has been successfully edited.">Timed fade notification (1second)</a>--%>
-                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
+                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">İptal</a>
                         </div>
                     </div>
                 </form>

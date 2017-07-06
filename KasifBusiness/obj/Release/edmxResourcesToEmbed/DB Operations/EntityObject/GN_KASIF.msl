@@ -27,6 +27,7 @@
     <EntitySetMapping Name="MENU_TREE">
       <EntityTypeMapping TypeName="GN_KASIFModel.MENU_TREE">
         <MappingFragment StoreEntitySet="MENU_TREE">
+          <ScalarProperty Name="NODE_VISIBILITY" ColumnName="NODE_VISIBILITY" />
           <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
           <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
           <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
@@ -192,11 +193,11 @@
     <EntitySetMapping Name="DEVAMSIZLIK_BILGI">
       <EntityTypeMapping TypeName="GN_KASIFModel.DEVAMSIZLIK_BILGI">
         <MappingFragment StoreEntitySet="DEVAMSIZLIK_BILGI">
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
           <ScalarProperty Name="SEBEP" ColumnName="SEBEP" />
           <ScalarProperty Name="DURUM" ColumnName="DURUM" />
           <ScalarProperty Name="TIP" ColumnName="TIP" />
           <ScalarProperty Name="KISI_ID" ColumnName="KISI_ID" />
-          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -215,12 +216,12 @@
     <EntitySetMapping Name="MUFREDAT_TAKIP">
       <EntityTypeMapping TypeName="GN_KASIFModel.MUFREDAT_TAKIP">
         <MappingFragment StoreEntitySet="MUFREDAT_TAKIP">
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
           <ScalarProperty Name="HOCA_ID" ColumnName="HOCA_ID" />
           <ScalarProperty Name="TAKIP_DURUMU" ColumnName="TAKIP_DURUMU" />
           <ScalarProperty Name="DERS_KONU_ID" ColumnName="DERS_KONU_ID" />
           <ScalarProperty Name="SINIF" ColumnName="SINIF" />
           <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
-          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -230,7 +231,7 @@
     <EntitySetMapping Name="OGR_TEST_REL">
       <EntityTypeMapping TypeName="GN_KASIFModel.OGR_TEST_REL">
         <MappingFragment StoreEntitySet="OGR_TEST_REL">
-          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
           <ScalarProperty Name="YANLIS_SAYISI" ColumnName="YANLIS_SAYISI" />
           <ScalarProperty Name="DOGRU_SAYISI" ColumnName="DOGRU_SAYISI" />
           <ScalarProperty Name="DURUM" ColumnName="DURUM" />
@@ -245,7 +246,7 @@
     <EntitySetMapping Name="TEST_BILGI">
       <EntityTypeMapping TypeName="GN_KASIFModel.TEST_BILGI">
         <MappingFragment StoreEntitySet="TEST_BILGI">
-          <ScalarProperty Name="HAFTA_ID" ColumnName="HAFTA_ID" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
           <ScalarProperty Name="TEST_ADI" ColumnName="TEST_ADI" />
           <ScalarProperty Name="DERS_KONU_ID" ColumnName="DERS_KONU_ID" />
           <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />

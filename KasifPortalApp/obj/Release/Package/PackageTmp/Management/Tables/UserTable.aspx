@@ -5,11 +5,26 @@
 
         $(document).ready(function () {
             DtInit();
+
             $('.delete').click(function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/Management/Tables/UserTable.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId'),
+                    "RoleGuid": this.getAttribute('dataRoleGuid')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+
+            });
+
+           <%-- $('.delete').click(function (event) {
                 event.preventDefault();
                 var postData = {
-                    "RowGuid":this.getAttribute('dataId'),
-                    "RoleGuid":this.getAttribute('dataRoleGuid')
+                    "RowGuid": this.getAttribute('dataId'),
+                    "RoleGuid": this.getAttribute('dataRoleGuid')
                 };
                 $.ajax({
                     type: "POST",
@@ -19,7 +34,7 @@
                     dataType: "JSON",
                     success: function (result) {
                         alert(result.d);
-                        window.location="<%=Page.GetRouteUrl(pageName,null)%>"
+                        window.location = "<%=Page.GetRouteUrl(pageName,null)%>"
                     },
                     failure: function (result) {
                         alert('error');
@@ -29,7 +44,7 @@
                     }
                 });
 
-            });
+            });--%>
         });
 
         function DtInit() {
@@ -56,7 +71,7 @@
                     {
                         type: "select",
                         bCaseSensitive: true,
-                        values: ['Evet','Hayir'],
+                        values: ['Evet', 'Hayir'],
                     },
                     {
                         type: "text",
@@ -143,7 +158,7 @@
                             <td>
                                 <a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>
                                 <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
-                                <a class="btn delete" rel="tooltip" title="Delete" dataRoleGuid ="<%#DataBinder.Eval(Container.DataItem,"ROLE_GUID").ToString().Trim() %>" dataId="<%#DataBinder.Eval(Container.DataItem,"GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
+                                <a class="btn delete" rel="tooltip" title="Delete" dataroleguid="<%#DataBinder.Eval(Container.DataItem,"ROLE_GUID").ToString().Trim() %>" dataid="<%#DataBinder.Eval(Container.DataItem,"GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                             </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"NAME").ToString().Trim()%> <%# DataBinder.Eval(Container.DataItem,"SURNAME") %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"EMAIL").ToString().Trim() %></td>

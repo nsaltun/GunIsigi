@@ -58,6 +58,7 @@
     <Property Name="CLASS_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="FILE_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="RESOURCE_ID" Type="Int32" />
+    <Property Name="NODE_VISIBILITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="USER_ROLE">
     <Key>
@@ -206,11 +207,11 @@
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" />
     <Property Name="LASTUPDATED" Type="Int64" />
-    <Property Name="HAFTA_ID" Type="Int32" />
     <Property Name="KISI_ID" Type="Int64" />
     <Property Name="TIP" Type="Int16" />
     <Property Name="DURUM" Type="Int16" />
     <Property Name="SEBEP" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="HAFTA_BILGI">
     <Key>
@@ -227,12 +228,12 @@
     <Property Name="GUID" Type="Int64" Nullable="false" />
     <Property Name="STATUS" Type="Int16" />
     <Property Name="LASTUPDATED" Type="Int64" />
-    <Property Name="HAFTA_ID" Type="Int32" />
     <Property Name="DERS_ID" Type="Int64" />
     <Property Name="SINIF" Type="Int16" />
     <Property Name="DERS_KONU_ID" Type="Int64" />
     <Property Name="TAKIP_DURUMU" Type="Int16" />
     <Property Name="HOCA_ID" Type="Int64" />
+    <Property Name="TARIH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="OGR_TEST_REL">
     <Key>
@@ -246,7 +247,7 @@
     <Property Name="DURUM" Type="Int16" />
     <Property Name="DOGRU_SAYISI" Type="Int32" />
     <Property Name="YANLIS_SAYISI" Type="Int32" />
-    <Property Name="HAFTA_ID" Type="Int64" />
+    <Property Name="TARIH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TEST_BILGI">
     <Key>
@@ -259,7 +260,7 @@
     <Property Name="DERS_ID" Type="Int64" />
     <Property Name="DERS_KONU_ID" Type="Int64" />
     <Property Name="TEST_ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="HAFTA_ID" Type="Int64" />
+    <Property Name="TARIH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DERS_BILGI">
     <Key>

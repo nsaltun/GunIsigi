@@ -229,7 +229,7 @@
                     </div>
                     <div class="span12">
                         <div class="form-actions">
-                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" onclick="return OnSubmit(this);">Save changes</button>
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" onclick="return OnSubmit(this);">Kaydet</button>
                             <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
                         </div>
                     </div>

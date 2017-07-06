@@ -47,7 +47,20 @@
                 $("#dtTable").css("width", '100%');
             }
 
-            $('.delete').click(function (event) {
+             $(document).on('click', ".delete", function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/TestBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
+
+           <%-- $(document).on('click', ".delete", function (event) {
                 event.preventDefault();
                 var postData = {
                     "RowGuid": this.getAttribute('dataId')
@@ -70,7 +83,7 @@
                     }
                 });
 
-            });
+            });--%>
         });
 
     </script>
@@ -85,7 +98,7 @@
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3 class="pull-left"><i class="icon-table"></i><%=pageTitle %></h3>
-                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
+                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1", ksfSI) == "1")
                     {%>
                 <div class="action pull-right">
                     <a href="<%=GenerateAddUrl()%>" class="btn btn-darkblue" style="padding: 10px; margin-right: 10px;"><i class=" icon-plus" style="margin-right: 10px;"></i>Yeni Ekle</a>
@@ -104,7 +117,7 @@
                                     <th>Ders Adı</th>
                                     <th>Test No</th>
                                     <th>Test Adı</th>
-                                    <th>Hafta</th>
+                                    <th>Tarih</th>
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
@@ -113,7 +126,7 @@
                                     <th>Ders Adı</th>
                                     <th>Test No</th>
                                     <th>Test Adı</th>
-                                    <th>Hafta</th>
+                                    <th>Tarih</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,10 +134,10 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
+                                <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("1", ksfSI) == "1")
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
-                                <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="<%# GenerateEditUrl(DataBinder.Eval(Container.DataItem,"TEST_GUID").ToString().Trim())%> " class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a href="#" class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"TEST_GUID").ToString().Trim() %>"><i class="icon-remove"></i></a>
                                 <%} %>
                             </td>
@@ -133,7 +146,7 @@
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TEST_NO").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"TEST_ADI").ToString() %></td>
-                            <td><%#DataBinder.Eval(Container.DataItem,"HAFTA").ToString() %></td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TARIH").ToString() %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>

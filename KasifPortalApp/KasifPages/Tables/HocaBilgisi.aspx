@@ -46,6 +46,18 @@
                 $("#dtTable").css("width", '100%');
             }
 
+            $(document).on('click', ".delete", function (event) {
+                var header = '<%=pageTitle%>';
+                var msg = 'Bu kaydı silmek istediğinize emin misiniz?';
+                var href = "<%= ResolveClientUrl("~/KasifPages/Tables/HocaBilgisi.aspx/DeleteCurrentRow") %>";
+                var callbackUrl = "<%=Page.GetRouteUrl(pageName,null)%>";
+                var postData = {
+                    "RowGuid": this.getAttribute('dataId')
+                };
+
+                AjaxConfirmModal(header, msg, href, callbackUrl, postData);
+               
+            });
 
         });
 
@@ -102,7 +114,7 @@
                                 <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
-                                <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="<%# GenerateEditUrl(DataBinder.Eval(Container.DataItem,"HOCA_GUID").ToString().Trim())%> " class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a href="#" class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"HOCA_GUID").ToString()%>"><i class="icon-remove"></i></a>
                                 <%} %>
                             </td>
@@ -124,7 +136,7 @@
     </div>
 
 
-    <script>
+    <%--<script>
         $('.delete').click(function (event) {
             event.preventDefault();
             var postData = {
@@ -150,7 +162,7 @@
 
         });
 
-    </script>
+    </script>--%>
 
 
 </asp:Content>

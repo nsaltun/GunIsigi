@@ -13,6 +13,7 @@ namespace KasifPortalApp
         public string pageTitle;
         public string brandUrl;
         public string btnOk="Tamam";
+        public string btnCancel = "İptal";
         public SessionInfo ksfSI;
 
         protected void Page_Load(object sender, EventArgs e)

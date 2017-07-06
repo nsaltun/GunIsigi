@@ -98,7 +98,7 @@
             function SetParameters()
             {
                 var postData = {
-                    "Hafta":document.getElementById('<%=slcHafta.ClientID%>').value,
+                    "Tarih":document.getElementById('<%=txtTarih.ClientID%>').value,
                     "KisiId": document.getElementById('<%=slcKisi.ClientID%>').value,
                     "Tip": document.getElementById('<%=slcTip.ClientID%>').value,
                     "DevamDurumu": document.getElementById('<%=slcDevamDurumu.ClientID%>').value,
@@ -151,20 +151,18 @@
                 <form id="form1" action="#" method="POST" class='form-horizontal form-column form-bordered' runat="server">
                     <div class="span6">
                         <div class="control-group">
-                            <label for="select" class="control-label ">Hafta</label>
+                            <label for="textfield" class="control-label ">Tarih</label>
                             <div class="controls">
-                                <select name="select" id="slcHafta" class="input-large" runat="server"></select>
+                                <div class="input-append">
+                                    <input type="text" class="input-large datepick" id="txtTarih" rel="4" runat="server" />
+                                    <span class="add-on"><i class="icon-calendar"></i></span>
+                                </div>
                             </div>
                         </div>
                         <div class="control-group">
                             <label for="select" class="control-label ">Sınıf</label>
                             <div class="controls">
                                 <select name="select" id="slcSinif" class="input-large" runat="server">
-                                    <option value="">Sınıf Seç..</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
                                 </select>
                             </div>
                         </div>
@@ -195,7 +193,7 @@
                                 <select name="select" id="slcDevamDurumu" class="input-large" runat="server">
                                     <option value="0">Geldi</option>
                                     <option value="1">Gelmedi</option>
-                                    <option value="1">Geç Geldi</option>
+                                    <option value="2">Geç Geldi</option>
                                 </select>
                             </div>
                         </div>
@@ -208,8 +206,8 @@
                     </div>
                     <div class="span12">
                         <div class="form-actions">
-                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Save changes</button>
-                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Cancel</a>
+                            <button type="submit" role="button" id="btnSubmit" class="btn btn-primary" runat="server">Kaydet</button>
+                            <a href="<%=GenerateListUrl() %>" role="button" class="btn">Geri dön</a>
                         </div>
                     </div>
                 </form>

@@ -24,7 +24,7 @@
                             {
                     %>
                     <li class="<%=item.STYLE%>">
-                        <a href="<%= item.NODE_GUID!=null && item.NODE_GUID!=0? GetRouteUrl(item.FILE_NAME,null) : "#" %>"><span><i class="<%=item.ICON_NAME %>"></i></span><span class="name"><%=item.DISPLAY_NAME %> </span></a>
+                        <a href="<%= (item.NODE_GUID!=null && item.NODE_GUID!=0) || item.TILE_TYPE=="PUBLIC"? GetRouteUrl(item.FILE_NAME,null) : "#" %>"><span><i class="<%=item.ICON_NAME %>"></i></span><span class="name"><%=item.DISPLAY_NAME %> </span></a>
                     </li>
                     <%
                             }

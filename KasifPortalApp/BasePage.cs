@@ -39,7 +39,7 @@ namespace KasifPortalApp
         private bool CheckUserPageAuthorization(List<MenuTreeItemObject> userMenuTree)
         {
             //home.aspx
-            string virtUrl = ((System.Web.Routing.PageRouteHandler)(Request.RequestContext.RouteData.RouteHandler)).VirtualPath.Substring(2);
+            //string virtUrl = ((System.Web.Routing.PageRouteHandler)(Request.RequestContext.RouteData.RouteHandler)).VirtualPath.Substring(2);
             //home
             string url = Request.RawUrl.Substring(1);//OgrBilgi
             //OgrBilgi/add => yani alt sayfalar için '/' işaretinden sonraki kısım atılıyor. Kök kontrol ediliyor.

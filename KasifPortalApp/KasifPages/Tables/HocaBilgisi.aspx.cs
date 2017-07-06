@@ -2,6 +2,7 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifBusiness.Utilities;
 using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
@@ -67,19 +68,25 @@ namespace KasifPortalApp.KasifPages.Tables
             return Page.GetRouteUrl(pageName + "-add", null);
         }
 
+        public string GenerateEditUrl(string key)
+        {
+            key = KasifHelper.EncryptStringToBytes_Aes(key);
+            return Page.GetRouteUrl(pageName + "-edit", new { param = key });
+        }
+
         [WebMethod()]
-        public static string DeleteCurrentRow(string RowGuid)
+        public static string[] DeleteCurrentRow(string RowGuid)
         {
             try
             {
                 HOCA_BILGI hocaBilgiObj = new HOCA_BILGI();
                 hocaBilgiObj.GUID = Convert.ToInt64(RowGuid);
                 DbOperations.Delete(hocaBilgiObj);
-                return "success";
+                return new string[] { "success", "Silme işlemi başarılı" };
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return new string[] { ex.Message, ex.Message };
             }
 
         }

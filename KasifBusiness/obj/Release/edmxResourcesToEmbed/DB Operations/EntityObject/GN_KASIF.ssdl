@@ -37,7 +37,7 @@
     <Property Name="GUID" Type="bigint" Nullable="false" />
     <Property Name="STATUS" Type="smallint" />
     <Property Name="LASTUPDATED" Type="bigint" />
-    <Property Name="HAFTA_ID" Type="int" />
+    <Property Name="DATE" Type="varchar" MaxLength="50" />
     <Property Name="KISI_ID" Type="bigint" />
     <Property Name="TIP" Type="smallint" />
     <Property Name="DURUM" Type="smallint" />
@@ -98,6 +98,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="NODE_POSITION" Type="smallint" />
     <Property Name="CLASS_NAME" Type="nvarchar" MaxLength="200" />
     <Property Name="FILE_NAME" Type="nvarchar" MaxLength="250" />
+    <Property Name="NODE_VISIBILITY" Type="nvarchar" MaxLength="50" />
     <Property Name="RESOURCE_ID" Type="int" />
   </EntityType>
   <EntityType Name="MUFREDAT_TAKIP">
@@ -108,7 +109,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="STATUS" Type="smallint" />
     <Property Name="LASTUPDATED" Type="bigint" />
     <Property Name="HOCA_ID" Type="bigint" />
-    <Property Name="HAFTA_ID" Type="int" />
+    <Property Name="TARIH" Type="varchar" MaxLength="50" />
     <Property Name="DERS_ID" Type="bigint" />
     <Property Name="SINIF" Type="smallint" />
     <Property Name="DERS_KONU_ID" Type="bigint" />
@@ -152,7 +153,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="DURUM" Type="smallint" />
     <Property Name="DOGRU_SAYISI" Type="int" />
     <Property Name="YANLIS_SAYISI" Type="int" />
-    <Property Name="HAFTA_ID" Type="bigint" />
+    <Property Name="TARIH" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PRM_TAKIP_DURUMU">
     <Key>
@@ -183,7 +184,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.MENU_TREE' does not have a primary ke
     <Property Name="TEST_NO" Type="int" />
     <Property Name="DERS_ID" Type="bigint" />
     <Property Name="DERS_KONU_ID" Type="bigint" />
-    <Property Name="HAFTA_ID" Type="bigint" />
+    <Property Name="TARIH" Type="varchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'GN_KASIF.dbo.USER_ROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -293,6 +294,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
     [MENU_TREE].[NODE_POSITION] AS [NODE_POSITION], 
     [MENU_TREE].[CLASS_NAME] AS [CLASS_NAME], 
     [MENU_TREE].[FILE_NAME] AS [FILE_NAME], 
+    [MENU_TREE].[NODE_VISIBILITY] AS [NODE_VISIBILITY], 
     [MENU_TREE].[RESOURCE_ID] AS [RESOURCE_ID]
     FROM [dbo].[MENU_TREE] AS [MENU_TREE]</DefiningQuery>
     </EntitySet>
