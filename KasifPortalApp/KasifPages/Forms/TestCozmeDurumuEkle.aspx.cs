@@ -206,7 +206,12 @@ namespace KasifPortalApp.KasifPages.Forms
             PageOps = new PageOperations();
             lstDataSource = new List<NameValue>();
             lstTestBilgi = PageOps.RunQueryForPage<TestBilgiObj>(DbCommandList.GET_TEST_BILGI, null, null);
+            if (lstTestBilgi == null || lstTestBilgi.Count == 0)
+            {
+                return false;
+            }
             List<TestBilgiObj> lstCurrentTestBilgi = lstTestBilgi.Where<TestBilgiObj>(x => x.KONU_ID.ToString() == slcKonuAdi.Value).ToList();
+
             foreach (var item in lstCurrentTestBilgi)
             {
                 lstDataSource.Add(new NameValue

@@ -10,7 +10,7 @@
 namespace KasifPortalApp.KasifPages.Forms {
     
     
-    public partial class DersKonuBilgisiEkle {
+    public partial class DersKonuBilgisiDuzenle {
         
         /// <summary>
         /// form1 control.

@@ -34,6 +34,7 @@
           <Property Name="LASTUPDATED" Type="bigint" />
           <Property Name="DERS_ID" Type="bigint" />
           <Property Name="KONU" Type="nvarchar" MaxLength="150" />
+          <Property Name="TARIH" Type="numeric" Precision="8" Scale="0" />
         </EntityType>
         <EntityType Name="DEVAMSIZLIK_BILGI">
           <Key>
@@ -535,6 +536,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <Property Name="LASTUPDATED" Type="Int64" />
           <Property Name="DERS_ID" Type="Int64" />
           <Property Name="KONU" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TARIH" Type="Decimal" Precision="8" Scale="0" />
         </EntityType>
         <EntityType Name="DEVAMSIZLIK_BILGI">
           <Key>
@@ -802,6 +804,7 @@ warning 6002: The table/view 'GN_KASIF.dbo.USER_STATUS' does not have a primary 
           <EntitySetMapping Name="DERS_KONU_BILGI">
             <EntityTypeMapping TypeName="GN_KASIFModel.DERS_KONU_BILGI">
               <MappingFragment StoreEntitySet="DERS_KONU_BILGI">
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
                 <ScalarProperty Name="KONU" ColumnName="KONU" />
                 <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
                 <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />

@@ -137,5 +137,11 @@ namespace KasifBusiness.Utilities
                 bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
             return bytes;
         }
+
+        //Converts to int as 'yyyymmdd'
+        public static int ConvertDateToInt32(string date, string dateFormat)
+        {
+            return Convert.ToInt32((DateTime.ParseExact(date, dateFormat, System.Globalization.CultureInfo.InvariantCulture)).ToString("yyyymmdd"));
+        }
     }
 }

@@ -19,5 +19,6 @@ namespace KasifBusiness.DB_Operations.EntityObject
         public Nullable<long> LASTUPDATED { get; set; }
         public Nullable<long> DERS_ID { get; set; }
         public string KONU { get; set; }
+        public Nullable<decimal> TARIH { get; set; }
     }
 }

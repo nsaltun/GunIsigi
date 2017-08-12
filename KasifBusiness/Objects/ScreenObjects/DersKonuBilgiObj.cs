@@ -13,5 +13,6 @@ namespace KasifBusiness.Objects.ScreenObjects
         public string DERS_ADI { get; set; }
         public string KONU { get; set; }
         public Nullable<short> SINIF { get; set; }
+        public string TARIH { get; set; }
     }
 }

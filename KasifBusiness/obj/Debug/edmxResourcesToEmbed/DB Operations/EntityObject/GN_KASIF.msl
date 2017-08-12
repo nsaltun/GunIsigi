@@ -182,6 +182,7 @@
     <EntitySetMapping Name="DERS_KONU_BILGI">
       <EntityTypeMapping TypeName="GN_KASIFModel.DERS_KONU_BILGI">
         <MappingFragment StoreEntitySet="DERS_KONU_BILGI">
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
           <ScalarProperty Name="KONU" ColumnName="KONU" />
           <ScalarProperty Name="DERS_ID" ColumnName="DERS_ID" />
           <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />

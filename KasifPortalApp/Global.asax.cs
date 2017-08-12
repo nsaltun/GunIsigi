@@ -76,7 +76,7 @@ namespace KasifPortalApp
             routes.MapPageRoute(
             "DersKonuBilgi-page-edit",
             "DersKonuBilgi/edit/{param}",
-            "~/KasifPages/Forms/DersKonuBilgisiGuncelle.aspx");
+            "~/KasifPages/Forms/DersKonuBilgisiDuzenle.aspx");
 
             routes.MapPageRoute(
             "MufredatTakip-page",

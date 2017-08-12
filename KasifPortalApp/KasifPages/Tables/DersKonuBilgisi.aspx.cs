@@ -2,6 +2,7 @@
 using KasifBusiness.DB_Operations.DBOperations;
 using KasifBusiness.DB_Operations.EntityObject;
 using KasifBusiness.Objects.ScreenObjects;
+using KasifBusiness.Utilities;
 using KasifPortalApp.Utilities;
 using System;
 using System.Collections.Generic;
@@ -32,8 +33,6 @@ namespace KasifPortalApp.KasifPages.Tables
                 standardErr = "İşlem gerçekleştirilirken bir hata oluştu.";
                 RaisePopUp(ex.Message, ResultStatus.Error);
             }
-
-
         }
 
         private void RaisePopUp(string msg, ResultStatus resultStatus)
@@ -55,6 +54,12 @@ namespace KasifPortalApp.KasifPages.Tables
             return Page.GetRouteUrl(pageName + "-add", null);
         }
 
+        public string GenerateEditUrl(string key)
+        {
+            key = KasifHelper.EncryptStringToBytes_Aes(key);
+            return Page.GetRouteUrl(pageName + "-edit", new { param = key });
+        }
+
         [WebMethod()]
         public static string[] DeleteCurrentRow(string RowGuid)
         {
@@ -69,7 +74,6 @@ namespace KasifPortalApp.KasifPages.Tables
             {
                 return new string[] { ex.Message, ex.Message };
             }
-
         }
     }
 }

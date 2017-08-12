@@ -5,6 +5,7 @@
 
         $(document).ready(function () {
             DtInit();
+            dispatchEvent(new Event('resize'));
 
             $(document).on('click', ".delete", function (event) {
                 var header = '<%=pageTitle%>';
@@ -63,7 +64,9 @@
                         {
                             type: "text",
                         },
-
+                        {
+                            type: "text",
+                        },
                         {
                             type: "text",
                         },
@@ -109,12 +112,14 @@
                             <thead>
                                 <tr class='thefilter'>
                                     <th>Seçenekler</th>
+                                    <th>Tarih</th>
                                     <th>Ders Adı</th>
                                     <th>Konu Adı</th>
                                     <th>Sınıf</th>
                                 </tr>
                                 <tr>
                                     <th>Seçenekler</th>
+                                    <th>Tarih</th>
                                     <th>Ders Adı</th>
                                     <th>Konu Adı</th>
                                     <th>Sınıf</th>
@@ -128,10 +133,11 @@
                                 <%if (KasifPortalApp.Utilities.UtilityScreenFunctions.ControlFieldAllowed("2", ksfSI) == "1")
                                     {%>
                                 <%--<a href="#" class="btn" rel="tooltip" title="View"><i class="icon-search"></i></a>--%>
-                                <a href="#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+                                <a href="<%# GenerateEditUrl(DataBinder.Eval(Container.DataItem,"DERS_KONU_GUID").ToString().Trim())%> " class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
                                 <a class="btn delete" rel="tooltip" title="Delete" dataid="<%#DataBinder.Eval(Container.DataItem,"DERS_KONU_GUID").ToString()%>"><i class="icon-remove"></i></a>
                                 <%} %>
                             </td>
+                            <td><%#DataBinder.Eval(Container.DataItem,"TARIH").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"DERS_ADI").ToString() %></td>
                             <td><%#DataBinder.Eval(Container.DataItem,"KONU").ToString() %> </td>
                             <td><%#DataBinder.Eval(Container.DataItem,"SINIF").ToString() %></td>

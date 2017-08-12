@@ -199,6 +199,7 @@
     <Property Name="LASTUPDATED" Type="Int64" />
     <Property Name="DERS_ID" Type="Int64" />
     <Property Name="KONU" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TARIH" Type="Decimal" Precision="8" Scale="0" />
   </EntityType>
   <EntityType Name="DEVAMSIZLIK_BILGI">
     <Key>

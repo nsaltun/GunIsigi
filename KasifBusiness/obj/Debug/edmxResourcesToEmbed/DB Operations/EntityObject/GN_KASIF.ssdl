@@ -29,6 +29,7 @@
     <Property Name="LASTUPDATED" Type="bigint" />
     <Property Name="DERS_ID" Type="bigint" />
     <Property Name="KONU" Type="nvarchar" MaxLength="150" />
+    <Property Name="TARIH" Type="numeric" Precision="8" Scale="0" />
   </EntityType>
   <EntityType Name="DEVAMSIZLIK_BILGI">
     <Key>
