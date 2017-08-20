@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="DersKonuBilgisiEkle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.DersKonuBilgisiEkle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="DersKonuBilgisiDuzenle.aspx.cs" Inherits="KasifPortalApp.KasifPages.Forms.DersKonuBilgisiDuzenle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
@@ -36,14 +36,12 @@
                 var tarih = document.getElementById('<%=txtTarih.ClientID%>').value;
                 //postData.push( { "name": "konuAdi", "value": konuAdi });
                 //postData.push( { "name": "dersId", "value": dersId });
-                
 
                 var postData = {
                     "KonuAdi": konuAdi,
                     "DersId": dersId,
                     "Tarih": tarih
                 };
-
 
                 return postData;
             }
@@ -52,7 +50,7 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: "<%= ResolveClientUrl("~/KasifPages/Forms/DersKonuBilgisiEkle.aspx/ProcessOperation") %>",
+                    url: "<%= ResolveClientUrl("~/KasifPages/Forms/DersKonuBilgisiDuzenle.aspx/ProcessOperation") %>",
                     data: JSON.stringify(postData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "JSON",
@@ -85,13 +83,13 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphTitle" runat="server">
-    <h3>Ders Konu Bilgisi Ekle</h3>
+    <h3>Ders Konu Bilgisi Düzenle</h3>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
     <div class="span12">
         <div class="box box-color box-bordered">
             <div class="box-title">
-                <h3><i class="icon-list"></i>Ders Konusu Ekle</h3>
+                <h3><i class="icon-list"></i>Ders Konusu Düzenle</h3>
             </div>
             <div class="box-content nopadding">
                 <form id="form1" action="#" method="POST" class='form-horizontal form-column form-bordered' runat="server">
@@ -104,11 +102,7 @@
                         <div class="control-group">
                             <label for="select" class="control-label ">Sınıf</label>
                             <div class="controls">
-                                <select name="select" id="slcSinif" class="input-large" runat="server">
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
+                                <select name="select" runat="server" id="slcSinif" class="input-large" runat="server">
                                 </select>
                             </div>
                         </div>

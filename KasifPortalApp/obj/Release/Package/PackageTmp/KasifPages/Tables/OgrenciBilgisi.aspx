@@ -5,6 +5,7 @@
 
         $(document).ready(function () {
             DtInit();
+            dispatchEvent(new Event('resize'));
 
             $(document).on('click', ".delete", function (event) {
                 var header = '<%=pageTitle%>';

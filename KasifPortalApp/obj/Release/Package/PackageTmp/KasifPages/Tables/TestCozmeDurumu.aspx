@@ -5,6 +5,7 @@
 
         $(document).ready(function () {
             DtInit();
+            dispatchEvent(new Event('resize'));
 
             function DtInit() {
                 var oTable = $('#dtTable').dataTable();
